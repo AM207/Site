@@ -1,2 +1,11 @@
 *~
+._*
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.py[cod]
+output
+.idea/*
+.env
 nohup.out

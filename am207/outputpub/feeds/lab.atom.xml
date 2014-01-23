@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>AM207</title><link href="http://iacs-courses.seas.harvard.edu/courses/am207/" rel="alternate"></link><link href="http://iacs-courses.seas.harvard.edu/courses/am207/feeds/lab.atom.xml" rel="self"></link><id>http://iacs-courses.seas.harvard.edu/courses/am207/</id><updated>2014-01-16T14:27:58-05:00</updated><entry><title>Schedule of Labs</title><link href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/schedule-of-labs.html" rel="alternate"></link><updated>2014-01-16T14:27:58-05:00</updated><author><name>Rahul Dave</name></author><id>tag:iacs-courses.seas.harvard.edu/courses/am207,2014-01-16:blog/schedule-of-labs.html</id><summary type="html">&lt;p&gt;We will have 12 labs during the semester given on Friday at 11:00am-12:30pm. The goal of the labs is to go through some real world problems while reviewing the material from class. The labs will be helpful in doing the homework: you are strongly encouraged to attend. Since the lab also does real world applications, it will help you do your project.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Python numerical stack tutorial&lt;/li&gt;
+&lt;li&gt;Frequentist examples&lt;/li&gt;
+&lt;li&gt;Priors, how, what and when &lt;/li&gt;
+&lt;li&gt;MCMC on the cloud&lt;/li&gt;
+&lt;li&gt;Gibbs on steroids&lt;/li&gt;
+&lt;li&gt;r u NUTS? More on Hamiltonian MC &lt;/li&gt;
+&lt;li&gt;The art of motorcycle maintenance and SA &lt;/li&gt;
+&lt;li&gt;GA for the masses &lt;/li&gt;
+&lt;li&gt;Stockwits. Predicting the financial market using sentiment analysis and Sequential Monte Carlo &lt;/li&gt;
+&lt;li&gt;CO2 prediction. Gaussian Process application &lt;/li&gt;
+&lt;li&gt;All you wanted to know about PGM &lt;/li&gt;
+&lt;li&gt;(If time permits) Dynamic Bayesian Averaging. Various applications and examples &lt;/li&gt;
+&lt;/ol&gt;</summary></entry></feed>

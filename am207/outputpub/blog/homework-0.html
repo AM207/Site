@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Homework 0</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Homework 0"/>
+            <meta property="og:url" content="http://iacs-courses.seas.harvard.edu/courses/am207/blog/homework-0.html"/>
+            <meta property="og:description" content="0th homework."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/bootstrap.spacelab.min.css" type="text/css"/>
+    <link href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+        <link href="http://iacs-courses.seas.harvard.edu/courses/am207/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="AM207 ATOM Feed"/>
+    
+        
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+div.entry-content {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.2em;
+}
+
+a.heading-anchor {
+ white-space: normal;
+}
+
+.rendered_html
+code {
+ font-size: .8em;
+}
+
+pre.ipynb {
+  color: black;
+  background: #f7f7f7;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding: 0;
+  margin: 0px;
+  font-size: 13px;
+}
+
+img.anim_icon{padding:0; border:0; vertical-align:middle; -webkit-box-shadow:none; -box-shadow:none}
+
+div.cell{width:100%;padding:5px 5px 5px 0px;margin:2px 0px 2px 7px;outline:none;}
+div.prompt{width:11ex;padding:0.4em;margin:0px;font-family:monospace;text-align:right;line-height:1.231em;display:none;}
+
+/*
+div.input_prompt{color:navy;border-top:1px solid transparent;}
+div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:4px;-webkit-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);-moz-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);}
+div.output_collapsed{margin:0px;padding:0px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.output_prompt{color:darkred;}*/
+</style>
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+        	config: ['MMLorHTML.js'], 
+            jax: ['input/TeX','output/HTML-CSS'],
+            TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+            extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+                displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+                processEscapes: true
+            },
+            //displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: { '.MathJax .mo, .MathJax .mi': {color: 'black ! important'}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://iacs-courses.seas.harvard.edu/courses/am207/index.html" class="navbar-brand">AM207</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/lecture.html">Lectures</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/homework.html">Homework</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/lab.html">Labs</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/project.html">Projects</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/schedule.html">Schedule</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/syllabus.html">Syllabus</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/policies.html">Policies</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/resources.html">Resources</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/about-am207.html">About AM207</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- /.navbar -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h2>
+                    <a href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/homework-0.html"
+                       rel="bookmark"
+                       title="Permalink to Homework 0">
+                        Homework 0
+                    </a>
+                </h2>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Tue 07 January 2014
+    </span>
+
+    <span class="label label-default">Category</span>
+    <a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/homework.html">homework</a>
+
+
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>This is a homework to try, but not hand in. If you find this homework easy, this class is too easy for you. If you cant do any question, its too hard. If you can do some questions, then this is the right class for you.</p>
+<p>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="homework-0">Homework 0</h1>
+<h3 id="due-tuesday-september-10-but-no-submission-is-required">Due Tuesday, September 10 (but no submission is required)</h3>
+<hr/>
+<p>Welcome to CS109 / STAT121 / AC209 / E-109 (http://cs109.org/). In this class, we will be using a variety of tools that will require some initial configuration. To ensure everything goes smoothly moving forward, we will setup the majority of those tools in this homework. While some of this will likely be dull, doing it now will enable us to do more exciting work in the weeks that follow without getting bogged down in further software configuration. This homework will not be graded, however it is essential that you complete it timely since it will enable us to set up your accounts. You do not have to hand anything in, with the exception of filling out the online survey.</p>
+<h2 id="class-survey-piazza-and-introduction">Class Survey, Piazza, and Introduction</h2>
+<p><strong>Class Survey</strong></p>
+<p>Please complete the mandatory course survey located <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFg1ZFJwLWJ6ZWhWR1JJb0tES3lGMEE6MA#gid=0">here</a>. It should only take a few moments of your time. Once you fill in the survey we will sign you up to the course forum on Piazza and the dropbox system that you will use to hand in the homework. It is imperative that you fill out the survey on time as we use the provided information to sign you up for these services.</p>
+<p><strong>Piazza</strong></p>
+<p>Go to <a href="https://piazza.com/harvard/fall2013/cs109/home">Piazza</a> and sign up for the class using your Harvard e-mail address.</p>
+<p>You will use Piazza as a forum for discussion, to find team members, to arrange appointments, and to ask questions. Piazza should be your primary form of communication with the staff. Use the staff e-mail (staff@cs109.org) only for individual requests, e.g., to excuse yourself from a mandatory guest lecture. All readings, homeworks, and project descriptions will be announced on Piazza first.</p>
+<p><strong>Introduction</strong></p>
+<p>Once you are signed up to the Piazza course forum, introduce yourself to your classmates and course staff with a follow-up post in the introduction thread. Include your name/nickname, your affiliation, why you are taking this course, and tell us something interesting about yourself (e.g., an industry job, an unusual hobby, past travels, or a cool project you did, etc.). Also tell us whether you have experience with data science.</p>
+<h2 id="programming-expectations">Programming expectations</h2>
+<p>All the assignments and labs for this class will use Python and, for the most part, the browser-based IPython notebook format you are currently viewing. Knowledge of Python is not a prerequisite for this course, <strong>provided you are comfortable learning on your own as needed</strong>. While we have strived to make the programming component of this course straightforward, we will not devote much time to teaching prorgramming or Python syntax. Basically, you should feel comfortable with:</p>
+<ul>
+<li>How to look up Python syntax on Google and StackOverflow.</li>
+<li>Basic programming concepts like functions, loops, arrays, dictionaries, strings, and if statements.</li>
+<li>How to learn new libraries by reading documentation.</li>
+<li>Asking questions on StackOverflow or Piazza.</li>
+</ul>
+<p>There are many online tutorials to introduce you to scientific python programming. <a href="https://github.com/jrjohansson/scientific-python-lectures">Here is one</a> that is very nice. Lectures 1-4 are most relevant to this class.</p>
+<h2 id="getting-python">Getting Python</h2>
+<p>You will be using Python throughout the course, including many popular 3rd party Python libraries for scientific computing. <a href="http://continuum.io/downloads">Anaconda</a> is an easy-to-install bundle of Python and most of these libraries. We recommend that you use Anaconda for this course.</p>
+<p>Please visit <a href="https://github.com/cs109/content/wiki/Installing-Python">this page</a> and follow the instructions to set up Python</p>
+<p><hline></hline></p>
+<h2 id="hello-python">Hello, Python</h2>
+<p>The IPython notebook is an application to build interactive computational notebooks. You'll be using them to complete labs and homework. Once you've set up Python, please <a download="HW0.ipynb" href="https://raw.github.com/cs109/content/master/HW0.ipynb">download this page</a>, and open it with IPython by typing</p>
+<pre><code>ipython notebook &lt;name_of_downloaded_file&gt;</code></pre>
+<p>For the rest of the assignment, use your local copy of this page, running on IPython.</p>
+<p>Notebooks are composed of many "cells", which can contain text (like this one), or code (like the one below). Double click on the cell below, and evaluate it by clicking the "play" button above, for by hitting shift + enter</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [1]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">"Item is "</span><span class="p">,</span> <span class="n">item</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="python-libraries">Python Libraries</h2>
+<p>We will be using a several different libraries throughout this course. If you've successfully completed the <a href="https://github.com/cs109/content/wiki/Installing-Python">installation instructions</a>, all of the following statements should run.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [2]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c">#IPython is what you are using now to run the notebook</span>
+<span class="kn">import</span> <span class="nn">IPython</span>
+<span class="k">print</span> <span class="s">"IPython version:      </span><span class="si">%6.6s</span><span class="s"> (need at least 1.0)"</span> <span class="o">%</span> <span class="n">IPython</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># Numpy is a library for working with Arrays</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="k">print</span> <span class="s">"Numpy version:        </span><span class="si">%6.6s</span><span class="s"> (need at least 1.7.1)"</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># SciPy implements many different numerical algorithms</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="k">print</span> <span class="s">"SciPy version:        </span><span class="si">%6.6s</span><span class="s"> (need at least 0.12.0)"</span> <span class="o">%</span> <span class="n">sp</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># Pandas makes working with data tables easier</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="k">print</span> <span class="s">"Pandas version:       </span><span class="si">%6.6s</span><span class="s"> (need at least 0.11.0)"</span> <span class="o">%</span> <span class="n">pd</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># Module for plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="k">print</span> <span class="s">"Mapltolib version:    </span><span class="si">%6.6s</span><span class="s"> (need at least 1.2.1)"</span> <span class="o">%</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># SciKit Learn implements several Machine Learning algorithms</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="k">print</span> <span class="s">"Scikit-Learn version: </span><span class="si">%6.6s</span><span class="s"> (need at least 0.13.1)"</span> <span class="o">%</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># Requests is a library for getting data from the Web</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">print</span> <span class="s">"requests version:     </span><span class="si">%6.6s</span><span class="s"> (need at least 1.2.3)"</span> <span class="o">%</span> <span class="n">requests</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c"># Networkx is a library for working with networks</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="k">print</span> <span class="s">"NetworkX version:     </span><span class="si">%6.6s</span><span class="s"> (need at least 1.7)"</span> <span class="o">%</span> <span class="n">nx</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c">#BeautifulSoup is a library to parse HTML and XML documents</span>
+<span class="kn">import</span> <span class="nn">BeautifulSoup</span>
+<span class="k">print</span> <span class="s">"BeautifulSoup version:</span><span class="si">%6.6s</span><span class="s"> (need at least 3.2)"</span> <span class="o">%</span> <span class="n">BeautifulSoup</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c">#MrJob is a library to run map reduce jobs on Amazon's computers</span>
+<span class="kn">import</span> <span class="nn">mrjob</span>
+<span class="k">print</span> <span class="s">"Mr Job version:       </span><span class="si">%6.6s</span><span class="s"> (need at least 0.4)"</span> <span class="o">%</span> <span class="n">mrjob</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="c">#Pattern has lots of tools for working with data from the internet</span>
+<span class="kn">import</span> <span class="nn">pattern</span>
+<span class="k">print</span> <span class="s">"Pattern version:      </span><span class="si">%6.6s</span><span class="s"> (need at least 2.6)"</span> <span class="o">%</span> <span class="n">pattern</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If any of these libraries are missing or out of date, you will need to <a href="https://github.com/cs109/content/wiki/Installing-Python#installing-additional-libraries">install them</a> and restart IPython</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="hello-matplotlib">Hello matplotlib</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The notebook integrates nicely with Matplotlib, the primary plotting package for python. This should embed a figure of a sine wave:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [3]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c">#this line prepares IPython for working with matplotlib</span>
+<span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>  
+
+<span class="c"># this actually imports matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>  
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c">#array of 30 points from 0 to 10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="o">*</span> <span class="o">.</span><span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'ro-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'A sine wave'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s">'b-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Noisy sine'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s">'lower right'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"X axis"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Y axis"</span><span class="p">)</span>           
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If that last cell complained about the <code>%matplotlib</code> line, you need to update IPython to v1.0, and restart the notebook. See the <a href="https://github.com/cs109/content/wiki/Installing-Python">installation page</a></p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="hello-numpy">Hello Numpy</h2>
+<p>The Numpy array processing library is the basis of nearly all numerical computing in Python. Here's a 30 second crash course. For more details, consult Chapter 4 of Python for Data Analysis, or the <a href="http://docs.scipy.org/doc/numpy-dev/user/index.html">Numpy User's Guide</a></p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [4]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">print</span> <span class="s">"Make a 3 row x 4 column array of random numbers"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s">"Add 1 to every element"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s">"Get the element at row 1, column 2"</span>
+<span class="k">print</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span>
+
+<span class="c"># The colon syntax is called "slicing" the array. </span>
+<span class="k">print</span> <span class="s">"Get the first row"</span>
+<span class="k">print</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s">"Get every 2nd column of the first row"</span>
+<span class="k">print</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Print the maximum, minimum, and mean of the array. This does <strong>not</strong> require writing a loop. In the code cell below, type <code>x.m&lt;TAB&gt;</code>, to find built-in operations for common array statistics like this</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [5]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Call the <code>x.max</code> function again, but use the <code>axis</code> keyword to print the maximum of each row in x.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [6]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here's a way to quickly simulate 500 coin "fair" coin tosses (where the probabily of getting Heads is 50%, or 0.5)</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [7]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">"number of heads:"</span><span class="p">,</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Repeat this simulation 500 times, and use the <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hist">plt.hist() function</a> to plot a histogram of the number of Heads (1s) in each simulation</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [8]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="the-monty-hall-problem">The Monty Hall Problem</h2>
+<p>Here's a fun and perhaps surprising statistical riddle, and a good way to get some practice writing python functions</p>
+<p>In a gameshow, contestants try to guess which of 3 closed doors contain a cash prize (goats are behind the other two doors). Of course, the odds of choosing the correct door are 1 in 3. As a twist, the host of the show occasionally opens a door after a contestant makes his or her choice. This door is always one of the two the contestant did not pick, and is also always one of the goat doors (note that it is always possible to do this, since there are two goat doors). At this point, the contestant has the option of keeping his or her original choice, or swtiching to the other unopened door. The question is: is there any benefit to switching doors? The answer surprises many people who haven't heard the question before.</p>
+<p>We can answer the problem by running simulations in Python. We'll do it in several parts.</p>
+<p>First, write a function called <code>simulate_prizedoor</code>. This function will simulate the location of the prize in many games -- see the detailed specification below:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [9]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Function</span>
+<span class="sd">--------</span>
+<span class="sd">simulate_prizedoor</span>
+
+<span class="sd">Generate a random array of 0s, 1s, and 2s, representing</span>
+<span class="sd">hiding a prize between door 0, door 1, and door 2</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">nsim : int</span>
+<span class="sd">    The number of simulations to run</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">sims : array</span>
+<span class="sd">    Random array of 0s, 1s, and 2s</span>
+
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+<span class="sd">&gt;&gt;&gt; print simulate_prizedoor(3)</span>
+<span class="sd">array([0, 0, 2])</span>
+<span class="sd">"""</span>
+<span class="k">def</span> <span class="nf">simulate_prizedoor</span><span class="p">(</span><span class="n">nsim</span><span class="p">):</span>
+    <span class="c">#compute here</span>
+    <span class="k">return</span> <span class="n">answer</span>
+<span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, write a function that simulates the contestant's guesses for <code>nsim</code> simulations. Call this function <code>simulate_guess</code>. The specs:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [10]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Function</span>
+<span class="sd">--------</span>
+<span class="sd">simulate_guess</span>
+
+<span class="sd">Return any strategy for guessing which door a prize is behind. This</span>
+<span class="sd">could be a random strategy, one that always guesses 2, whatever.</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">nsim : int</span>
+<span class="sd">    The number of simulations to generate guesses for</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">guesses : array</span>
+<span class="sd">    An array of guesses. Each guess is a 0, 1, or 2</span>
+
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+<span class="sd">&gt;&gt;&gt; print simulate_guess(5)</span>
+<span class="sd">array([0, 0, 0, 0, 0])</span>
+<span class="sd">"""</span>
+<span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, write a function, <code>goat_door</code>, to simulate randomly revealing one of the goat doors that a contestant didn't pick.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [11]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Function</span>
+<span class="sd">--------</span>
+<span class="sd">goat_door</span>
+
+<span class="sd">Simulate the opening of a "goat door" that doesn't contain the prize,</span>
+<span class="sd">and is different from the contestants guess</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">prizedoors : array</span>
+<span class="sd">    The door that the prize is behind in each simulation</span>
+<span class="sd">guesses : array</span>
+<span class="sd">    THe door that the contestant guessed in each simulation</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">goats : array</span>
+<span class="sd">    The goat door that is opened for each simulation. Each item is 0, 1, or 2, and is different</span>
+<span class="sd">    from both prizedoors and guesses</span>
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+<span class="sd">&gt;&gt;&gt; print goat_door(np.array([0, 1, 2]), np.array([1, 1, 1]))</span>
+<span class="sd">&gt;&gt;&gt; array([2, 2, 0])</span>
+<span class="sd">"""</span>
+<span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Write a function, <code>switch_guess</code>, that represents the strategy of always switching a guess after the goat door is opened.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [12]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Function</span>
+<span class="sd">--------</span>
+<span class="sd">switch_guess</span>
+
+<span class="sd">The strategy that always switches a guess after the goat door is opened</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">guesses : array</span>
+<span class="sd">     Array of original guesses, for each simulation</span>
+<span class="sd">goatdoors : array</span>
+<span class="sd">     Array of revealed goat doors for each simulation</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">The new door after switching. Should be different from both guesses and goatdoors</span>
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+<span class="sd">&gt;&gt;&gt; print switch_guess(np.array([0, 1, 2]), np.array([1, 2, 1]))</span>
+<span class="sd">&gt;&gt;&gt; array([2, 0, 0])</span>
+<span class="sd">"""</span>
+<span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last function: write a <code>win_percentage</code> function that takes an array of <code>guesses</code> and <code>prizedoors</code>, and returns the percent of correct guesses</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [13]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Function</span>
+<span class="sd">--------</span>
+<span class="sd">win_percentage</span>
+
+<span class="sd">Calculate the percent of times that a simulation of guesses is correct</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">-----------</span>
+<span class="sd">guesses : array</span>
+<span class="sd">    Guesses for each simulation</span>
+<span class="sd">prizedoors : array</span>
+<span class="sd">    Location of prize for each simulation</span>
+
+<span class="sd">Returns</span>
+<span class="sd">--------</span>
+<span class="sd">percentage : number between 0 and 100</span>
+<span class="sd">    The win percentage</span>
+
+<span class="sd">Examples</span>
+<span class="sd">---------</span>
+<span class="sd">&gt;&gt;&gt; print win_percentage(np.array([0, 1, 2]), np.array([0, 0, 0]))</span>
+<span class="sd">33.333</span>
+<span class="sd">"""</span>
+<span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, put it together. Simulate 10000 games where contestant keeps his original guess, and 10000 games where the contestant switches his door after a goat door is revealed. Compute the percentage of time the contestant wins under either strategy. Is one strategy better than the other?</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In [14]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Many people find this answer counter-intuitive (famously, PhD mathematicians have incorrectly claimed the result must be wrong. Clearly, none of them knew Python).</p>
+<p>One of the best ways to build intuition about why opening a Goat door affects the odds is to re-run the experiment with 100 doors and one prize. If the game show host opens 98 goat doors after you make your initial selection, would you want to keep your first pick or switch? Can you generalize your simulation code to handle the case of <code>n</code> doors?</p>
+</div></p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-lg-3 well well-sm" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+            <!--li class="list-group-item"><a href="http://iacs-courses.seas.harvard.edu/courses/am207/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li-->
+                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>Links</h4></li>
+                    <li class="list-group-item"><a href="http://twitter.com/am207"><i
+                            class="icon-twitter-sign"></i>twitter
+                    </a></li>
+                    <li class="list-group-item"><a href="https://piazza.com/class/"><i class="icon-external-link"></i>Class Piazza</a></li>
+                    <li class="list-group-item"><a href="http://docs.scipy.org/doc/numpy/reference/"><i class="icon-external-link"></i>Numpy</a></li>
+                    <li class="list-group-item"><a href="http://docs.scipy.org/doc/scipy/reference/"><i class="icon-external-link"></i>Scipy</a></li>
+                    <li class="list-group-item"><a href="http://pandas.pydata.org/pandas-docs/dev/"><i class="icon-external-link"></i>Pandas</a></li>
+                    <li class="list-group-item"><a href="http://matplotlib.org/api/index.html"><i class="icon-external-link"></i>Matplotlib</a></li>
+                    <li class="list-group-item"><a href="https://github.com/pymc-devs/pymc"><i class="icon-external-link"></i>PyMC3</a></li>
+                    <li class="list-group-item"><a href="http://iacs.seas.harvard.edu"><i class="icon-external-link"></i>IACS</a></li>
+        </ul>
+    </section>
+</aside>        </div>
+    </div>
+</div>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://iacs-courses.seas.harvard.edu/courses/am207/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://iacs-courses.seas.harvard.edu/courses/am207/theme/js/respond.min.js"></script>
+</body>
+</html>

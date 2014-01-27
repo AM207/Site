@@ -1,5 +1,5 @@
 Title: Schedule of Lectures
-category: lecture
+Tags: lectures
 Author: Pavlos Protopapas
 Summary: A tentative schedule of lectures for the semester
 

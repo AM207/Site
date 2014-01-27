@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>AM207 - project</title>
+    <title>AM207 - labs</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -13,17 +13,19 @@
 
             <meta property="og:type" content="website"/>
             <meta property="og:title" content="AM207"/>
-            <meta property="og:url" content="http://localhost:8000"/>
+            <meta property="og:url" content="http://iacs-courses.seas.harvard.edu/courses/am207"/>
             <meta property="og:description" content="AM207"/>
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://localhost:8000/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="http://localhost:8000/theme/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://localhost:8000/theme/css/pygments.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://localhost:8000/theme/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/style.css" type="text/css"/>
     <!-- JavaScript plugins (requires jQuery) -->
     <script src="http://code.jquery.com/jquery.js"></script>
 
+        <link href="http://iacs-courses.seas.harvard.edu/courses/am207/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="AM207 ATOM Feed"/>
     
         
 
@@ -106,22 +108,17 @@ init_mathjax();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://localhost:8000/index.html" class="navbar-brand">AM207</a>
+            <a href="http://iacs-courses.seas.harvard.edu/courses/am207/index.html" class="navbar-brand">AM207</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="http://localhost:8000/category/lecture.html">Lectures</a></li>
-                    <li><a href="http://localhost:8000/category/homework.html">Homework</a></li>
-                    <li><a href="http://localhost:8000/category/lab.html">Labs</a></li>
-                    <li><a href="http://localhost:8000/category/project.html">Projects</a></li>
-                    <li><a href="http://localhost:8000/schedule.html">Schedule</a></li>
-                    <li><a href="http://localhost:8000/syllabus.html">Syllabus</a></li>
-                    <li><a href="http://localhost:8000/policies.html">Policies</a></li>
-                    <li><a href="http://localhost:8000/resources.html">Resources</a></li>
-                    <li><a href="http://localhost:8000/about-am207.html">About AM207</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/schedule.html">Schedule</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/syllabus.html">Syllabus</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/policies.html">Policies</a></li>
+                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/resources.html">Resources</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://localhost:8000/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/archives.html"><i class="icon-th-list"></i>Archives</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -132,31 +129,29 @@ init_mathjax();
     <div class="row">
         <div class="col-lg-9">
             <article>
-                <h3><a href="http://localhost:8000/blog/projects-and-project-policies.html">Projects and project policies</a></h3>
+                <h3><a href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/installing-python.html">Installing Python</a></h3>
                    
-                            <div class="entry-content">
-                                <div class="panel">
-                                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="icon-calendar"></i>Thu 16 January 2014
-    </span>
-
-    <span class="label label-default">Category</span>
-    <a href="http://localhost:8000/category/project.html">project</a>
-
-
-</footer><!-- /.post-info -->                                    </div>
-                                </div>
-                                <h4>Project Schedule</h4>
-<p>Yet to be determined.</p>
-<h4>Project Policies</h4>
-<p>In addition to the homework there will be a final project. The final project will be done over a period of 5 weeks, the first two of which will be concommitant with homeworks. In these two weeks, you will be expected to come up with and submit a proposal for the final project. There will be no homework for the last three weeks of the course, so as to provide you ample time to work on your project.</p>
-<p>You will be expected to produce a written paper and a poster to showcase your project. All code used for the project must also be submitted.</p>
-<p>The dropbox for the project will close on the deadline for that piece of work. NO work will be accepted after the deadline. Do not submit in the last seconds before the dropbox closes.</p>
-                                <a class="btn btn-default btn-xs" href="http://localhost:8000/blog/projects-and-project-policies.html">more ...</a>
-                            </div>
+                        <span class="published">
+                            <i class="icon-calendar"></i>Mon 27 January 2014
+                        </span>
+                        <div class="summary"><p>All the labs and homeworks in this course are Python-based. This page provides information about configuring Python on your machine.</p>
+<p><strong>Step 0</strong> 
+The IPython notebook runs in the browser, and works best in Google Chrome. You probably want to use Chrome for assignments in this course</p>
+<h3>Recommended Method: Anaconda</h3>
+<p>The ...</p>
+                            <a class="btn btn-default btn-xs" href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/installing-python.html">more ...</a>
+                        </div>
+            </article>
+            <hr/>
+            <article>
+                <h3><a href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/schedule-of-labs.html">Schedule of Labs</a></h3>
+                   
+                        <span class="published">
+                            <i class="icon-calendar"></i>Sun 26 January 2014
+                        </span>
+                        <div class="summary"><p>A tentative schedule of labs for the semester</p>
+                            <a class="btn btn-default btn-xs" href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/schedule-of-labs.html">more ...</a>
+                        </div>
             </article>
             <hr/>
 
@@ -167,19 +162,40 @@ init_mathjax();
         <ul class="list-group list-group-flush">
 
 
+                <li class="list-group-item"><h4><i class="icon-home icon-large"></i>class</h4></li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/homeworks.html">
+                           <i class="icon-folder-open icon-large"></i>homeworks
+                       </a>
+                   </li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/lectures.html">
+                           <i class="icon-folder-open icon-large"></i>lectures
+                       </a>
+                   </li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/labs.html">
+                           <i class="icon-folder-open icon-large"></i>labs
+                       </a>
+                   </li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/projects.html">
+                           <i class="icon-folder-open icon-large"></i>projects
+                       </a>
+                   </li>
 
-            <!--li class="list-group-item"><a href="http://localhost:8000/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li-->
-                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>Links</h4></li>
-                    <li class="list-group-item"><a href="http://twitter.com/am207"><i
-                            class="icon-twitter-sign"></i>twitter
-                    </a></li>
-                    <li class="list-group-item"><a href="https://piazza.com/class/"><i class="icon-external-link"></i>Class Piazza</a></li>
+            <!--li class="list-group-item"><a href="http://iacs-courses.seas.harvard.edu/courses/am207/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li-->
+                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>links</h4></li>
+                    <li class="list-group-item"><a href="https://piazza.com/harvard/spring2014/am207/home"><i class="icon-external-link"></i>Class Piazza</a></li>
                     <li class="list-group-item"><a href="http://docs.scipy.org/doc/numpy/reference/"><i class="icon-external-link"></i>Numpy</a></li>
                     <li class="list-group-item"><a href="http://docs.scipy.org/doc/scipy/reference/"><i class="icon-external-link"></i>Scipy</a></li>
                     <li class="list-group-item"><a href="http://pandas.pydata.org/pandas-docs/dev/"><i class="icon-external-link"></i>Pandas</a></li>
                     <li class="list-group-item"><a href="http://matplotlib.org/api/index.html"><i class="icon-external-link"></i>Matplotlib</a></li>
                     <li class="list-group-item"><a href="https://github.com/pymc-devs/pymc"><i class="icon-external-link"></i>PyMC3</a></li>
                     <li class="list-group-item"><a href="http://iacs.seas.harvard.edu"><i class="icon-external-link"></i>IACS</a></li>
+                    <li class="list-group-item"><a href="http://twitter.com/am207"><i
+                            class="icon-twitter-sign"></i>twitter
+                    </a></li>
         </ul>
     </section>
 </aside>        </div>
@@ -187,9 +203,9 @@ init_mathjax();
 </div>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+<script src="http://iacs-courses.seas.harvard.edu/courses/am207/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://localhost:8000/theme/js/respond.min.js"></script>
+<script src="http://iacs-courses.seas.harvard.edu/courses/am207/theme/js/respond.min.js"></script>
 </body>
 </html>

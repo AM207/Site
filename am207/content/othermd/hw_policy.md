@@ -4,8 +4,6 @@ You will be handing in homeworks as Ipython notebooks. Your ipython notebook sho
 
 You should hand in one solution per person, but you are encouraged to work in groups of three or less for the homework and final project. Collaboration means you work together; it does not mean you split the work. Each student is expected to work on all homeworks and all questions. All code should be your own.
  
-There will be 10 problem sets during the semester.  Problem sets are handed out weekly, on Thursday after class, and are due the following Wednesday, at 11.59PM, unless otherwise announced.
- 
 An ISite with a dropbox will be provided for your homework and project submissions. The dropbox for each homework and project will close on the deadline for that piece of work. NO work will be accepted after the deadline. Do not submit in the last seconds before the dropbox closes.
 
 We understand, however, that medical factors may occasionally interfere with your ability to participate or to hand in work on time. If that factor is an extenuating circumstance, we will ask you to provide documentation.

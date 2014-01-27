@@ -1,7 +1,7 @@
 Title: Policies
 Author: Pavlos Protopapas
 
-#### General Policy
+### General Policy
 
 At the beginning of the class, you will be given the URL of the course website.
 All materials, lecture notes, lab notebooks, and examples will be put there.
@@ -11,15 +11,23 @@ Lectures are being videotaped. It is strongly recommended that you attend all th
 
 Attending the labs will be helpful both in furthering your understanding and in doing your homework.
 
+
+### Course Grade
+
+
+<p class="text-primary">
 Your course grade is calculated as:
 
-	60% Homeworks 
-	5% Participation 
-	35% Final project
+<ul>
+	<li>60% Homeworks </li>
+	<li>5% Participation </li>
+	<li>35% Final project </li>
+</ul>
+</p>
 
 There will be a piazza page for all discussions and announcements. Participation in these discussions, as well as coming to class (for non-extension students) counts 5% towards your grade.
 
-#### Originality and Plagiarization
+### Originality and Plagiarization
 
 You must do your own work, we have zero-tolerance for plagiarization. 
 
@@ -30,14 +38,16 @@ You may use examples you find on the web as a starting point, provided its licen
 If you have any doubts about whether a library is ok to use in your work, please direct your question to one of the TFs.
  
 
-#### Homework Policy
+### Homework Policy
+
+**There will be 10 problem sets during the semester. Problem sets are handed out weekly (on Thursday, after class) and are due the following Wednesday, at 11.59PM, unless otherwise announced.**
 
 {% include_md hw_policy.md %}
 
-#### Project Policy
+### Project Policy
 
 {% include_md proj_policy.md %}
 
-#### Accommodations for students with disabilities:
+### Accommodations for students with disabilities:
 
 Students needing academic adjustments or accommodations because of a documented disability must present their Faculty Letter from the Accessible Education Office (AEO) and speak with me by the end of the second week of the term to identify, discuss, and document any feasible instructional modifications or accommodations. Failure to do so may result in inability to respond in a timely manner. All discussions will remain confidential, although I may contact AEO to discuss appropriate implementation.

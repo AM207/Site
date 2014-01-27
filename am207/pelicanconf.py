@@ -21,7 +21,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Class Piazza', 'https://piazza.com/class/'),
+LINKS =  (('Class Piazza', 'https://piazza.com/harvard/spring2014/am207/home'),
           ('Numpy', 'http://docs.scipy.org/doc/numpy/reference/'),
           ('Scipy', 'http://docs.scipy.org/doc/scipy/reference/'),
           ('Pandas', 'http://pandas.pydata.org/pandas-docs/dev/'),
@@ -59,17 +59,18 @@ ARTICLE_EXCLUDES=('pages','othermd',)
 # 	start=""
 start = SITEURL
 
+# ('Lectures', "%s/category/lecture.html" % start ),
+#           ('Homework', "%s/category/homework.html" % start ),
+#           ('Labs', "%s/category/lab.html" % start ),
+#           ('Projects', "%s/category/project.html" % start ),
+#           ('About AM207', "%s/about-am207.html" % start )
+
 def do_menuitems(start):
-  menuitems = [
-  		('Lectures', "%s/category/lecture.html" % start ),
-          ('Homework', "%s/category/homework.html" % start ),
-          ('Labs', "%s/category/lab.html" % start ),
-          ('Projects', "%s/category/project.html" % start ),
+  menuitems = [ 		
           ('Schedule', "%s/schedule.html" % start ),
           ('Syllabus', "%s/syllabus.html" % start ),
           ('Policies', "%s/policies.html" % start ),
           ('Resources', "%s/resources.html" % start ),
-          ('About AM207', "%s/about-am207.html" % start )
           ]
   return menuitems
 
@@ -89,10 +90,12 @@ EXTRA_HEADER = open('../notebook_header.html').read().decode('utf-8')
 
 STATIC_PATHS=['static', 'images', 'code', 'notebooks']
 
-INDEX_SAVE_AS='index.html'
+#INDEX_SAVE_AS='index.html'
 ARTICLE_URL = 'blog/{slug}.html'
 ARTICLE_SAVE_AS = 'blog/{slug}.html'
 PAGE_URL = '{slug}.html'
 PAGE_SAVE_AS = '{slug}.html'
 YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
+
+DIRECT_TEMPLATES = ('tags', 'categories', 'authors', 'archives')

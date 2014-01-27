@@ -1,5 +1,5 @@
 Title: Schedule of Labs
-category: lab
+Tags: labs
 Author: Rahul Dave
 Summary: A tentative schedule of labs for the semester
 

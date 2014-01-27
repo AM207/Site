@@ -1,10 +1,10 @@
 Title: Homeworks and homework policies
 Author: Pavlos Protopapas
-category: homework
+Tags: homeworks
 
 #### Homework Schedule
 
-**There will be 10 problem sets during the semester. Problem sets are handed out weekly (on Thursday) and are due the following Thursday, at 11.59PM, unless otherwise announced.**
+**There will be 10 problem sets during the semester. Problem sets are handed out weekly (on Thursday, after class) and are due the following Wednesday, at 11.59PM, unless otherwise announced.**
 
 #### Homework Policies
 

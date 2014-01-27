@@ -1,6 +1,6 @@
 Title: Projects and project policies
 Author: Pavlos Protopapas
-category: project
+Tags: projects
 
 #### Project Schedule
 

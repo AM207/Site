@@ -1,8 +1,6 @@
 Title: Installing Python
 Author: Rahul Dave
-category: homework
-
-(This is stolen and adapted from CS109 python installation instructions)
+Tags: homeworks, lectures, labs
 
 All the labs and homeworks in this course are Python-based. This page provides information about configuring Python on your machine.
 

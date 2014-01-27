@@ -2,17 +2,38 @@ Title: Syllabus
 Author: Pavlos Protopapas
 
 
-### Grades
+### Course Grade
 
-Course grade:
+<p class="text-primary">
+Your course grade is calculated as:
 
-	60% Homeworks
-	5% Participation
-	35% Final project
+<ul>
+	<li>60% Homeworks </li>
+	<li>5% Participation </li>
+	<li>35% Final project </li>
+</ul>
+</p>
+
+There will be a piazza page for all discussions and announcements. Participation in these discussions, as well as coming to class (for non-extension students) counts 5% towards your grade.
 
 The course will be taught using Python as the language of implementation. You are strongly encouraged to use Python for your project and homework.
 
-### Topic
+### Homeworks
+
+There will be 10 problem sets during the semester. Problem sets are handed out weekly (on Thursday, after class) and are due the following Wednesday, at 11.59PM, unless otherwise announced.
+
+### Labs
+
+We will have 12 labs during the semester given on Friday at 11:00am-12:30pm. The goal of the labs is to go through some real world problems while reviewing the material from class. The labs will be helpful in doing the homework: you are strongly encouraged to attend. Since the lab also does real world applications, it will help you do your project.
+
+### Projects
+
+In addition to the homework there will be a final project. The final project will be done over a period of 5 weeks, the first two of which will be concommitant with homeworks. In these two weeks, you will be expected to come up with and submit a proposal for the final project. There will be no homework for the last three weeks of the course, so as to provide you ample time to work on your project.
+
+You will be expected to produce a written paper and a poster to showcase your project. All code used for the project must also be submitted.
+
+### Topics
+
 These are the topics which will be covered in class. The list below reflects a rough ordering of topics. The actual order will likely shift around a bit.
 
 #### INTRODUCTORY MATERIALS 

@@ -16,7 +16,7 @@
             <meta property="og:url" content="http://iacs-courses.seas.harvard.edu/courses/am207/policies.html"/>
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/bootstrap.spacelab.min.css" type="text/css"/>
+        <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/pygments.css" rel="stylesheet">
     <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/style.css" type="text/css"/>
@@ -111,15 +111,10 @@ init_mathjax();
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/lecture.html">Lectures</a></li>
-                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/homework.html">Homework</a></li>
-                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/lab.html">Labs</a></li>
-                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/project.html">Projects</a></li>
                     <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/schedule.html">Schedule</a></li>
                     <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/syllabus.html">Syllabus</a></li>
                     <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/policies.html">Policies</a></li>
                     <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/resources.html">Resources</a></li>
-                    <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/about-am207.html">About AM207</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="http://iacs-courses.seas.harvard.edu/courses/am207/archives.html"><i class="icon-th-list"></i>Archives</a></li>
@@ -135,32 +130,43 @@ init_mathjax();
     <section id="content" class="body">
         <h2 class="entry-title">Policies</h2>
         <div class="entry-content">
-            <h4>General Policy</h4>
+            <h3>General Policy</h3>
 <p>At the beginning of the class, you will be given the URL of the course website.
 All materials, lecture notes, lab notebooks, and examples will be put there.
  Homework deadlines and project report/poster dates will also be put on this website.</p>
-<p>It is strongly recommended that you attend all the lectures. While lecture notes and lab notebooks will be posted online, do not expect all the material talked about in class, as well as questions posed and their answers to be in these notes.  Finally, the course is heavily based on examples, and we will demonstrate a lot of the methods with these examples during class.</p>
-<p>You are not required to attend labs, but doing so will be helpful both in furthering your understanding and in doing your homework.</p>
-<p>There will be a piazza page for all discussions and announcements. Participation in these discussions counts 5\% towards your grade.</p>
+<p>Lectures are being videotaped. It is strongly recommended that you attend all the lectures, as they will be fun. Lecture notes and lab notebooks will be posted online, do not expect all the material talked about in class, as well as questions posed and their answers to be in these notes.  Finally, the course is heavily based on examples, and we will demonstrate a lot of the methods with these examples during class.</p>
+<p>Attending the labs will be helpful both in furthering your understanding and in doing your homework.</p>
+<h3>Course Grade</h3>
+<p class="text-primary">
+Your course grade is calculated as:
+
+<ul>
+<li>60% Homeworks </li>
+<li>5% Participation </li>
+<li>35% Final project </li>
+</ul>
+</p>
+<p>There will be a piazza page for all discussions and announcements. Participation in these discussions, as well as coming to class (for non-extension students) counts 5% towards your grade.</p>
+<h3>Originality and Plagiarization</h3>
+<p>You must do your own work, we have zero-tolerance for plagiarization. </p>
 <p>You must acknowledge any source code that was not written by you by mentioning the original author(s) directly in your source code (comment or header). You can also acknowledge sources in a README.txt file if you used whole classes or libraries. Do not remove any original copyright notices and headers. However, you are encouraged to use libraries, unless explicitly stated otherwise!</p>
-<p>You may use examples you find on the web as a starting point, provided its license allows you to re-use it. You must quote the source using  proper citations (author, year, title, time accessed, URL) both in the source code and in any publicly visible material. </p>
-<h4>Accommodations for students with disabilities:</h4>
-<p>Students needing academic adjustments or accommodations because of a documented disability must present their Faculty Letter from the Accessible Education Office (AEO) and speak with me by the end of the second week of the term to identify, discuss, and document any feasible instructional modifications or accommodations. Failure to do so may result in inability to respond in a timely manner. All discussions will remain confidential, although I may contact AEO to discuss appropriate implementation.</p>
-<h4>Homework Policy</h4>
-<p>Students are encouraged to work in groups of three or less for the homework and final project. Collaboration means you work together; it does not mean you split the work. Each student is expected to work on all homeworks and all questions. You should hand in one solution per group, but you should all work on all problems together.</p>
-<p>The goal of the assignments is to develop your computational skills while learning the essential stochastic methods.
+<p>You may use examples you find on the web as a starting point, provided its license allows you to re-use it. You must quote the source using proper citations (author, year, title, time accessed, URL) both in the source code and in any publicly visible material. </p>
+<p>If you have any doubts about whether a library is ok to use in your work, please direct your question to one of the TFs.</p>
+<h3>Homework Policy</h3>
+<p><strong>There will be 10 problem sets during the semester. Problem sets are handed out weekly (on Thursday, after class) and are due the following Wednesday, at 11.59PM, unless otherwise announced.</strong></p>
+<p>The goal of the assignments is to develop your computational skills while learning the essential stochastic methods.</p>
+<p>You will be handing in homeworks as Ipython notebooks. Your ipython notebook should be runnable from beginning to end.</p>
+<p>You should hand in one solution per person, but you are encouraged to work in groups of three or less for the homework and final project. Collaboration means you work together; it does not mean you split the work. Each student is expected to work on all homeworks and all questions. All code should be your own.
  
-There will be 10 problem sets during the semester.  Problem sets are handed out weekly (on Thursday) and are due the following Thursday, at 11.59PM, unless otherwise announced.
- 
-An isite with a dropbox will be provided for your homework and project submissions. The dropbox for each homework and project will close on the deadline for that piece of work. NO work will be accepted after the deadline. Do not submit in the last seconds before the dropbox closes.</p>
-<p>Each student is given 4 late days for homework at the beginning of the semester. A late day extends the individual homework deadline by 24 hours without penalty. No more than two late days may be used on any one assignment. Assignments handed in more than 48 hours after the original deadline will NOT be graded.</p>
-<p>Late days are intended to give you flexibility: you can use them for any reason - no questions asked. You don't get any bonus points for not using your late days. Also, you can only use late days for the individual homework deadlines, and not for your project (see below)</p>
-<p>We understand, however, that medical factors may occasionally interfere with your ability to participate or to hand in work on time. If that factor is an extenuating circumstance, we will ask you to provide documentation directly issued by the University, and we will try to work out an agreeable solution with you (and your teammates).</p>
+An ISite with a dropbox will be provided for your homework and project submissions. The dropbox for each homework and project will close on the deadline for that piece of work. NO work will be accepted after the deadline. Do not submit in the last seconds before the dropbox closes.</p>
+<p>We understand, however, that medical factors may occasionally interfere with your ability to participate or to hand in work on time. If that factor is an extenuating circumstance, we will ask you to provide documentation.</p>
 <p>If you believe there is an error in your assignment grading, please submit an explanation via email to us  within 3 days of receiving the grade. No regrade requests will be accepted orally, and no regrade requests will be accepted more than 3 days after you receive the grade for the assignment.</p>
-<h4>Project Policy</h4>
+<h3>Project Policy</h3>
 <p>In addition to the homework there will be a final project. The final project will be done over a period of 5 weeks, the first two of which will be concommitant with homeworks. In these two weeks, you will be expected to come up with and submit a proposal for the final project. There will be no homework for the last three weeks of the course, so as to provide you ample time to work on your project.</p>
 <p>You will be expected to produce a written paper and a poster to showcase your project. All code used for the project must also be submitted.</p>
 <p>The dropbox for the project will close on the deadline for that piece of work. NO work will be accepted after the deadline. Do not submit in the last seconds before the dropbox closes.</p>
+<h3>Accommodations for students with disabilities:</h3>
+<p>Students needing academic adjustments or accommodations because of a documented disability must present their Faculty Letter from the Accessible Education Office (AEO) and speak with me by the end of the second week of the term to identify, discuss, and document any feasible instructional modifications or accommodations. Failure to do so may result in inability to respond in a timely manner. All discussions will remain confidential, although I may contact AEO to discuss appropriate implementation.</p>
         </div>
     </section>
         </div>
@@ -170,19 +176,40 @@ An isite with a dropbox will be provided for your homework and project submissio
         <ul class="list-group list-group-flush">
 
 
+                <li class="list-group-item"><h4><i class="icon-home icon-large"></i>class</h4></li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/homeworks.html">
+                           <i class="icon-folder-open icon-large"></i>homeworks
+                       </a>
+                   </li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/lectures.html">
+                           <i class="icon-folder-open icon-large"></i>lectures
+                       </a>
+                   </li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/labs.html">
+                           <i class="icon-folder-open icon-large"></i>labs
+                       </a>
+                   </li>
+                    <li class="list-group-item">
+                       <a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/projects.html">
+                           <i class="icon-folder-open icon-large"></i>projects
+                       </a>
+                   </li>
 
             <!--li class="list-group-item"><a href="http://iacs-courses.seas.harvard.edu/courses/am207/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li-->
-                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>Links</h4></li>
-                    <li class="list-group-item"><a href="http://twitter.com/am207"><i
-                            class="icon-twitter-sign"></i>twitter
-                    </a></li>
-                    <li class="list-group-item"><a href="https://piazza.com/class/"><i class="icon-external-link"></i>Class Piazza</a></li>
+                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>links</h4></li>
+                    <li class="list-group-item"><a href="https://piazza.com/harvard/spring2014/am207/home"><i class="icon-external-link"></i>Class Piazza</a></li>
                     <li class="list-group-item"><a href="http://docs.scipy.org/doc/numpy/reference/"><i class="icon-external-link"></i>Numpy</a></li>
                     <li class="list-group-item"><a href="http://docs.scipy.org/doc/scipy/reference/"><i class="icon-external-link"></i>Scipy</a></li>
                     <li class="list-group-item"><a href="http://pandas.pydata.org/pandas-docs/dev/"><i class="icon-external-link"></i>Pandas</a></li>
                     <li class="list-group-item"><a href="http://matplotlib.org/api/index.html"><i class="icon-external-link"></i>Matplotlib</a></li>
                     <li class="list-group-item"><a href="https://github.com/pymc-devs/pymc"><i class="icon-external-link"></i>PyMC3</a></li>
                     <li class="list-group-item"><a href="http://iacs.seas.harvard.edu"><i class="icon-external-link"></i>IACS</a></li>
+                    <li class="list-group-item"><a href="http://twitter.com/am207"><i
+                            class="icon-twitter-sign"></i>twitter
+                    </a></li>
         </ul>
     </section>
 </aside>        </div>

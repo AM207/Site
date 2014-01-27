@@ -4,14 +4,14 @@
 
             {# Uncomment if you want to show Categories #}
 
-            {#    <li class="list-group-item"><h4><i class="icon-home icon-large"></i>Categories</h4></li>#}
-            {#    {% for cat, null in categories %}#}
-            {#        <li class="list-group-item">#}
-            {#            <a href="{{ SITEURL }}/{{ cat.url }}">#}
-            {#                <i class="icon-folder-open icon-large"></i>{{ cat }}#}
-            {#            </a>#}
-            {#        </li>#}
-            {#    {% endfor %}#}
+                <li class="list-group-item"><h4><i class="icon-home icon-large"></i>class</h4></li>
+               {% for tag, null in tags %}
+                    <li class="list-group-item">
+                       <a href="{{ SITEURL }}/{{ tag.url }}">
+                           <i class="icon-folder-open icon-large"></i>{{ tag }}
+                       </a>
+                   </li>
+               {% endfor %}
 
             <!--li class="list-group-item"><a href="{{ SITEURL }}/tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li-->
             {#{% for tag in tag_cloud|sort(attribute='1') %}#}
@@ -22,17 +22,16 @@
             {#    </li>#}
             {#{% endfor %}#}
             {% if SOCIAL %}
-                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>Links</h4></li>
+                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>links</h4></li>
+                {% for name, link in LINKS %}
+                    <li class="list-group-item"><a href="{{ link }}"><i class="icon-external-link"></i>{{ name }}</a></li>
+                {% endfor %}
                 {% for name, link in SOCIAL %}
                     <li class="list-group-item"><a href="{{ link }}"><i
                             class="icon-{{ name }}-sign"></i>{{ name }}
                     </a></li>
                 {% endfor %}
-                {% for name, link in LINKS %}
-                    <li class="list-group-item"><a href="{{ link }}"><i class="icon-external-link"></i>{{ name }}</a></li>
-                {% endfor %}
             {% endif %}
         </ul>
     </section>
-    {% include 'includes/github.html' %}
 </aside>

@@ -4,7 +4,7 @@
 
             {# Uncomment if you want to show Categories #}
 
-                <li class="list-group-item"><h4><i class="icon-home icon-large"></i>class</h4></li>
+                <li class="list-group-item"><h4><i class="icon-home icon-large"></i>Class Material</h4></li>
                {% for tag, null in tags %}
                     <li class="list-group-item">
                        <a href="{{ SITEURL }}/{{ tag.url }}">
@@ -22,8 +22,12 @@
             {#    </li>#}
             {#{% endfor %}#}
             {% if SOCIAL %}
-                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>links</h4></li>
+                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>Class Links</h4></li>
                 {% for name, link in LINKS %}
+                    <li class="list-group-item"><a href="{{ link }}"><i class="icon-external-link"></i>{{ name }}</a></li>
+                {% endfor %}
+                <li class="list-group-item"><h4><i class="icon-external-link icon-large"></i>Other Links</h4></li>
+                {% for name, link in OTHERLINKS %}
                     <li class="list-group-item"><a href="{{ link }}"><i class="icon-external-link"></i>{{ name }}</a></li>
                 {% endfor %}
                 {#% for name, link in SOCIAL %#}

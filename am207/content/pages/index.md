@@ -9,17 +9,17 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p>Zero'th lecture is TODAY, Tue Jan 28th, 11.30AM-1PM, Pierce 209. It is now posted..</p>
+      <p class="text-success">Zero'th lecture is TODAY, Tue Jan 28th, 11.30AM-1PM, Pierce 209. It is now posted..</p>
       <p><a class="btn btn-default" href="{filename}/posts/lecture0.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p class="text-info">First lab this Fri at 9.30AM, Cruft 309, on numerical python stack. For install instructions, click below..</p>
+      <p>First lab this Fri at 9.30AM, Cruft 309, on numerical python stack. For install instructions, click below..</p>
       <p><a class="btn btn-default" href="{filename}/posts/installpython.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>
-      <p>HW0 to try but not hand in will be posted this week. Homework schedule and policies are posted..</p>
+      <p class="text-info">HW0 to try but not hand in will be posted this week. Homework schedule and policies are posted..</p>
       <p><a class="btn btn-default" href="{filename}/posts/homeworks.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
 </div>

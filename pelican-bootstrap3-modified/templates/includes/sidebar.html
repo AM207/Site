@@ -26,11 +26,11 @@
                 {% for name, link in LINKS %}
                     <li class="list-group-item"><a href="{{ link }}"><i class="icon-external-link"></i>{{ name }}</a></li>
                 {% endfor %}
-                {% for name, link in SOCIAL %}
-                    <li class="list-group-item"><a href="{{ link }}"><i
-                            class="icon-{{ name }}-sign"></i>{{ name }}
-                    </a></li>
-                {% endfor %}
+                {#% for name, link in SOCIAL %#}
+                    {#<li class="list-group-item"><a href="{{ link }}"><i#}
+                    {#        class="icon-{{ name }}-sign"></i>{{ name }}#}
+                    {#</a></li>#}
+                {#% endfor %#}
             {% endif %}
         </ul>
     </section>

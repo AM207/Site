@@ -22,6 +22,7 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS =  (('Class Piazza', 'https://piazza.com/harvard/spring2014/am207/home'),
+          ('Class Videos', 'http://cm.dce.harvard.edu/2014/02/24104/publicationListing.shtml'),
           ('Numpy', 'http://docs.scipy.org/doc/numpy/reference/'),
           ('Scipy', 'http://docs.scipy.org/doc/scipy/reference/'),
           ('Pandas', 'http://pandas.pydata.org/pandas-docs/dev/'),
@@ -30,8 +31,8 @@ LINKS =  (('Class Piazza', 'https://piazza.com/harvard/spring2014/am207/home'),
           ('IACS', 'http://iacs.seas.harvard.edu'),)
 
 # Social widget
-SOCIAL = (('twitter', 'http://twitter.com/am207'),)
-
+#SOCIAL = (('twitter', 'http://twitter.com/am207'),)
+SOCIAL=True
 
 DEFAULT_PAGINATION = 10
 

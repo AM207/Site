@@ -1,6 +1,6 @@
 Title: Installing Python
 Author: Rahul Dave
-Tags: homeworks, lectures, labs
+Tags: homeworks, labs
 
 All the labs and homeworks in this course are Python-based. This page provides information about configuring Python on your machine.
 

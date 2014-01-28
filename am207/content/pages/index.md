@@ -9,18 +9,18 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p>first lecture is posted</p>
-      <p><a class="btn btn-default" href="{tag}lectures" role="button">More &raquo;</a></p>
+      <p>First (0th!) lecture is posted..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture0.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p>First lab is this friday at BLA</p>
-      <p><a class="btn btn-default" href="{tag}labs" role="button">More &raquo;</a></p>
+      <p>First lab is this friday at BLA, on the numerical python stack</p>
+      <p><a class="btn btn-default" href="{filename}/posts/installpython.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>
-      <p>homework 0 is posted</p>
-      <p><a class="btn btn-default" href="{tag}homeworks" role="button">More &raquo;</a></p>
+      <p>Homework schedule and policies are posted</p>
+      <p><a class="btn btn-default" href="{filename}/posts/homeworks.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
 </div>
 

@@ -86,7 +86,7 @@ publish:
 
 ssh_upload: publish
 	scp -P $(SSH_PORT) -r $(OUTPUTPUB)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
-
+	scp -P $(SSH_PORT) -r content/files/images $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/blog/
 rsync_upload: publish
 	rsync -e "ssh -p $(SSH_PORT)" -P -rvz --delete $(OUTPUTPUB)/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR) --cvs-exclude
 

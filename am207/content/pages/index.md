@@ -9,12 +9,12 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p class="text-info">Zero'th lecture is TODAY, Tue Jan 28th, 11.30AM-1PM, Pierce 209. It is now posted..</p>
+      <p>Zero'th lecture is TODAY, Tue Jan 28th, 11.30AM-1PM, Pierce 209. It is now posted..</p>
       <p><a class="btn btn-default" href="{filename}/posts/lecture0.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p class="text-muted">First lab this Fri at 9.30 or 10 AM, Pierce 209, on numerical python stack. For python install instructions, click</p>
+      <p class="text-info">First lab this Fri at 9.30 or 10 AM, Pierce 209, on numerical python stack. For install instructions, click below..</p>
       <p><a class="btn btn-default" href="{filename}/posts/installpython.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">

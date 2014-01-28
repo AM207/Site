@@ -88,7 +88,7 @@ PLUGINS = ['interlinks', 'liquid_tags.img', 'liquid_tags.video',
 
 EXTRA_HEADER = open('../notebook_header.html').read().decode('utf-8')
 
-STATIC_PATHS=['static', 'images', 'code', 'notebooks']
+STATIC_PATHS=['static', 'images', 'code', 'notebooks', 'files']
 
 #INDEX_SAVE_AS='index.html'
 ARTICLE_URL = 'blog/{slug}.html'

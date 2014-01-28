@@ -14,7 +14,7 @@ Template: index
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p class="text-info">First lab this Fri at 9.30 or 10 AM, Pierce 209, on numerical python stack. For install instructions, click below..</p>
+      <p class="text-info">First lab this Fri at 9.30AM, Cruft 309, on numerical python stack. For install instructions, click below..</p>
       <p><a class="btn btn-default" href="{filename}/posts/installpython.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">

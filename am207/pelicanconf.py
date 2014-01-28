@@ -71,6 +71,7 @@ def do_menuitems(start):
           ('Syllabus', "%s/syllabus.html" % start ),
           ('Policies', "%s/policies.html" % start ),
           ('Resources', "%s/resources.html" % start ),
+          ('Contact', "%s/contact.html" % start ),
           ]
   return menuitems
 

@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Installing Python</title>
+    <title>Contact</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,9 +12,8 @@
     <!-- Open Graph tags -->
 
             <meta property="og:type" content="article"/>
-            <meta property="og:title" content="Installing Python"/>
-            <meta property="og:url" content="http://iacs-courses.seas.harvard.edu/courses/am207/blog/installing-python.html"/>
-            <meta property="og:description" content="All the labs and homeworks in this course are Python-based. This page provides information about configuring Python on your machine. Step 0 The IPython notebook runs in the browser, and works best in Google Chrome. You probably want to use Chrome for assignments in this course Recommended Method: Anaconda The ..."/>
+            <meta property="og:title" content="Contact"/>
+            <meta property="og:url" content="http://iacs-courses.seas.harvard.edu/courses/am207/contact.html"/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://iacs-courses.seas.harvard.edu/courses/am207/theme/css/bootstrap.flatly.min.css" type="text/css"/>
@@ -129,93 +128,18 @@ init_mathjax();
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h2>
-                    <a href="http://iacs-courses.seas.harvard.edu/courses/am207/blog/installing-python.html"
-                       rel="bookmark"
-                       title="Permalink to Installing Python">
-                        Installing Python
-                    </a>
-                </h2>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="icon-calendar"></i>Mon 27 January 2014
-    </span>
-
-    <!--span class="label label-default">Category</span>
-    <a href="http://iacs-courses.seas.harvard.edu/courses/am207/category/misc.html">misc</a-->
-
-
-<span class="label label-default">Tags</span>
-	<a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/homeworks.html">homeworks</a>
-        /
-	<a href="http://iacs-courses.seas.harvard.edu/courses/am207/tag/labs.html">labs</a>
-</footer><!-- /.post-info -->                    </div>
-                </div>
-                <p>All the labs and homeworks in this course are Python-based. This page provides information about configuring Python on your machine.</p>
-<p><strong>Step 0</strong> 
-The IPython notebook runs in the browser, and works best in Google Chrome. You probably want to use Chrome for assignments in this course</p>
-<h3>Recommended Method: Anaconda</h3>
-<p>The Anaconda Python distribution is an easily-installable bundle of Python and many of the libraries used throughout this class. It includes numpy/scipy/matplotlib/pandas/scikit-learn and other numerical libraries. Unless you have a good reason not to, we recommend that you use Anaconda.</p>
-<h4>Mac/Linux users</h4>
-<ol>
-<li>Download the <a href="http://continuum.io/downloads">appropriate version</a> of Anaconda</li>
-<li>Follow the instructions on that page to run the installer</li>
-<li>Test it out: open a terminal window, and type <code>python</code>, you should see something like</li>
-</ol>
-<div class="highlight"><pre><span class="n">Python</span> <span class="mf">2.7.5</span> <span class="o">|</span><span class="n">Anaconda</span> <span class="mf">1.6.1</span> <span class="p">(</span><span class="n">x86_64</span><span class="p">)</span><span class="o">|</span> <span class="p">(</span><span class="k">default</span><span class="p">,</span> <span class="n">Jun</span> <span class="mi">28</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">22</span><span class="o">:</span><span class="mi">20</span><span class="o">:</span><span class="mi">13</span><span class="p">)</span> 
-</pre></div>
-<p>If <code>Anaconda</code> doesn't appear on the first line, you are using a different version of Python. See the troubleshooting section below.</p>
-<ol>
-<li>Test out the IPython notebook: open a Terminal window, and type <code>ipython notebook</code>. A new browser window should pop up. </li>
-<li>Click <code>New Notebook</code> to create a new notebook file</li>
-<li>Update IPython to the newest version by typing <code>conda update ipython</code> at the command line</li>
-</ol>
-<h4>Windows Users</h4>
-<ol>
-<li>Download the <a href="http://continuum.io/downloads">appropriate version</a> of Anaconda</li>
-<li>Follow the instructions on that page to run the installer. This will create a directory at <code>C:\Anaconda</code></li>
-<li>Test it out: start the Anaconda launcher, which you can find in <code>C:\Anaconda</code> or, in the Start menu. Start the IPython notebook. A new browser window should open. </li>
-<li>Click <code>New Notebook</code>, which should open a new page.</li>
-<li>Update IPython to the newest version by opening a command prompt, and typing <code>conda update ipython</code></li>
-</ol>
-<h3>Opening IPython Notebooks</h3>
-<p>To view an IPython notebook, you must first start the IPython notebook server in the directory where the file lives. Simply navigate to this directory at the command prompt, and type <code>ipython notebook</code>. This will open a browser window, listing all the <code>ipynb</code> files in that directory.</p>
-<h3>Troubleshooting</h3>
-<p><strong>Problem</strong>
-When you start python, you don't see a line like <code>Python 2.7.5 |Anaconda 1.6.1 (x86_64)|</code>. You are using a Mac or Linux computer</p>
-<p><strong>Reason</strong>
-You are most likely running a different version of Python, and need to modify your Path (the list of directories your computer looks through to find programs). </p>
-<p><strong>Solution</strong>
-Find a file like <code>.bash_profile</code>, <code>.bashrc</code>, or <code>.profile</code>. Open the file in a text editor, and add a line at this line at the end: <code>export PATH="$HOME/anaconda/bin:$PATH"</code>. Close the file, open a new terminal window, type <code>source ~/.profile</code> (or whatever file you just edited). Type <code>which python</code> -- you should see a path that points to the anaconda directory. If so, running <code>python</code> should load the proper version</p>
-<p>If this doesn't work (typing <code>which python</code> doesn't point to anaconda), you might be using a different shell. Type <code>echo $SHELL</code>. If this isn't <code>bash</code>, you need to edit a different startup file (for example, if if <code>echo $SHELL</code> gives <code>$csh</code>, you need to edit your <code>.cshrc</code> file. The syntax for this file is slightly different: <code>set PATH = ($HOME/anaconda/bin $PATH)</code></p>
-<hr/>
-<p><strong>Problem</strong>
-You are running the right version of python (see above item), but are unable to import numpy. </p>
-<p><strong>Reason</strong>
-You are probably loading a different copy of numpy that is incompatible with Anaconda</p>
-<p><strong>Solution</strong>
-See the above item to find your <code>.bash_profile</code>, <code>.profile</code>, or <code>.bashrc</code> file. Open it, and add the line <code>unset PYTHONPATH</code> at the end. Close the file, open a new terminal window, type <code>source ~/.profile</code> (or whatever file you just edited), and try again.</p>
-<hr/>
-<p><strong>Problem</strong>
-Under Windows, you receive an error message similar to the following: "'pip' is not recognized as an internal or external command, operable program or batch file."</p>
-<p><strong>Reason</strong>
-The correct Anaconda paths might not be present in your PATH variable, or Anaconda might not have installed correctly.</p>
-<p><strong>Solution</strong>
-Ensure the Anaconda directories to your path environment variable ("\Anaconda" and "\Anaconda\Scripts").  See <a href="http://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them">this page</a> for details.</p>
-<p>If this does not correct the problem, reinstall Anaconda.</p>
-            </div>
-            <!-- /.entry-content -->
-        </article>
+    <section id="content" class="body">
+        <h2 class="entry-title">Contact</h2>
+        <div class="entry-content">
+            <ul>
+<li>Pavlos Protopapas: pavlos@seas.harvard.edu, B155 +/- 3, Northwest Building</li>
+<li>Rahul Dave: rahuldave@gmail.com</li>
+<li>Andy Goulding</li>
+<li>Patrick Ohiomoba</li>
+<li>David Levary</li>
+</ul>
+        </div>
     </section>
-
         </div>
         <div class="col-lg-3 well well-sm" id="sidebar">
 <aside>

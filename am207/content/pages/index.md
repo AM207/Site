@@ -9,8 +9,8 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p class="text-success">Zero'th lecture is TODAY, Tue Jan 28th, 11.30AM-1PM, Pierce 209. It is now posted..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lecture0.md" role="button">More &raquo;</a></p>
+      <p class="text-success">First lecture for Thu Jan 30th, 11.30AM-1PM, Pierce 209, is now posted..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture1.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>

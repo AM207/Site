@@ -12,7 +12,10 @@ There is no official textbook for the course though the following textbooks are 
 
 #### Reading 
 
-Coming Soon
+#####General Reading
+
+#####Week 1
+
 
 #### Online lectures
 

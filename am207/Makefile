@@ -15,7 +15,7 @@ FTP_TARGET_DIR=/
 
 SSH_HOST=iacs-courses.int.seas.harvard.edu
 SSH_PORT=22
-SSH_USER=rahul
+SSH_USER=pavlos
 SSH_TARGET_DIR=/var/www/html/am207/
 
 S3_BUCKET=my_s3_bucket
@@ -85,8 +85,8 @@ publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTPUB) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 ssh_upload: publish
-	scp -P $(SSH_PORT) -r $(OUTPUTPUB)/* $(SSH_HOST):$(SSH_TARGET_DIR)
-	scp -P $(SSH_PORT) -r content/files/images $(SSH_HOST):$(SSH_TARGET_DIR)/blog/
+	scp -P $(SSH_PORT) -r $(OUTPUTPUB)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
+	scp -P $(SSH_PORT) -r content/files/images $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/blog/
 
 rsync_upload: publish
 	rsync -e "ssh -p $(SSH_PORT)" -P -rvz --delete $(OUTPUTPUB)/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR) --cvs-exclude

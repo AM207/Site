@@ -55,6 +55,7 @@ help:
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
+	cp -a content/files/* $(OUTPUTDIR)/blog/files/
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
@@ -83,7 +84,7 @@ stopserver:
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTPUB) -s $(PUBLISHCONF) $(PELICANOPTS)
-	cp -a content/files/* $(OUTPUTPUB)/blog/
+	cp -a content/files/* $(OUTPUTPUB)/blog/files/
 
 ssh_upload: publish
 	scp -P $(SSH_PORT) -r content/files/* $(SSH_HOST):$(SSH_TARGET_DIR)/blog/files/

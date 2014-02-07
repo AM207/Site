@@ -160,63 +160,114 @@ init_mathjax();
                 <p>A video of this lecture is available <a href="http://cm.dce.harvard.edu/2014/02/24104/L02/screen_H264LargeTalkingHead-16x9.shtml">here</a>.</p>
 <p>You can download this lecture <a href="{filename}/../../notebooks/Lecture1.ipynb">here</a>.</p>
 <p>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="short-review-of-probability-theory-distributions-etc">Short review of probability theory, distributions etc</h1>
-<p>Probabilities are numbers that tell us how often things happen (frequentist) or our believe (Bayesian) in a different outcome or notion and this is of course a very disputed topic discussed in many books, papers etc [RD: ADD REFERENCES]. In this course we take a very simple approach and we use whatever is convinient at the time, or whatever is better to demonstrate the methodologies we are learning.</p>
+<p>Probabilities are numbers that tell us how often things happen (frequentist) or our believe (Bayesian) in a different outcome or notion and this is of course a very disputed topic discussed in many books, papers etc [RD: ADD REFERENCES]. In this course we take a very simple approach and we use whatever is convinient at the time, or whatever is better to demonstrate the methodologies we are learning. </p>
 <p>There are a few basic rules that form the basis for all probabilistic methodology. In this lecture, we just brieﬂy review these rules. For an in depth introduction into probability theory, you can consult a number of books and online material [RD: ADD REFERENCES].</p>
-<p>If <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> are two events and <span class="math">\(p(X)\)</span> is the probability of the event <span class="math">\(X\)</span> to happen. X ̄ is the complement of X, the event which is all the occurrences which are not in X. X+Y is the union of X and Y; X,Y is the intersection of X and Y. (Both X+Y and X,Y are also events.)</p>
-<h3 id="the-very-fundamental-rules-of-probability-my-grandma-knows-these">The very fundamental rules of probability (my grandma knows these):</h3>
-<ol style="list-style-type: decimal">
+<p>If $X$ and $Y$ are two events and $p(X)$ is the probability of the event $X$ to happen. X ̄ is the complement of X, the event which is all the occurrences which are not in X. X+Y is the union of X and Y; X,Y is the intersection of X and Y. (Both X+Y and X,Y are also events.)</p>
+<h3 id="the-very-fundamental-rules-of-probability-my-grandma-knows-these-">The very fundamental rules of probability (my grandma knows these):</h3>
+<ol>
 <li>p(X) = 1 X has to happen</li>
 <li>p(X) = 0 X will certainly not happen</li>
 <li>0 ≤ p(AX) ≤ 1 X has probability range from low to high</li>
-<li>p(X)+p(X ̄)=1 X must either happen or not-happen</li>
+<li>p(X)+p(X ̄)=1  X must either happen or not-happen</li>
 <li>p(X+Y)=p(X)+p(Y)−p(X,Y) X can happen and Y can happen but we must subtract the cases that are happening together so we do not overcount.</li>
 </ol>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For two random variates <span class="math">\(x,y\)</span> the <span class="math">\(p(x,y)\)</span> is called the joint distribution, and <span class="math">\(p(x|y)\)</span> the conditional distribution.</p>
-<h3 id="sum-rule-marginal-distribution">Sum rule (marginal distribution)</h3>
-<p>We can write the marginal probability of x as a sum over the joint distribution of x and y where we sum over all possibilities of y,</p>
-<p><span class="math">\[p(x) = \sum_y p(x,y) \]</span></p>
-<p>for continuous random variables this becomes:</p>
-<p><span class="math">\[ p(x) = \int_y p(x,y) \, dy \]</span></p>
 </div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For two random variates $x,y$ the $p(x,y)$ is called the joint distribution, and $p(x|y)$ the conditional distribution. </p>
+<h3 id="sum-rule-marginal-distribution-">Sum rule (marginal distribution)</h3>
+<p>We can write the marginal probability of x as a sum over the joint distribution of x and y where we sum over all possibilities of y,</p>
+<p>$$p(x) = \sum_y p(x,y) $$</p>
+<p>for continuous random variables this becomes:</p>
+<p>$$ p(x) = \int_y p(x,y) \, dy $$</p>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="product-rule">Product rule</h3>
 <p>We can rewrite a joint distribution as a product of a conditional and marginal probability,</p>
-<p><span class="math">\[ p(x,y) = p(x|y) p(y) \]</span></p>
+<p>$$ p(x,y) = p(x|y) p(y) $$</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="chain-rule">Chain rule</h3>
-<p>The product rule is applied repeatedly to give expressions for the joint probability involving more than two variables. For example, the joint distribution over three variables can be factorized into a product of conditional probabilities:</p>
-<p><span class="math">\[ p(x,y,z) = p(x|y,z) \, p(y,z) = p(x |y,z) \, p(y|z) p(z) \]</span></p>
+<p>The product rule is applied repeatedly to give expressions for the joint
+probability involving more than two variables. For example, the joint distribution over three
+variables can be factorized into a product of conditional probabilities:</p>
+<p>$$ p(x,y,z) = p(x|y,z) \, p(y,z) = p(x |y,z) \, p(y|z) p(z) $$</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="bayes-rule">Bayes rule</h3>
 <p>Given the product rule one can derive the Bayes rule, which plays a central role in a lot of the things we will be talking:</p>
-<p><span class="math">\[ p(y|x) = \frac{p(x|y) \, p(y) }{p(x)} = \frac{p(x|y) \, p(y) }{\sum_y' p(x,y')} = \frac{p(x|y) \, p(y) }{\sum_y' p(x|y')p(y')}\]</span></p>
-<p>Importantly, we rarely need to explicitly evaluate the denominator <span class="math">\(p(x)\)</span>. Instead, we can just evaluate the conditional probability up to a constant of proportionality:</p>
-<p><span class="math">\[ p(y|x) \propto p(x|y) \, p(y) \]</span></p>
+<p>$$ p(y|x) = \frac{p(x|y) \, p(y) }{p(x)} = \frac{p(x|y) \, p(y) }{\sum_y' p(x,y')} = \frac{p(x|y) \, p(y) }{\sum_y' p(x|y')p(y')}$$</p>
+<p>Importantly, we rarely need to explicitly evaluate the denominator $p(x)$. Instead, we can just evaluate the conditional probability up to a
+constant of proportionality:</p>
+<p>$$ p(y|x) \propto p(x|y) \, p(y) $$</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="independence">Independence</h3>
 <p>Two variables are said to be independent if their joint distribution factorizes into a product of two marginal probabilities:</p>
-<p><span class="math">\[ p(x,y) = p(x) \, p(y) \]</span></p>
+<p>$$ p(x,y) = p(x) \, p(y) $$ </p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that if two variables are uncorrelated, that does not mean they are statistically independent. There are many ways to measure statistical association between variables and correlation is just one of them. However, if two variables are independent, this will ensure there is no correlation between them. Another consequence of independence is that if <span class="math">\(x\)</span> and <span class="math">\(y\)</span> are independent, the conditional probability of <span class="math">\(x\)</span> given <span class="math">\(y\)</span> is just the probability of <span class="math">\(x\)</span>:</p>
-<p><span class="math">\[ p(x|y) = p(x) \]</span></p>
+<p>Note that if two variables are uncorrelated, that does not mean they are statistically independent. There are many ways to measure statistical association between variables and correlation is just one of them. However, if two variables are independent, this will ensure there is no correlation between them. Another consequence of independence is that if $x$ and $y$ are independent, the conditional probability of $x$ given $y$ is just the probability of $x$:</p>
+<p>$$ p(x|y) = p(x) $$</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In other words, by conditioning on a particular <span class="math">\(y\)</span>, we have learned nothing about <span class="math">\(x\)</span> because of independence. Two variables <span class="math">\(x\)</span> and <span class="math">\(y\)</span> and said to be conditionally independent of <span class="math">\(z\)</span> if the following holds:</p>
-<p><span class="math">\[ p(x,y|z) = p(x|z) p(y|z) \]</span></p>
-<p>Therefore, if we learn about z, x and y become independent. Another way to write that <span class="math">\(x\)</span> and <span class="math">\(y\)</span> are conditionally independent of <span class="math">\(z\)</span> is</p>
-<p><span class="math">\[ p(x| z, y) = p(x|z) \]</span></p>
-<p>In other words, if we condition on <span class="math">\(z\)</span>, and now also learn about <span class="math">\(y\)</span>, this is not going to change the probability of <span class="math">\(x\)</span>. It is important to realize that conditional independence between <span class="math">\(x\)</span> and <span class="math">\(y\)</span> does not imply independence between <span class="math">\(x\)</span> and <span class="math">\(y\)</span>.</p>
+<p>In other words, by conditioning on a particular $y$, we have learned nothing about $x$ because of independence. Two variables $x$ and $y$ and said to be conditionally independent of $z$ if the following holds:</p>
+<p>$$ p(x,y|z) = p(x|z) p(y|z) $$</p>
+<p>Therefore, if we learn about z, x and y become independent. Another way to write that $x$ and $y$ are conditionally independent of $z$ is </p>
+<p>$$ p(x| z, y) = p(x|z) $$</p>
+<p>In other words, if we condition on $z$, and now also learn about $y$, this is not going to change the probability of $x$. It is important to realize that conditional independence between $x$ and $y$ does not imply independence between $x$ and $y$. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [32]:
 </div>
@@ -255,25 +306,44 @@ In [32]:
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="distributions">Distributions</h2>
-<p>Probability distribution (aka probability measure) is a function that takes an event and gives its probability. Sometimes this is not well defined in the whole probability space but we will not worry about this for now. There are two classes of statistical distributions, discete and continous.</p>
+<p>Probability distribution (aka probability measure) is a function that takes an event and gives its probability. Sometimes this is not well defined in the whole probability space but we will not worry about this for now.
+There are two classes of statistical distributions, discete and continous.</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="discrete-distributions">Discrete Distributions</h3>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="bernoulli-distribution">Bernoulli distribution</h3>
-<p>The probability for a yes/no outcome of an expiriment, the Bernoulli probability, is given by the Bernoulli distribution. Bernoulli distribution is the mother of all distributions. Every exeriment, can be always expressed it in terms of success/failure. If you do not know which distributon to use, you can think of any problem as a yes/no problem and starting from there you work your to all other distributions.</p>
-<p>For a given probability <span class="math">\(p\)</span> of a success/failure (or yes/no), the we expect the value k=1, <span class="math">\(p n\)</span> times out of <span class="math">\(n\)</span>, meanwhile it takes k=0 in all the other cases. For example if <span class="math">\(p=0.6\)</span> and draw 10 numbers we expect 6 to be 1 and 4 to be zero. Therefore the probability of getting <span class="math">\(k=1\)</span> is <span class="math">\(p\)</span> and <span class="math">\(k=0\)</span> is <span class="math">\(1-p\)</span>.</p>
-<p><span class="math">\[ f(k;p) = \begin{cases} p &amp; \text{if }k=1, \\[6pt]
-1-p &amp; \text {if }k=0.\end{cases} \]</span></p>
+<p>The probability for a yes/no outcome of an expiriment, the Bernoulli probability, is given by the Bernoulli distribution. Bernoulli distribution is the mother of all distributions. Every exeriment, can be always expressed it in terms of success/failure. If you do not know which distributon to use, you can think of any problem as a yes/no problem and starting from there you work your to all other distributions.  </p>
+<p>For a given probability $p$ of a success/failure (or yes/no), the we expect the value k=1, $p n$ times out of $n$, meanwhile it takes k=0 in all the other cases. For example if $p=0.6$ and draw 10 numbers we expect 6 to be 1 and 4 to be zero. Therefore the probability of getting $k=1$ is $p$ and $k=0$ is $1-p$. </p>
+<p>$$ f(k;p) = \begin{cases} p &amp; \text{if }k=1, \\[6pt]
+1-p &amp; \text {if }k=0.\end{cases} $$</p>
 <p>This can be expressed also as:</p>
-<p><span class="math">\[ f(k;p) = p^k (1-p)^{1-k}\!\quad \text{for }k\in\{0,1\}.\]</span></p>
-<p>The mean of random variables drawn from such distribution is <span class="math">\(E[X] = p\)</span> and the variance is <span class="math">\(Var[X]=p(1-p)\)</span></p>
+<p>$$ f(k;p) = p^k (1-p)^{1-k}\!\quad \text{for }k\in\{0,1\}.$$</p>
+<p>The mean of random variables drawn from such distribution is $E[X] = p$ and the variance is $Var[X]=p(1-p)$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [156]:
 </div>
@@ -283,8 +353,8 @@ In [156]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [157]:
 </div>
@@ -294,9 +364,9 @@ In [157]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 [0 0 1 1 1 1 0 1 1 0 0 0 1 1 1 1 1 0 0 1 1 1 1 1 1 0 0 1 1 0 0 0 0 1 1 0 0
@@ -310,8 +380,8 @@ In [157]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [158]:
 </div>
@@ -336,9 +406,9 @@ In [158]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAs0AAAIICAYAAACVatOGAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X2Y1XWd//HXDDepMBgD1Nbi3SJZGwIpoYYpbCYS5UU3
@@ -530,12 +600,19 @@ FIhmAAAoEM0AAFAgmgEAoEA0AwBAgWgGAIAC0QwAAAX/H4/SJXi+pbzQAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="example-bernoulli-distribution">Example Bernoulli Distribution</h4>
-<p>Suppose in AM207 last year the class got C or better with probability 0.75. Let the random variable X be the probability that someone gets a grade higher the C.</p>
+<p>Suppose in AM207 last year the class got C or better with probability 0.75. Let the random 
+variable X be the probability that someone gets a grade higher the C. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [159]:
 </div>
@@ -547,9 +624,9 @@ In [159]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 0.79
@@ -558,7 +635,7 @@ In [159]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXAAAAEACAYAAACqOy3+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEqxJREFUeJzt3W1sk/X+x/FPJ/tP/3aoW/GBlnnIBBfvWhSn5miscg71
@@ -652,18 +729,30 @@ AGAoAg4Ahvp/yFsFDsOdKCoAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="binomial-distribution">Binomial distribution</h2>
-<p>Bionomial is the distribution of the number of successes in a sequence of <span class="math">\(n\)</span> independent yes/no experiments, each of which yields success with probability <span class="math">\(p\)</span>. The Binomial distribution is an extension of the Bernoulli when <span class="math">\(n&gt;1\)</span> or the Bernoulli is the a special case of the Binomial when <span class="math">\(n=1\)</span>.</p>
+<p>Bionomial is the distribution of the number of successes in a sequence of $n$ independent yes/no experiments, each of which yields success with probability $p$. The Binomial distribution is an extension of the Bernoulli when $n&gt;1$ or the Bernoulli is the a special case of the Binomial when $n=1$.   </p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><span class="math">\[P(X = k; n, p) = {n\choose k}p^k(1-p)^{n-k} \]</span></p>
+<p>$$P(X = k; n, p) = {n\choose k}p^k(1-p)^{n-k} $$</p>
 <p>where</p>
-<p><span class="math">\[{n\choose k}=\frac{n!}{k!(n-k)!}\]</span></p>
-<p>The expected value <span class="math">\(E[X]=np\)</span> and the variance is <span class="math">\(Var[X]=np(1-p)\)</span></p>
+<p>$${n\choose k}=\frac{n!}{k!(n-k)!}$$</p>
+<p>The expected value $E[X]=np$ and the variance is $Var[X]=np(1-p)$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [13]:
 </div>
@@ -682,9 +771,9 @@ In [13]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2kAAAG7CAYAAABZ4d2rAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8nWWd9/HvfZbse5OuaRugLJFCRQsIiBRHX7UMFMEN
@@ -1277,12 +1366,18 @@ TkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="example-binomial-distribution">Example Binomial distribution</h4>
-<p>Probability of 8 people getting a C or higher this year assuming we have 50 students in total. In this case <span class="math">\(p=0.75\)</span> and <span class="math">\(n=50\)</span>. If we assume uncorrelated events, then p(k=8; n=50, p=0.75)</p>
+<p>Probability of 8 people getting a C or higher this year assuming we have 50 students in total. In this case $p=0.75$ and $n=50$. If we assume uncorrelated events, then p(k=8; n=50, p=0.75)</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [14]:
 </div>
@@ -1293,9 +1388,9 @@ In [14]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[14]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -1305,7 +1400,7 @@ In [14]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAEACAYAAAC57G0KAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFRJJREFUeJzt3V9MW+f9x/HPYXATAS1pimF2JKNASpyQ2EpGetFOzgLk
@@ -1410,15 +1505,27 @@ oCREpAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="poisson-distribution">Poisson distribution</h2>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Another discrete distribution, the Poisson distribution expresses the probability of a given number of events occurring in a fixed interval of time and/or space if these events occur with a known average rate and independently of the time since the last event. Defined for all the integer positive number as,</p>
-<p><span class="math">\[ P(X=k)= \frac{\lambda^k e^{-\lambda}}{k!}, \]</span></p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another discrete distribution, the Poisson distribution expresses the probability of a given number of events occurring in a fixed interval of time and/or space if these events occur with a known average rate and independently of the time since the last event.  Defined for all the integer positive number as,</p>
+<p>$$ P(X=k)= \frac{\lambda^k e^{-\lambda}}{k!}, $$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [15]:
 </div>
@@ -1435,9 +1542,9 @@ In [15]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[15]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -1445,7 +1552,7 @@ In [15]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtkAAAH6CAYAAADSnVCbAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3X90VPWd//HXTWYggYQkBAQyQbOQAGk1lE3AtRW+qQUR
@@ -1735,8 +1842,8 @@ dDqVFwGMN5EN0ACDwSDb29vZ3NzM5eVlJicns7W1VXsWwNhyXQSgAZ6fn7OxsZHZ2dl8fn5mamqq
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [16]:
 </div>
@@ -1753,9 +1860,9 @@ In [16]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[16]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -1763,7 +1870,7 @@ In [16]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtsAAAH6CAYAAADWaICmAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xt0VOW9//H3ZHKZ3CcXyB2GO1HkoiGILZ5ohagoAlZF
@@ -2454,17 +2561,30 @@ NU1prXW6gxBCCCGEEOJaJCPbQgghhBBCpIgk20IIIYQQQqSIJNtCCCGEEEKkiCTbQgghhBBCpIgk
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="continous-variables">Continous variables</h2>
-<p>The difficulty with continuous random variables is that you can’t find the probability of the exact event. The problem is that every value of the random variate has length 0, but if you add enough values together you have something with positive length. The usual way around this difficulty, is to define probabilities for intervals.</p>
+<p>The difficulty with continuous random variables is that you can’t find the probability of the exact event. The problem is  that every value of the random variate has length 0, but if you add enough values together you have something with positive length. The usual way around this difficulty, is to define probabilities for intervals.</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="normal-distribution">Normal Distribution</h3>
-<p>Probably the most important of all distributions is the normal distribution due to the Central Limit Theorem which states that, given certain conditions, the arithmetic mean of a sufficiently large number of iterates of independent random variables, each with a well-defined expected value and well-defined variance, will be approximately normally distributed. A normal distribution is:</p>
-<p><span class="math">\[ f(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{ -\frac{(x-\mu)^2}{2\sigma^2} } \]</span></p>
+<p>Probably the most important of all distributions is the normal distribution due to the Central Limit Theorem which
+states that, given certain conditions, the arithmetic mean of a sufficiently large number of iterates of independent random variables, each with a well-defined expected value and well-defined variance, will be approximately normally distributed. A normal distribution is:</p>
+<p>$$ f(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{ -\frac{(x-\mu)^2}{2\sigma^2} } $$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [17]:
 </div>
@@ -2486,9 +2606,9 @@ In [17]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[17]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -2496,7 +2616,7 @@ In [17]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuMAAAF/CAYAAADjMccBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl41PW5///nzGRCyE5IQjYgJEEI+yqggjmCYORbNqXQ
@@ -3202,13 +3322,19 @@ iIREwbiIiIiISEj+PwgtBH0SHlkyAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="alpha">Alpha</h3>
 <p>The Alpha distribution is defined as:</p>
-<p><span class="math">\[ p_{\alpha}(x,a)=\frac{1}{x^2 \Phi(a) \sqrt{2 \pi}} exp(−\frac{1}{2} (\frac{a−1}{x})^2), \rm{with} \,\,  x&gt;0, \, a&gt;0 \]</span></p>
+<p>$$ p_{\alpha}(x,a)=\frac{1}{x^2 \Phi(a) \sqrt{2 \pi}} exp(−\frac{1}{2} (\frac{a−1}{x})^2), \rm{with} \,\,  x&gt;0, \, a&gt;0 $$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [17]:
 </div>
@@ -3218,8 +3344,8 @@ In [17]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [18]:
 </div>
@@ -3244,9 +3370,9 @@ In [18]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAs0AAAGJCAYAAABxbg5mAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl41OW9///nZ7asE8hKCCGERXYLKIuKaHCrCKLgUhFw
@@ -3770,14 +3896,22 @@ RU5ErkJggg==
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="beta-distribution">Beta distribution</h2>
-<p>The Beta distribution is defined for a variabile rangin between 0 and 1. The pdf is defined as:</p>
-<p><span class="math">\[f(x;\alpha,\beta)  = \frac{1}{B(\alpha, \beta)}\, x^{\alpha-1}(1-x)^{\beta-1} \]</span> with <span class="math">\(0 \le x  \le 1\)</span>, <span class="math">\(\alpha&gt;0\)</span> and <span class="math">\(\beta &gt;0\)</span>.</p>
-<p>where <span class="math">\(B(\alpha, \beta)\)</span> is the Beta functions that serves as a normalization.</p>
+<p>The Beta distribution is defined for a variabile rangin between 0 and 1.
+The pdf is defined as:</p>
+<p>$$f(x;\alpha,\beta)  = \frac{1}{B(\alpha, \beta)}\, x^{\alpha-1}(1-x)^{\beta-1} $$
+with $ 0 \le x  \le 1$, $\alpha&gt;0$ and $\beta &gt;0$.</p>
+<p>where $B(\alpha, \beta)$ is the Beta functions that serves as a normalization.</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [19]:
 </div>
@@ -3799,9 +3933,9 @@ In [19]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[19]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -3809,7 +3943,7 @@ In [19]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtQAAAF/CAYAAABpHl5AAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4lNXd//H3TPZ9D0tkSwBlD4sSQCCCFCJVJKJQKWhr
@@ -4448,15 +4582,27 @@ BwRqAAAAwAMCNQAAAOABgRoAAADwgEANAAAAeECgBgAAADz4D85ZUqviiVT5AAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="exponential">Exponential</h2>
-<p>Exponential is the probability distribution that describes the time between events in a Poisson process The Exponantial probability function is <span class="math">\[f(x;\lambda) = \begin{cases}
+<p>Exponential is the probability distribution that describes the time between events in a Poisson process
+The Exponantial probability function is
+$$f(x;\lambda) = \begin{cases}
 \lambda e^{-\lambda x} &amp; x \ge 0, \\
 0 &amp; x &lt; 0.
-\end{cases}\]</span> Therefore, the random variable X has an exponential distribution with parameter <span class="math">\(\lambda\)</span>, we say <span class="math">\(X\)</span> is exponential and write <span class="math">\(X∼Exp(\lambda)\)</span> Given a specific <span class="math">\(\lambda\)</span>, the expected value of an exponential random variable is equal to the inverse of <span class="math">\(\lambda\)</span>, that is: <span class="math">\(E[X|\lambda]=\frac{1}{\lambda}\)</span></p>
+\end{cases}$$
+Therefore, the random variable X has an exponential distribution with parameter $\lambda$, we say $X$ is exponential and write
+$ X∼Exp(\lambda)$
+Given a specific $\lambda$, the expected value of an exponential random variable is equal to the inverse of $\lambda$, that is:
+$E[X|\lambda]=\frac{1}{\lambda}$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [20]:
 </div>
@@ -4478,9 +4624,9 @@ In [20]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtcAAAEbCAYAAAARTKgPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4VNX9x/H3nex7AoQAYQ0gENZETQBFUGoVqoDiglgL
@@ -4937,11 +5083,17 @@ IAiCIAiCINoEiWuCIAiCIAiCaBP/HyVeuXVIJE/EAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="mutlivariate-random-variates">Mutlivariate random variates</h2>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [27]:
 </div>
@@ -4951,9 +5103,9 @@ In [27]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[27]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <div class="output_html rendered_html">
@@ -5007,12 +5159,18 @@ In [27]:
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="joint-marginal-and-conditional">Joint, marginal and conditional</h2>
-<p>The joint distribution is given by the 2D histogram as</p>
+<p>The joint distribution is given by the 2D histogram as </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [75]:
 </div>
@@ -5021,9 +5179,9 @@ In [75]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWwAAAD7CAYAAABOi672AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEzpJREFUeJzt3X9s1HWex/HXdwPJrfw6WftrGW6n11IoUEqBip4SMdiq
@@ -5119,11 +5277,17 @@ ADiCwAYARxDYAOAIAhsAHEFgA4AjCGwAcASBDQCOILABwBH/Dyu5KbiErU4SAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets look at the actual distribution</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [76]:
 </div>
@@ -5134,9 +5298,9 @@ In [76]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[76]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -5144,7 +5308,7 @@ In [76]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXsAAAEKCAYAAADzQPVvAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd4VMUax/Fv6CqI9BJ6B0FBEJUiAQsq9gqCiKKiCOJF
@@ -5574,11 +5738,17 @@ V0opG/D/W45eI4UpACMAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How about the marginal? This is as simple as taking the histogram ignoring one of the dimensions. For example marginalizing over Height take the histogram of Weight as:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [83]:
 </div>
@@ -5588,9 +5758,9 @@ In [83]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[83]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -5598,7 +5768,7 @@ In [83]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEPCAYAAABP1MOPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGRdJREFUeJzt3X9s1PXhx/HXx7X7LhsFkdFrveNrpT1oS4/2IjlUdDmC
@@ -5721,11 +5891,17 @@ DQZ7jENSnQAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally how about conditional? Lets assume we want the probability distribution for Weight given Height= 65? As explained above with continous variables we should use intervals rather than exact values. Say we want the conditional given Height between 63 and 65.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally how about conditional? Lets assume we want the probability distribution for Weight given Height= 65? As explained above with continous variables we should use intervals rather than exact values. Say we want the conditional given Height between 63 and 65. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [93]:
 </div>
@@ -5735,9 +5911,9 @@ In [93]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[93]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -5745,7 +5921,7 @@ In [93]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXsAAAEPCAYAAACjjWTcAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGMpJREFUeJzt3X9M1Pcdx/HXMTBNV/yFcuid7TkB4QSF1qLVdjuHh802
@@ -5866,8 +6042,8 @@ MvbsAcAA7NkDgAEIewAwAGEPAAYg7AHAAIQ9ABiAsAcAA/wXgHNpXd4rt/MAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In []:
 </div>
@@ -5877,8 +6053,8 @@ In []:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [42]:
 </div>
@@ -6026,8 +6202,8 @@ In [42]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [50]:
 </div>
@@ -6038,9 +6214,9 @@ In [50]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 Male 58.4069049317
@@ -6049,7 +6225,7 @@ Female 54.2631333251
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfcAAAHuCAYAAACCrEV0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XmMXWd9+P/3We++3zt37mwej53gOKtLv0CAttCyqKqK
@@ -7526,8 +7702,8 @@ r3/962MulRBiPTLnLoS4JN/5znf4zd/8TZRSJJNJvvzlL4+7SEKIC5CeuxBCCDFhZM5dCCGEmDAS
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [44]:
 </div>
@@ -7538,9 +7714,9 @@ In [44]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 Male 58.4069049317
@@ -7549,7 +7725,7 @@ Female 54.2631333251
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf8AAAHpCAYAAACMfjU4AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XmMpHd97/v3s9S+L91dvU7P5mW8jh2MCeTisPicI04I
@@ -8822,19 +8998,39 @@ RU5ErkJggg==
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="regression">Regression</h1>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is based in part on chapter 3 of "The elements of statistical learning" by Hastie, Tibshirani and Friedman (get full pdf <a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">here</a>).</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Say we have measurement <span class="math">\(\bf{y}\)</span> where bold-face indicates that we are talking about a measurment vector, say of length <span class="math">\(N\)</span>. This measurement is a response to some inputs: <span class="math">\((x_1,x_2,...x_p)\)</span>. Each one of the <span class="math">\(x_i\)</span> vectors also has <span class="math">\(N\)</span> elements. Think of the <span class="math">\(X\)</span> as representing different input. A linear model assumes that the expected value of y given a specific input X can be expressed as a linear sum of the <span class="math">\(x_i\)</span>. In other words the expectation of Y given X, E(Y|X) is linear in the inputs. All this means is that in the noise-less case y is a function of the inputs, f(x), such that there exist <span class="math">\(\beta_i\)</span> which satisfy: <span class="math">\[f(x)=\beta_0+\beta_1 x_1+\beta_2 \, x_2+...+ \beta_p \, x_p \]</span></p>
-<p>Notice that bivariate linear regression, is simply a subset of this, with <span class="math">\(N=1\)</span>.</p>
+<p>Say we have measurement $\bf{y}$ where bold-face indicates that we are talking about a measurment vector, say of length $N$. This measurement is a response to some inputs: $(x_1,x_2,...x_p)$. Each one of the $x_i$ vectors also has $N$ elements. Think of the $X$ as representing different input. 
+A linear model assumes that the expected value of y given a specific input X can be expressed as a linear sum of the $x_i$. In other words the expectation of Y given X, E(Y|X) is linear in the inputs. All this means is that in the noise-less case y is a function of the inputs, f(x), such that there exist $\beta_i$ which satisfy:
+$$f(x)=\beta_0+\beta_1 x_1+\beta_2 \, x_2+...+ \beta_p \, x_p $$</p>
+<p>Notice that bivariate linear regression,  is simply a subset of this, with $N=1$.</p>
 <p>Lets look at this simple case</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [160]:
 </div>
@@ -8859,8 +9055,8 @@ In [160]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [161]:
 </div>
@@ -8879,9 +9075,9 @@ In [161]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[161]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -8889,7 +9085,7 @@ In [161]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEOCAYAAACEiBAqAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFxxJREFUeJzt3X1Mlffdx/EPrQjoOVoBszUlqRVNU5MJdrNREu3RlmKM
@@ -9003,11 +9199,17 @@ APC4/wXNwAzcoJX5uAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And this linear relationship holds, even when the input is not a linear function</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [164]:
 </div>
@@ -9029,9 +9231,9 @@ In [164]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[164]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -9039,7 +9241,7 @@ In [164]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXoAAAEACAYAAAC9Gb03AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xlc1NX+x/HXDMPOALK5i4q4oCzuu+KSlllZ2a1M69ri
@@ -9255,7 +9457,7 @@ pwAAAABJRU5ErkJggg==
 ">
 </img></div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAEACAYAAAC57G0KAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFNhJREFUeJzt3X9sVfX9x/FXlVKYt+Bo61fTLmGpjQSnJYYt8FXHdWy9
@@ -9356,7 +9558,7 @@ c3NzTnWUG50AwFLc6AQAlqLAA4ClKPAAYCkKPABYigIPAJaiwAOApSjwAGApCjwAWOr/AeQu5aNK
 ">
 </img></div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAEOCAYAAABmVAtTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFTxJREFUeJzt3X9sVfX9x/FXf7fYa4W2ji/tDFtT51fmigZY8ReX4Oym
@@ -9462,12 +9664,18 @@ gg==
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="multi-linear-regression">Multi-linear regression:</h2>
-<p>This works the same if we have p inputs, where we choose p=5. For example, let's consider an output which is a linear combination of p sine waves. To account for <span class="math">\(\beta_0\)</span>, we make sure that the first column is all 1's:</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="multi-linear-regression-">Multi-linear regression:</h2>
+<p>This works the same if we have p inputs, where we choose p=5. For example, let's consider an output which is a linear combination of p sine waves. To account for $\beta_0$, we make sure that the first column is all 1's:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [165]:
 </div>
@@ -9482,8 +9690,8 @@ In [165]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [166]:
 </div>
@@ -9497,9 +9705,9 @@ In [166]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[166]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -9507,7 +9715,7 @@ In [166]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEJCAYAAACZjSCSAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXeYJHd95/+q6uocpnty3Jy10u5Kq7TKQhFEEgaThOF8
@@ -10364,11 +10572,17 @@ IBjgCCEQCASCAY4QAoFAIBjgCCEQCASCAY4QAoFAIBjg/H8/lgcszIUheQAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>And now <span class="math">\(f(x)\)</span> should include all coefficients</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And now $f(x)$ should include all coefficients</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [167]:
 </div>
@@ -10390,14 +10604,27 @@ In [167]:
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Where np.dot is a matrix multiplication: <span class="math">\[\bf{X} \beta=\beta_0+\beta_1 x_1+\beta_2 x_2+...+\beta_p\, x_p\]</span></p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We choose a set of random <span class="math">\(\beta\)</span> coefficients and generate <span class="math">\(f(x)\)</span></p>
+<p>Where np.dot is a matrix multiplication:
+$$\bf{X} \beta=\beta_0+\beta_1 x_1+\beta_2 x_2+...+\beta_p\, x_p$$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We choose a set of random $\beta$ coefficients and generate $f(x)$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [168]:
 </div>
@@ -10410,9 +10637,9 @@ In [168]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[168]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -10420,7 +10647,7 @@ In [168]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWwAAAEACAYAAACXqUyYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl8lNW9P/DPM0tmMpnsK9n3kAQIa1gUCCAE0YIbWqzU
@@ -10694,8 +10921,8 @@ KGATQohEUMAmhBCJoIBNCCES8f8BdpsIkX8RWWIAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [169]:
 </div>
@@ -10705,9 +10932,9 @@ In [169]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[169]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -10715,7 +10942,7 @@ In [169]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXYAAAEACAYAAACnJV25AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFUBJREFUeJzt3X9sVGW+x/FPKbSWtKK0GO7CbtjFul5/FQ0QWH8whF3H
@@ -10821,12 +11048,18 @@ RK5CYII=
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="noise">Noise</h2>
-<p>Lets now assume there is some noise such as <span class="math">\(\bf{y}=\bf{f(x)}+\epsilon\)</span> and lets assume the noise is normally distributed with zero mean.</p>
+<p>Lets now assume there is some noise such as $\bf{y}=\bf{f(x)}+\epsilon$ and lets assume the noise is normally distributed with zero mean. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [170]:
 </div>
@@ -10836,8 +11069,8 @@ In [170]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [171]:
 </div>
@@ -10849,9 +11082,9 @@ In [171]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[171]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -10859,7 +11092,7 @@ In [171]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXMAAAEACAYAAABBDJb9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXd8W/W5/9/akmVb8pL3tuPsPSGUAAnQBMJIwy6jtAXa
@@ -11217,22 +11450,36 @@ kDAXQogAIGEuhBABQMJcCCECwH8B31N1YzBjjz4AAAAASUVORK5CYII=
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="solve-the-linear-model">Solve the linear model</h2>
-<p>This usually means finding an estimate of the <span class="math">\(\beta\)</span> coefficients that generated the data we observed. We are looking for a procedure to estimate the coefficients (all parameter estimates will be designated with a hat <span class="math">\(\hat{\beta}\)</span></p>
-<p>A 'good' estimate of these coefficients would produce an estimate of the output, <span class="math">\(\hat{y}\)</span>, which would be close to the measured data points. Where: <span class="math">\[\bf{\hat{y}=X \hat{\beta}}\]</span></p>
-<p>A way to define this is by requiring the residual sum of squares to be small, where the residuals are: <span class="math">\[ \bf{y−\hat{y}}\]</span> and the residual sum of squares (or RSS) is:</p>
-<p><span class="math">\[RSS=\sum^{N}_i (y_i−y_i)^2\]</span></p>
-<p>Since <span class="math">\(\hat{y}\)</span> is a function of <span class="math">\(\beta\)</span>, we can think of RSS as a function of <span class="math">\(\beta\)</span> and we want to optimize it with respect to a choice of the elements of <span class="math">\(\beta\)</span>. In other words to find a minimum of RSS with respect to <span class="math">\(\beta\)</span>. Mathematically speaking, we want to find a value of <span class="math">\(\hat{\beta}\)</span> for which the first derivative of RSS with respect to <span class="math">\(\beta\)</span> is 0</p>
+<p>This usually means finding an estimate of the $\beta$ coefficients that generated the data we observed. We are looking for a procedure to estimate the coefficients (all parameter estimates will be designated with a hat $\hat{\beta}$</p>
+<p>A 'good' estimate of these coefficients would produce an estimate of the output, $\hat{y}$, which would be close to the measured data points.
+Where:
+$$\bf{\hat{y}=X \hat{\beta}}$$</p>
+<p>A way to define this is by requiring the residual sum of squares to be small, where the residuals are:
+$$ \bf{y−\hat{y}}$$
+and the residual sum of squares (or RSS) is:</p>
+<p>$$RSS=\sum^{N}_i (y_i−y_i)^2$$</p>
+<p>Since $\hat{y}$ is a function of $\beta$, we can think of RSS as a function of $\beta$ and we want to optimize it with respect to a choice of the elements of $\beta$. In other words to find a minimum of RSS with respect to $\beta$.
+Mathematically speaking, we want to find a value of $\hat{\beta}$ for which the first derivative of RSS with respect to $\beta$ is 0</p>
 <p>To find the derivative, we re-write RSS in the following way:</p>
-<p><span class="math">\[RSS(\beta)=(\bf{y−X} \beta)^T(\bf{y−X}\beta)\]</span></p>
-<p>The derivative of this function is <span class="math">\[ \frac{d \, RSS}{d \beta}=−2\bf{X^T(y−X} \beta)\]</span> Setting the first derivative to 0 and dividing both sides by 2, we obtain <span class="math">\[ \bf{X^T y= X^T X} \beta \]</span></p>
-<p>If <span class="math">\(\bf{X}\)</span> is 'full rank', then <span class="math">\(\bf{X^T X}\)</span> is positive definite and it can be inverted and</p>
-<p><span class="math">\[ \hat{\beta} = (\bf{X^T \, X)^{-1} X^T y} \]</span></p>
+<p>$$RSS(\beta)=(\bf{y−X} \beta)^T(\bf{y−X}\beta)$$</p>
+<p>The derivative of this function is 
+$$ \frac{d \, RSS}{d \beta}=−2\bf{X^T(y−X} \beta)$$
+Setting the first derivative to 0 and dividing both sides by 2, we obtain
+$$ \bf{X^T y= X^T X} \beta $$</p>
+<p>If $\bf{X}$ is 'full rank', then $\bf{X^T X}$ is positive definite and it can be inverted and </p>
+<p>$$ \hat{\beta} = (\bf{X^T \, X)^{-1} X^T y} $$</p>
 <p>which is also called ordinary least square</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [172]:
 </div>
@@ -11247,11 +11494,17 @@ In [172]:
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Compute <span class="math">\(\hat{\beta}\)</span> using the function above</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compute $\hat{\beta}$ using the function above </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [173]:
 </div>
@@ -11261,8 +11514,8 @@ In [173]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [174]:
 </div>
@@ -11275,9 +11528,9 @@ In [174]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[174]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -11285,7 +11538,7 @@ In [174]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYcAAAEOCAYAAABiodtuAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XlYVfeBxvHvZdMo4CBgjFtwTxSF2Cw4KsG6lZpEMiKp
@@ -11462,12 +11715,18 @@ BxERMfl/bUbiGJmDa5wAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>And using these estimates <span class="math">\(\hat{\beta}\)</span> we can now estimate the <span class="math">\(\bf{\hat{y}}\)</span></p>
-<p><span class="math">\[ \bf{\hat{y}=X \hat{\beta} }\]</span></p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And using these estimates $\hat{\beta}$ we can now estimate the $\bf{\hat{y}}$</p>
+<p>$$ \bf{\hat{y}=X \hat{\beta} }$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [175]:
 </div>
@@ -11480,9 +11739,9 @@ In [175]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[175]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -11490,7 +11749,7 @@ In [175]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXMAAAEACAYAAABBDJb9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd8m9W5wPHfq2XJli3Je884e+8QRiCEsDcUWmjpoEB7
@@ -11849,11 +12108,17 @@ zfWisrKShw8fUlpa+kJmZmRkuJSjsmhICCF8gCwaEkIIHyBhLoQQPkDCXAghfICEuRBC+AAJcyGE
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The "hat matrix", H is the matrix that does the actual transformation</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [132]:
 </div>
@@ -11865,8 +12130,8 @@ In [132]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [176]:
 </div>
@@ -11877,9 +12142,9 @@ In [176]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[176]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -11887,7 +12152,7 @@ In [176]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXwAAAEOCAYAAACKDawAAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtY1GX6P/D3MMCAcpCDCgkaWrmeUDOMbyXLegBDClOp
@@ -12101,8 +12366,8 @@ AAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In []:
 </div>

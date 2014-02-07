@@ -159,22 +159,37 @@ init_mathjax();
                 </div>
                 <p>You can download this lecture <a href="{filename}/../../notebooks/Lecture4_VarianceReductionInMonteCarlo.ipynb">here</a>.</p>
 <p>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="lecture-4-variance-reduction">Lecture 4: Variance Reduction</h1>
 <p>AM207: Pavlos Protopapas, Harvard University</p>
 <p>Feb 5, 2014</p>
-<hr/>
+<hr>
+</hr></div>
 </div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We will discuss methods that may be used to reduce the standard error of the sample mean approximation (or the integral). We will look into four different methods and we compare them to mean Monte Carlo methods with examples.</p>
-<p><span class="math">\[
+<p>We will discuss methods that may be used to reduce  the standard error of 
+the sample mean approximation (or the integral). 
+We will look into four different methods and we compare them
+to mean Monte Carlo methods with examples. </p>
+<p>$$
 \newcommand{\var}{{\rm var}}
 \newcommand{\cov}{{\rm cov}}
 \newcommand{\corr}{{\rm corr}}
-\]</span></p>
+$$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [1]:
 </div>
@@ -186,36 +201,61 @@ In [1]:
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="control-variates">1. Control Variates</h2>
-<p>The basic idea is to transform the function we would like to integrate into a different function where the variance of this new functions is much smaller (or flatter).</p>
-<p>Suppose again that we wish to estimate <span class="math">\(E[Y]\)</span>, where <span class="math">\(Y = f(X)\)</span> is the output of a simulation experiment. Suppose the mean of a function <span class="math">\(Z=g(X)\)</span>, <span class="math">\(E[Z]=\tau\)</span> is known or easily estimated with a simulation. The transformation <span class="math">\(f(X) \rightarrow f^{\star}(X) = f(X) - g(X)\)</span> will yield the same value, <span class="math">\(E[ f^{\star}] = E[f]\)</span>.</p>
-<p>The control variate method finds the best way to do so for any arbitrary function <span class="math">\(g(X)\)</span>. To do so we introduce a new function <span class="math">\(f^{\star}\)</span>:</p>
-<p><span class="math">\[ f^{\star} (X) = f(X) + b[g(X)-\tau] \]</span></p>
-<p>where <span class="math">\(b\)</span> is a constant.</p>
-<p>The expectation of this new function is identical to the original function,</p>
-<p><span class="math">\[ E[ f^{\star}] =  E[ f] + b \, E[ g] - b \, \tau=  E[ f].  \]</span></p>
-<p>Also the variance of the new function is</p>
-<p><span class="math">\[
- \var(f^{\star}) = \var(f)+b^2 \,\var( g) +2 \,b\, \cov(f,g)  
-\]</span></p>
-<p>Since we are free to choose <span class="math">\(b\)</span>, we should choose it to minimize <span class="math">\(\var(f^{\star})\)</span>. Simple calculus then implies that the optimal value of <span class="math">\(b\)</span> is given by</p>
-<p><span class="math">\[ b_c = -\frac{\cov(f,g)}{\var(g)} \]</span></p>
-<p>Substituting for <span class="math">\(b_c\)</span> above we see that</p>
-<p><span class="math">\[ \var(f^{\star}) = \var(f) - \frac{[\cov(f,g)]^2}{\var(g)}  = \var(f) (1-\rho^2(f,g)) \]</span></p>
-<p>where <span class="math">\(\rho(f,g)\)</span> is the correlation coefficient of <span class="math">\(f\)</span> and <span class="math">\(g\)</span>. This means that if <span class="math">\(\rho^2\)</span> is close to one, the variance of <span class="math">\(f^{\star}\)</span> becomes close to zero. The function <span class="math">\(g\)</span> is called the control variate for <span class="math">\(f\)</span>.</p>
-<p>Now back to our integral. To use the control variate <span class="math">\(g\)</span> in our simulation we would like to modify our algorithm so that after generating n samples of <span class="math">\(f(X)\)</span> and <span class="math">\(g(X)\)</span> we would simply set</p>
-<p><span class="math">\[ I = \int_{V} f(x) dx \approx \frac{V}{N} \sum_i f^{\star}(x_i) =  \frac{V}{N} \sum_i \left[ f(x_i) +b_c (g(x_i) -\tau) \right] \]</span></p>
-<p>There is of course a problem with this. We usually do not know <span class="math">\(\cov(f,g)\)</span>. We overcome this problem by approximating it from the samples.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1-control-variates">1. Control Variates</h2>
+<p>The basic idea is to transform the function we would like to integrate into 
+a different function where the variance of this new functions is much smaller
+(or flatter).</p>
+<p>Suppose again that we wish to estimate  $E[Y]$, where $Y = f(X)$ is the output of a simulation experiment.
+Suppose the mean of a function $Z=g(X)$, $E[Z]=\tau$ is known or easily
+estimated with a simulation. The transformation $f(X) \rightarrow f^{\star}(X) = f(X) - g(X)$ will
+ yield the same value, $E[ f^{\star}] = E[f]$. </p>
+<p> The control variate method finds the best way to do so for 
+ any arbitrary function $g(X)$. To do so we introduce a new function $f^{\star}$:</p>
+<p>$$ f^{\star} (X) = f(X) + b[g(X)-\tau] $$</p>
+<p>where $b$ is a constant. </p>
+<p>The expectation of this new function is identical to the original function, </p>
+<p>$$ E[ f^{\star}] =  E[ f] + b \, E[ g] - b \, \tau=  E[ f].  $$</p>
+<p>Also the variance of the new function is </p>
+<p>$$
+ \var(f^{\star}) = \var(f)+b^2 \,\var( g) +2 \,b\, \cov(f,g)  
+$$</p>
+<p>Since we are free to choose $b$, we should choose it to minimize $\var(f^{\star}) $. Simple calculus then implies that the
+optimal value of $b$ is given by</p>
+<p>$$ b_c = -\frac{\cov(f,g)}{\var(g)} $$</p>
+<p>Substituting for $b_c$ above we see that</p>
+<p>$$ \var(f^{\star}) = \var(f) - \frac{[\cov(f,g)]^2}{\var(g)}  = \var(f) (1-\rho^2(f,g)) $$</p>
+<p>where $\rho(f,g)$ is the correlation coefficient of $f$ and $g$. 
+This means that if $\rho^2$ is close to one, the variance of $f^{\star}$ becomes close
+to zero. 
+The function $g$ is called the control variate for $f$.</p>
+<p>Now back to our integral. To use the control variate $g$ in our simulation we would like to modify our
+algorithm so that after generating n samples of $f(X)$ and $g(X)$ we would simply set</p>
+<p> $$ I = \int_{V} f(x) dx \approx \frac{V}{N} \sum_i f^{\star}(x_i) =  \frac{V}{N} \sum_i \left[ f(x_i) +b_c (g(x_i) -\tau) \right] $$</p>
+<p> There is of course a problem with this.  We usually do not know $\cov(f,g)$. We overcome this problem by
+approximating it from the samples. </p>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="example">Example</h3>
-<p>In this example we would like to estimate the integral of the function <span class="math">\(f(x) = \cos(x) \exp(-x)+0.2\)</span> from 0 to 10.</p>
-<p><span class="math">\[ I = \int_{0}^{10} dx [\cos(x) \exp(-x)+0.2] \]</span></p>
-<p>and we introduce a control variate <span class="math">\(g(x) =exp(-x)+0.2\)</span>. This function is chosen such as the correlation of <span class="math">\(f,g\)</span> is close to one. [HOW DO I KNOW THIS?]</p>
+<p>In this example we would like to estimate the integral of the function $f(x) = \cos(x) \exp(-x)+0.2  $ from 0 to 10. </p>
+<p>$$ I = \int_{0}^{10} dx [\cos(x) \exp(-x)+0.2] $$</p>
+<p>and we introduce a control variate $g(x) =exp(-x)+0.2 $. This function is chosen such 
+as the correlation of $f,g$ is close to one. [HOW DO I KNOW THIS?]</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [2]:
 </div>
@@ -295,9 +335,9 @@ In [2]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[2]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -305,7 +345,7 @@ In [2]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAzgAAAHfCAYAAACcUn2RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlYlXX+//HXYVEQkF2URVEWERdcp9FSKUdNJ5fKXCql
@@ -761,8 +801,8 @@ AAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [64]:
 </div>
@@ -772,29 +812,56 @@ In [64]:
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="multiple-control-variates">Multiple Control Variates</h3>
-<p>Up until now we have only considered the possibility of using one control variate. However, there is no reason why we should not use more than one and I will now describe how to do this. Suppose again that we wish to estimate <span class="math">\(E[Y]\)</span> where <span class="math">\(Y = f(X)\)</span> is the output of a simulation experiment. We also suppose that the means of the functions <span class="math">\(E[Z_i]=\tau_i\)</span> where <span class="math">\(Z_i=g_i(X)\)</span> for <span class="math">\(i= 1\ldots m\)</span> is known for each <span class="math">\(i\)</span>.</p>
-<p>We can then construct unbiased estimators of <span class="math">\(E[Y]\)</span> by setting</p>
-<p><span class="math">\[  f^{\star}(X) = f(X)+b_1 \left[ g_1(X) - \tau_1\right] +b_2 \left[ g_2(X) - \tau_2\right] +\ldots +b_m \left[ g_m(X) - \tau_m\right] \]</span></p>
-<p>To choose a good set of <span class="math">\(b_i\)</span>'s, we compute <span class="math">\(\var(f^{\star})\)</span> and obtain</p>
-<p><span class="math">\[ \var(f^{\star}) = \var(f) +2 \, \sum_i^{m} b_i\, \cov(f,g_i) + \sum_{i}^{m} \sum_{j}^{m} b_i \, b_j \cov(g_i, g_j) \]</span></p>
-<p>As before, we could use use calculus to find the optimal set of <span class="math">\(b_i\)</span>'s by taking partial derivatives with respect to each <span class="math">\(b_i\)</span>, set them equal to 0 and solve the resulting system of <span class="math">\(m\)</span> linear equations and <span class="math">\(m\)</span> unknowns. This is easy to do but as before, however, the optimal solutions <span class="math">\(b_{i,c}\)</span>'s will involve unknown quantities so that they will need to be estimated using the samples. A convenient way of estimating the <span class="math">\(b_{i,c}\)</span>'s is to observe that <span class="math">\(b_{i,c}=c_i\)</span>'s, where <span class="math">\(c_i\)</span>'s are the solution to the linear regression</p>
-<p><span class="math">\[ Y = a + c_1 g_1(X) + \ldots + c_m g_m(X) + \epsilon \]</span></p>
-<p>where <span class="math">\(\epsilon\)</span> is an error term.</p>
+<p>Up until now we have only considered the possibility of using one control variate. However, there is no reason
+why we should not use more than one and I will now describe how to do this. 
+Suppose again that we wish to estimate    $E[Y]$ where $Y = f(X)$ is the output of a simulation experiment.
+We also suppose that the means of the functions $E[Z_i]=\tau_i$ where $Z_i=g_i(X)$ for $i= 1\ldots m$ 
+is known for each $i$.</p>
+<p>We can then construct unbiased estimators of $E[Y]$ by setting </p>
+<p>$$  f^{\star}(X) = f(X)+b_1 \left[ g_1(X) - \tau_1\right] +b_2 \left[ g_2(X) - \tau_2\right] +\ldots +b_m \left[ g_m(X) - \tau_m\right] $$</p>
+<p>To choose a good set of $b_i$'s, we compute $\var(f^{\star})$ and obtain</p>
+<p>$$ \var(f^{\star}) = \var(f) +2 \, \sum_i^{m} b_i\, \cov(f,g_i) + \sum_{i}^{m} \sum_{j}^{m} b_i \, b_j \cov(g_i, g_j) $$</p>
+<p>As before, we could use use calculus to find the optimal set of $b_i$'s 
+by taking partial derivatives with respect to each $b_i$, 
+set them equal to 0 and solve the resulting system of $m$ linear equations and $m$ unknowns. 
+This is easy to do but as before, however, the optimal solutions $b_{i,c}$'s
+will involve unknown quantities so that they will need to be
+estimated using the samples. A convenient way of estimating the $b_{i,c}$'s
+is to observe that $b_{i,c}=c_i$'s, where $c_i$'s are the solution to the linear regression </p>
+<p>$$ Y = a + c_1 g_1(X) + \ldots + c_m g_m(X) + \epsilon $$</p>
+<p>where  $\epsilon $ is an error term. </p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="antithetic-variates">2. Antithetic Variates</h2>
-<p>Suppose as usual that we would like to estimate <span class="math">\(E[f(X)] = E[Y ]\)</span>, and that we have generated two samples, <span class="math">\(Y_1=f(X_1)\)</span> and <span class="math">\(Y_2=f(X_2)\)</span>. Then the expectation of</p>
-<p><span class="math">\[ Z = \frac{1}{2} \left[  Y_1 + Y_2 \right] \]</span></p>
-<p><span class="math">\(E[Z] = E[Y]\)</span></p>
-<p>and</p>
-<p><span class="math">\[ \var(Z) = \frac{ \var(Y_1)+\var(Y_2) + 2 \cov(Y_1,Y_2)}{4}. \]</span></p>
-<p>Therefore, the more negatively correlated <span class="math">\(Y_1=f(X_1)\)</span> is with <span class="math">\(Y_2=f(X_2)\)</span>, the more the variance will be reduced. If <span class="math">\(Y_1\)</span> and <span class="math">\(Y_2\)</span> are iid, then the <span class="math">\(\var(Z) = \var(Y_1)/2=\var(Y_2)/2\)</span>. On the other hand, we could reduce <span class="math">\(\var(Z)\)</span> if we could make it so that <span class="math">\(\cov(Y_1, Y_2) &lt; 0\)</span>.</p>
-<p>Lets try it out. Generate two samples that are correlated</p>
+<h2 id="2-antithetic-variates">2. Antithetic Variates</h2>
+<p>Suppose as usual that we would like to estimate $E[f(X)] = E[Y ]$, 
+and that we have generated two samples,
+$Y_1=f(X_1)$ and $Y_2=f(X_2)$. Then the expectation of</p>
+<p>$$ Z = \frac{1}{2} \left[  Y_1 + Y_2 \right] $$</p>
+<p>$E[Z] = E[Y]$</p>
+<p>and </p>
+<p>$$ \var(Z) = \frac{ \var(Y_1)+\var(Y_2) + 2 \cov(Y_1,Y_2)}{4}. $$</p>
+<p>Therefore, the more negatively correlated $Y_1=f(X_1)$ is with $Y_2=f(X_2)$, the more the variance will be reduced.
+If $Y_1$ and $Y_2$ are iid, then the $\var(Z) = \var(Y_1)/2=\var(Y_2)/2$.
+On the other hand, we could reduce $\var(Z)$ if we could make it so that
+$\cov(Y_1, Y_2) &lt; 0$. </p>
+<p>Lets try it out. Generate two samples that are correlated </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [17]:
 </div>
@@ -811,9 +878,9 @@ In [17]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 0.0246650436434 0.0836271679952 0.0155481163169 [[ 0.08363553 -0.00025758]
@@ -825,27 +892,51 @@ In [17]:
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The method of antithetic variates describes how to do this idea in reducing the estimator error of an integral. Suppose <span class="math">\(X \sim U(0, 1)\)</span> iid random variables and</p>
-<p><span class="math">\[ \theta=E[f(X)]=E[f(U)] \]</span></p>
-<p>If we construct two samples <span class="math">\(U\)</span> and <span class="math">\(1-U\)</span>, each of length <span class="math">\(n\)</span> and now define <span class="math">\[ Y_1 = f(U)  \hspace{2cm} Y_2 = f(1-U) \]</span></p>
-<p>then the expectation of <span class="math">\[Z = \frac{1}{2} \left[  Y_1 + Y_2 \right] \]</span> <span class="math">\(E[Z] = E[Y]\)</span> as before.</p>
-<p>If we to compare this with the mean MC with <span class="math">\(2n\)</span> sample, the question remains as to which algorithm is better. Note that both algorithms require approximately the same amount of time. That is, comparing the two algorithms amounts to computing which estimator has a smaller variance.</p>
-<p>Say we want to calculate</p>
-<p><span class="math">\[ I = \int f(X) dX \]</span></p>
-<p>and let <span class="math">\(X\sim U(0,1)\)</span> for <span class="math">\(2n\)</span> samples and <span class="math">\(Y=f(X)\)</span>,</p>
-<p><span class="math">\[ \var(\hat{I}_{2n}) = \frac{\var(Y)}{2n} \]</span></p>
-<p>on the other hand</p>
-<p><span class="math">\[ \var(\hat{I}_{n+n})  = \frac{\var(Z)}{n}  = \frac{\var(Y_1+Y_2)}{4n} = \frac{\var(Y_1)}{2n}+\frac{\cov(Y_1,Y_2)}{2n} \]</span></p>
-<p>So again to reduce the <span class="math">\(\hat{I}_{n+n}\)</span>, we would like to make the <span class="math">\(\cov(Y_1,Y_2)\)</span> as negative as possible.</p>
-<p>If the <span class="math">\(Y\)</span>'s are monotonic functions of <span class="math">\(X\)</span> then this guarantees if <span class="math">\(Y_1 = f(X)\)</span> and <span class="math">\(Y_2=f(1-X)\)</span> then <span class="math">\(Y_1,Y_2\)</span> are negatively correlated.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The method of antithetic variates describes how to do this idea in reducing the estimator error of an integral. 
+Suppose $X \sim U(0, 1)$ iid random variables and</p>
+<p>$$ \theta=E[f(X)]=E[f(U)] $$</p>
+<p>If we construct two samples $U$ and $1-U$, each of length $n$ and now define
+$$ Y_1 = f(U)  \hspace{2cm} Y_2 = f(1-U) $$</p>
+<p>then the expectation of 
+$$Z = \frac{1}{2} \left[  Y_1 + Y_2 \right] $$
+$E[Z] = E[Y]$ as before. </p>
+<p>If we to compare this with the mean MC with  $2n$ sample, the question
+remains as to which algorithm is better. 
+Note that both algorithms require approximately the same amount of time. 
+That is, comparing the two algorithms amounts to computing which estimator has a smaller variance.</p>
+<p>Say we want to calculate </p>
+<p>$$ I = \int f(X) dX $$</p>
+<p>and let $X\sim U(0,1)$ for $2n$ samples and $Y=f(X)$, </p>
+<p>$$ \var(\hat{I}_{2n}) = \frac{\var(Y)}{2n} $$ </p>
+<p>on the other hand </p>
+<p>$$ \var(\hat{I}_{n+n})  = \frac{\var(Z)}{n}  = \frac{\var(Y_1+Y_2)}{4n} = \frac{\var(Y_1)}{2n}+\frac{\cov(Y_1,Y_2)}{2n} $$</p>
+<p>So again to reduce the $\hat{I}_{n+n}$, we would like to make the $\cov(Y_1,Y_2)$ as negative 
+as possible. </p>
+<p>If the $Y$'s are monotonic functions of $X$ then this guarantees if $Y_1 = f(X)$ and $Y_2=f(1-X)$ then
+$Y_1,Y_2$  are negatively correlated.</p>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="example">Example</h3>
-<p>In this example we are trying to calculate the integral of <span class="math">\(f(x) = 1/(x+1)\)</span> from <span class="math">\([0,1]\)</span>. To do so we generate <span class="math">\(X_1=U\)</span> from a uniform distribution and <span class="math">\(X_2=1-U\)</span>. Because <span class="math">\(X_1,X_2\)</span> are correlated, one can show that <span class="math">\(Y_1=f(X_1),Y_2=f(X_2)\)</span> are also strongly correlated if the function is monotonic. [PROOF]</p>
+<p>In this example we are trying to calculate  the integral of $f(x) = 1/(x+1)$ from $[0,1]$. To do so 
+ we generate $X_1=U$ from a uniform distribution and $X_2=1-U$. Because $X_1,X_2$ are correlated,
+ one can show that $Y_1=f(X_1),Y_2=f(X_2)$ are also strongly correlated if the function is monotonic.
+ [PROOF]</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [22]:
 </div>
@@ -895,9 +986,9 @@ In [22]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[22]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -905,7 +996,7 @@ In [22]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYAAAAEACAYAAAC6d6FnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtczffjB/DX6aYoXXWaimNdJJEQY8MhsQxrmsIkw+z3
@@ -1107,65 +1198,95 @@ olgAREQSxQIgIpIoFgARkUSxAIiIJOr/AFUe77TaWOevAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="stratified-method">3. Stratified Method</h2>
-<p>The key idea is to achieve a more regular sampling of the most `important' dimension in the uncertainty. Start by considering a one-dimensional problem:</p>
-<p><span class="math">\[ I= \int_{0}^{1} f(x) \, dx \]</span></p>
-<p>and lets assume <span class="math">\(x\)</span> is drawn from a uniform distribution.</p>
-<p><span class="math">\[ I= \int_{0}^{1} f(U) \, dU \]</span></p>
-<p>Instead of taking <span class="math">\(N\)</span> samples, drawn from uniform distribution, we break the interval into <span class="math">\(M\)</span> <em>strata</em> of equal width and take <span class="math">\(L\)</span> samples for each strate, <span class="math">\(N=LM\)</span>.</p>
-<p>Let <span class="math">\(U_{ij}\)</span> be the value of the <span class="math">\(i\)</span>-th sample and strata <span class="math">\(j\)</span>. The average from strata <span class="math">\(j\)</span> is</p>
-<p><span class="math">\[ 
+<h2 id="3-stratified-method">3. Stratified Method</h2>
+<p>The key idea is to achieve a more regular sampling of the
+most `important' dimension in the uncertainty.
+Start by considering a one-dimensional problem:</p>
+<p>$$ I= \int_{0}^{1} f(x) \, dx $$</p>
+<p>and lets assume $x$ is drawn from a uniform distribution. </p>
+<p>$$ I= \int_{0}^{1} f(U) \, dU $$</p>
+<p>Instead of taking $N$ samples, drawn from uniform
+distribution, we break the interval into $M$ <em>strata</em> of equal width and take $L$ samples for each
+strate, $N=LM$.</p>
+<p>Let $U_{ij}$ be the value of the $i$-th sample and strata $j$. The average from strata $j$ is</p>
+<p>$$ 
 I_j = E[f(U_j)]\approx  \frac{1}{L} \sum_i f(U_{ij}) 
-\]</span></p>
+$$</p>
 <p>and the overall integral without stratification is:</p>
-<p><span class="math">\[ 
+<p>$$ 
 I =E[f(U)] \approx \frac{1}{N}\sum_{i,j}  f(U_{ij}) 
-\]</span></p>
-<p>With stratification we would average the estimations in each strata <span class="math">\[
+$$</p>
+<p>With stratification we would average the estimations in each strata
+$$
  I_s \approx \frac{1}{M} \sum_j I_j 
-\]</span> and that is obviously the same as the estimation without stratification. When we take strata we average the estimate for each strata as</p>
-<p><span class="math">\[
+$$
+and that is obviously the same as the estimation without stratification.
+When we take strata we average the estimate for each strata as</p>
+<p>$$
 I_s = \frac{1}{M} \sum_j I_j =  \frac{1}{M} \sum_j \frac{1}{L} \sum_{i}  f(U_{ij})=  \frac{1}{N} \sum_{i,j}  f(U_{ij})= I
-\]</span></p>
-<p>To do the analysis of the variance, lets remind ourselves that the MC estimated variance is <span class="math">\(\sigma_I=\frac{\var(f)}{N}\)</span>. The variance without stratification is then</p>
-<p><span class="math">\[
+$$</p>
+<p>To do the analysis of the variance, lets remind ourselves that the 
+MC estimated variance is  $\sigma_I=\frac{\var(f)}{N}$. The variance without stratification is then </p>
+<p>$$
 \var(I) = \frac{\var(f)}{N} = \frac{E[f^2] - E[f]^2}{N}  = \frac{E[f^2] - I^2}{N}
-\]</span></p>
-<p>The expectation of <span class="math">\(f^2\)</span> can be expanded as</p>
-<p><span class="math">\[
+$$</p>
+<p>The expectation of $f^2$ can be expanded as </p>
+<p>$$
 E[f^2] \approx \frac{1}{N} \sum_{ij} f^2(U_{ij}) =\frac{1}{N} \sum_j L \left[ \frac{1}{L} \sum_i f^2(U_{ij}) \right]=\frac{L}{N}  \sum_j E[f^2(U_j)] = \frac{1}{M}  \sum_j E[f^2(U_j)] 
-\]</span></p>
-<p>however from the definition of <span class="math">\(\sigma_j^2\)</span></p>
-<p><span class="math">\[
+$$</p>
+<p>however from the definition of $\sigma_j^2$ </p>
+<p>$$
 \sigma_j^2 = E[ f^2(U_j)] - E[f(U_j)]^2 = E[ f^2(U_j)] - I_j^2  
-\]</span></p>
-<p><span class="math">\[
+$$</p>
+<p>$$
  \Rightarrow E[ f^2(U_j)] =\sigma_j^2 + I_j^2   
-\]</span></p>
+$$</p>
 <p>substituting this, we get</p>
-<p><span class="math">\[
+<p>$$
 \var(I) =\frac{ \frac{1}{M}  \sum_j  (\sigma_j^2 + I_j^2)- I^2}{N} = \frac{1}{NM}\sum_j  \sigma_j^2 + \frac{1}{N} \left( \frac{\sum_j  I_j^2}{M} -  I^2 \right)
-\]</span></p>
-<p>the variance with stratification is</p>
-<p><span class="math">\[
+$$</p>
+<p>the variance with stratification is </p>
+<p>$$
 \var(I_s)= \var\left(  \frac{1}{M} \sum_j I_j  \right)  = \frac{1}{M^2}  \var\left(\sum_j I_j  \right)  = \frac{1}{M^2}  \sum_j \var(I_j)
  = \frac{1}{M^2}   \sum_j  \frac{\sigma_j^2}{L} =  \frac{1}{M^2 \,L}   \sum_j  \sigma_j^2 
-\]</span></p>
-<p>where we ignore all covariances since the deviations about <span class="math">\(I_j\)</span> are all iid and uncorrelated. Finally,</p>
-<p><span class="math">\[
+$$</p>
+<p>where we ignore all covariances since the deviations about $I_j$ are all iid and uncorrelated. Finally, </p>
+<p>$$
   \var(I_s)= \frac{1}{M^2} \frac{ 1}{L}   \sum_j \sigma_j^2  =  \frac{1}{MN}  \sum_j \sigma_j^2 \le \var(I)
-\]</span></p>
-<p>where the last step is based on the fact that <span class="math">\[  \frac{\sum_j  I_j^2}{M} -  I^2  &gt; 0 \]</span> by the Cauchy-Schwarz Inequality.</p>
+$$</p>
+<p>where the last step is based on the fact that 
+$$  \frac{\sum_j  I_j^2}{M} -  I^2  &gt; 0 $$
+by the Cauchy-Schwarz Inequality.</p>
 <p>Thus stratified sampling reduces the variance.</p>
-<p>Sub-dividing into strata always reduces the variance, so the optimum choice is to use 1 sample per stratum. However, we need multiple samples in each stratum to estimate the variance and obtain a confidence interval. Despite this, interesting to analyze what happens with 1 sample per stratum.</p>
+<p>Sub-dividing into strata always reduces the variance, so the optimum choice is to use 1 sample per
+stratum. 
+However, we need multiple samples in each stratum to
+estimate the variance and obtain a confidence interval.
+Despite this, interesting to analyze what happens with
+1 sample per stratum.</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="example">Example</h3>
-<p>For a one-dimensional application we take <span class="math">\(x/(x^2+1)\)</span> and integrate from <span class="math">\([0,1]\)</span>. We break <span class="math">\([0,10]\)</span> into <span class="math">\(M\)</span> strata and for each stratum, take <span class="math">\(N/M\)</span> samples with uniform probability distribution. Compute the average within each stratum, and then calculate the overall average.</p>
+<p>For a  one-dimensional application we take $ x/(x^2+1)$ and integrate from $[0,1]$.
+We break $[0,10]$ into $M$ strata and for each stratum, take $N/M$ samples
+with uniform probability distribution. Compute the average within each 
+stratum, and then calculate the overall average. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [45]:
 </div>
@@ -1221,9 +1342,9 @@ In [45]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[45]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -1231,7 +1352,7 @@ In [45]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAzgAAAHfCAYAAACcUn2RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4VOXh9vHvhIR9VwmaoChbCKJFUURKjSJgEDEoqwqI
@@ -1643,8 +1764,8 @@ AEGDBAcAAABA0CDBAQAAABA0SHAAAAAABI3/BzhcbifqOKOzAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In []:
 </div>

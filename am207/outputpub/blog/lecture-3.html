@@ -160,13 +160,19 @@ init_mathjax();
                 <p>A video of this lecture is available <a href="http://cm.dce.harvard.edu/2014/02/24104/L03/screen_H264HighBandwidthTalkingHead-16x9.shtml">here</a>.</p>
 <p>You can download this lecture <a href="{filename}/../../notebooks/Lecture3_MonteCarloBasic.ipynb">here</a>.</p>
 <p>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="lecture-3-basic-monte-carlo">Lecture 3: Basic Monte Carlo</h1>
 <p>AM207: Pavlos Protopapas, Harvard University</p>
 <p>Feb 3, 2014</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [1]:
 </div>
@@ -178,34 +184,59 @@ In [1]:
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="introduction">1. Introduction</h2>
-<p>Before the actual `discovery' of the Monte Carlo method, Georges-Louis Leclerc comte de Buffon in 1777 stated a problem involving dropping a needle on a lined surface. Suppose we have a floor made of parallel strips of wood, each the same width, and we drop a needle onto the floor. What is the probability that the needle will lie across a line between two strips? The solution, in the case where the needle length is not greater than the width of the strips, can be used to design a Monte Carlo-style method for approximating the number <span class="math">\(\pi\)</span>.</p>
-<div class="figure">
-<img alt="Buffon Needle" src="./files/images/Buffon_needle.gif"/><p class="caption">Buffon Needle</p>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Before the actual `discovery' of the Monte Carlo method,  Georges-Louis Leclerc comte de Buffon in
+1777 stated a problem involving dropping a needle on a lined surface.
+Suppose we have a floor made of parallel strips of wood, each the same width, and we drop a needle onto the floor. What is the probability that the needle will lie across a line between two strips?
+The solution, in the case where the needle length is not greater than the width of the strips, can be used to design a Monte Carlo-style method for approximating the number $\pi$.</p>
+<p><img alt="Buffon Needle" src="./files/images/Buffon_needle.gif"/></p>
+<p>Let $l$ be the length of the needle and $t$ the distance between two lines. We then ask the question
+what is the probability that the needle dropped will cross a line. Let $x$ be the distance from the center 
+of the needle to the closest line and $\theta$ the acute angle (less than 90) of the needle and that line.
+The normalized probability density of $x$ being anywhere between $[0,t/2]$ is $2/t$. 
+Similarly the probability density of $\theta$ being between $[0, \pi/2]$ is $2/\pi$.
+The joint probability is $\frac{4}{t\pi}$.</p>
+<p>If the length of the needle is smaller than the interline distance then the probability 
+of crossing the line is given by the integral of the joint probability density </p>
+<p>$$ P = \int_{\theta=0}^{pi/2} \int_{x=0}^{l/2 \, \sin\theta} \frac{4}{t\pi} d\theta \, dx  = \frac{2l}{t \pi} $$</p>
+<p>In this simple case, one can solve for $\pi$:</p>
+<p>$$ \pi = \frac{2 \,l }{t \,P} $$</p>
+<p>Therefore, if we conduct an experiment to estimate $P$, we will also have an estimate for $\pi$. </p>
+<p>For example, suppose we throw $n$ needles and we find that a subset $m$ of those
+cross a line, then $P=m/n$, or $\pi =  \frac{2 \, l \, n}{t \, m}$</p>
 </div>
-<p>Let <span class="math">\(l\)</span> be the length of the needle and <span class="math">\(t\)</span> the distance between two lines. We then ask the question what is the probability that the needle dropped will cross a line. Let <span class="math">\(x\)</span> be the distance from the center of the needle to the closest line and <span class="math">\(\theta\)</span> the acute angle (less than 90) of the needle and that line. The normalized probability density of <span class="math">\(x\)</span> being anywhere between <span class="math">\([0,t/2]\)</span> is <span class="math">\(2/t\)</span>. Similarly the probability density of <span class="math">\(\theta\)</span> being between <span class="math">\([0, \pi/2]\)</span> is <span class="math">\(2/\pi\)</span>. The joint probability is <span class="math">\(\frac{4}{t\pi}\)</span>.</p>
-<p>If the length of the needle is smaller than the interline distance then the probability of crossing the line is given by the integral of the joint probability density</p>
-<p><span class="math">\[ P = \int_{\theta=0}^{pi/2} \int_{x=0}^{l/2 \, \sin\theta} \frac{4}{t\pi} d\theta \, dx  = \frac{2l}{t \pi} \]</span></p>
-<p>In this simple case, one can solve for <span class="math">\(\pi\)</span>:</p>
-<p><span class="math">\[ \pi = \frac{2 \,l }{t \,P} \]</span></p>
-<p>Therefore, if we conduct an experiment to estimate <span class="math">\(P\)</span>, we will also have an estimate for <span class="math">\(\pi\)</span>.</p>
-<p>For example, suppose we throw <span class="math">\(n\)</span> needles and we find that a subset <span class="math">\(m\)</span> of those cross a line, then <span class="math">\(P=m/n\)</span>, or <span class="math">\(\pi =  \frac{2 \, l \, n}{t \, m}\)</span></p>
 </div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="monte-carlo">2. Monte Carlo</h2>
-<p>The term <strong>Monte Carlo</strong> really comes from the randomness inherent in the method. It was invented by Metropolis and popularized by the pioneers in the field: Metropolis, Ulam, Fermi, von Neumann, in 40's - 50's.</p>
-<p>The most common use for Monte Carlo methods is the evaluation of integrals. This is also the basis of Monte Carlo simulations (which are actually integrations). The basic principles hold true in both cases.</p>
-<p>The basic idea of the Monte Carlo integration becomes clear from the ``surviving in the desert" example. In other words integrating the area of an irregular domain: Throw rocks in the air, i.e. choose points randomly within the rectangular box</p>
-<p><span class="math">\[ \frac{A}{A_{box}} = \frac{\mbox{  # hits inside area}}{\mbox{  # hits inside box}} \]</span></p>
-<div class="figure">
-<img alt="Monte Carlo" src="./files/images/MonteCarlo.png"/><p class="caption">Monte Carlo</p>
+<h2 id="2-monte-carlo">2. Monte Carlo</h2>
+<p>The term <strong>Monte Carlo</strong> really comes from the randomness inherent in the
+method. It was invented by Metropolis and popularized by the pioneers in the
+field: Metropolis, Ulam, Fermi, von Neumann, in 40's - 50's.</p>
+<p>The most common use for Monte Carlo methods is the evaluation of integrals. This is
+also the basis of Monte Carlo simulations (which are actually integrations). The basic
+principles hold true in both cases. </p>
+<p>The basic idea of the Monte Carlo integration becomes clear
+from the  ``surviving in the desert"  example. In other words 
+integrating the area of an irregular domain:
+Throw rocks in the air, i.e. choose points randomly within the rectangular box</p>
+<p>$$ \frac{A}{A_{box}} = \frac{\mbox{  # hits inside area}}{\mbox{  # hits inside box}} $$</p>
+<p><img alt="Monte Carlo" src="./files/images/MonteCarlo.png"/></p>
+<h3 id="example-calculate-the-area-of-a-circle-">Example: Calculate the area of a circle.</h3>
+<p>What is the area of circle with radius one? Obviously we know the right answer to be $\pi$, calculate $\pi$ given that. </p>
 </div>
-<h3 id="example-calculate-the-area-of-a-circle.">Example: Calculate the area of a circle.</h3>
-<p>What is the area of circle with radius one? Obviously we know the right answer to be <span class="math">\(\pi\)</span>, calculate <span class="math">\(\pi\)</span> given that.</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [2]:
 </div>
@@ -250,9 +281,9 @@ In [2]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 Area= 12.5968 pi= 3.1492
@@ -260,7 +291,7 @@ Area= 12.5968 pi= 3.1492
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAd8AAAHfCAYAAAARANJYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8E2X+wPFPzrZpmzRpS++7peWqIAiigCCCKOC6KvzA
@@ -4062,39 +4093,65 @@ XyIiIpkxfImIiGT2/6ubYV4JAt3nAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="monte-carlo-inegration">3. Monte Carlo inegration</h2>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3-monte-carlo-inegration">3. Monte Carlo inegration</h2>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="mean-value-theorem">Mean-value theorem</h3>
 <p>Consider 1-dimensional definite integral:</p>
-<p><span class="math">\[ I = \int_{a}^{b} f(x) \, dx \]</span></p>
+<p>$$ I = \int_{a}^{b} f(x) \, dx $$</p>
 <p>Recall that:</p>
-<p><span class="math">\[ \langle f \rangle = \frac{ \int_{\omega} f(x) dx }{ \int_{\omega} dx } \]</span></p>
-<p>where <span class="math">\(\omega\)</span> defines the coverage. Let <span class="math">\(\int_{\omega} dx =V\)</span> then</p>
-<p><span class="math">\[ \int_{a}^{b} f(x) \, dx = V \langle f \rangle   \]</span></p>
-<p>The integral can be determined by the average value of the integrand <span class="math">\(f(x)\)</span> in the range of <span class="math">\(x\)</span>. To determine this average, we choose the <span class="math">\(x_i\)</span> at random and sample the value of <span class="math">\(f(x)\)</span>. For the one-dimensional integral above, the estimate <span class="math">\(\hat{I}\)</span> of the integral in the sample mean method is given by</p>
-<p><span class="math">\[\hat{I} = V \langle f \rangle  \approx V \frac{1}{N} \sum_{i=1}^{N} f(x_i) \]</span></p>
-<p>and this estimation becomes exact as <span class="math">\(N \rightarrow \infty\)</span> as</p>
-<p><span class="math">\[ \langle f \rangle = \lim_{N\rightarrow \infty} \sum_{i=1}^{N} f(x_i) \]</span></p>
+<p>$$ \langle f \rangle = \frac{ \int_{\omega} f(x) dx }{ \int_{\omega} dx } $$</p>
+<p>where $\omega$ defines the coverage. Let $\int_{\omega} dx =V $ then </p>
+<p>$$ \int_{a}^{b} f(x) \, dx = V \langle f \rangle   $$</p>
+<p>The integral can be determined by the average value of the integrand
+$f(x)$ in the range of $x$. 
+To determine this average, we choose the $x_i$ at random  and sample the value of $f(x)$. For the one-dimensional integral above, the estimate $\hat{I}$ of the integral in the sample mean method is given by</p>
+<p>$$\hat{I} = V \langle f \rangle  \approx V \frac{1}{N} \sum_{i=1}^{N} f(x_i) $$</p>
+<p>and this estimation becomes exact as $N \rightarrow \infty$ as </p>
+<p>$$ \langle f \rangle = \lim_{N\rightarrow \infty} \sum_{i=1}^{N} f(x_i) $$</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="hit-or-miss-method">Hit or miss method</h3>
-<p>We can of course throw rocks in a box surrounding the function but this is not the most efficient way (more on this later!)</p>
-<p><span class="math">\[ \hat{I} = \frac{N_{inside}}{N} A \]</span></p>
-<p>as we already demonstrated above.</p>
-<div class="figure">
-<img alt="rocks in a box" src="./files/images/MonteCarlo2.png"/><p class="caption">rocks in a box</p>
+<p>We can of course throw rocks in a box surrounding the 
+function but this is not the most efficient way (more on this later!)</p>
+<p>$$ \hat{I} = \frac{N_{inside}}{N} A $$ </p>
+<p>as we already demonstrated above. </p>
+<p><img alt="rocks in a box" src="./files/images/MonteCarlo2.png"/></p>
 </div>
 </div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="example.">Example.</h3>
-<p><strong>Calculate the integral <span class="math">\(I= \int_{2}^{3} [x^2 + 4 \, x \,\sin(x)] \, dx.\)</span></strong></p>
-<p>We know from calculus that the anti-derivative is <span class="math">\[ x^3/3 + 4\sin(x) -4x\cos(x). \]</span></p>
-<p>To solve this using MC, we simply draw <span class="math">\(N\)</span> random numbers from 2 to 3 and then take the average of all the values <span class="math">\(f(x)=x^2 + 4 \, x \,\sin(x)\)</span> and normalized over the volume; this case the volume is 1 (3-2=1).</p>
+<h3 id="example-">Example.</h3>
+<p><strong>Calculate the integral $ I= \int_{2}^{3} [x^2 + 4 \, x \,\sin(x)] \, dx. $</strong></p>
+<p>We know from calculus that the anti-derivative is 
+$$ x^3/3 + 4\sin(x) -4x\cos(x). $$ </p>
+<p>To solve this using MC, we simply draw $N$ random numbers from 2 to 3 and then take the average of all the values $f(x)=x^2 + 4 \, x \,\sin(x)$ and normalized over the volume; this case the volume is 1 (3-2=1). </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [3]:
 </div>
@@ -4108,8 +4165,8 @@ In [3]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [4]:
 </div>
@@ -4131,9 +4188,9 @@ In [4]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 Monte Carlo estimation= 11.8115738603 Exact number= 11.8113589251
@@ -4144,14 +4201,20 @@ Monte Carlo estimation= 11.8115738603 Exact number= 11.8113589251
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="mutlidimensional-integral.">Mutlidimensional integral.</h3>
-<p>That is nice but how about a multidimensional case?</p>
-<h4 id="example.-calculate-the-two-dimensional-integral-iint-int-fx-y-dx-dy-where-fxy-x2-y2">Example. Calculate the two dimensional integral <span class="math">\(I=\int \int f(x, y) dx dy\)</span> where <span class="math">\(f(x,y) = x^2 +y^2\)</span></h4>
-<p>over the region deﬁned by the condition <span class="math">\(x^2 +y^2 ≤ 1\)</span></p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="mutlidimensional-integral-">Mutlidimensional integral.</h3>
+<p>That is nice but how about a multidimensional case? </p>
+<h4 id="example-calculate-the-two-dimensional-integral-0-where-1-">Example. Calculate the two dimensional integral $I=\int \int f(x, y) dx dy$ where $f(x,y) = x^2 +y^2$</h4>
+<p>over the region deﬁned by the condition $x^2 +y^2 ≤ 1$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [5]:
 </div>
@@ -4161,8 +4224,8 @@ In [5]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [6]:
 </div>
@@ -4182,9 +4245,9 @@ In [6]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 I= 1.58435063461 actual 1.57079632679
@@ -4195,12 +4258,18 @@ I= 1.58435063461 actual 1.57079632679
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="monte-carlo-as-a-function-of-number-of-samples">Monte-Carlo as a function of number of samples</h3>
-<p>How does the accuracy depends on the number of points(samples)? Lets try the same 1-D integral <span class="math">\(I= \int_{2}^{3} [x^2 + 4 \, x \,\sin(x)] \, dx\)</span> as a function of the number of points.</p>
+<p>How does the accuracy depends on the number of points(samples)? Lets try the same 1-D integral $ I= \int_{2}^{3} [x^2 + 4 \, x \,\sin(x)] \, dx $ as a function of the number of points. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [7]:
 </div>
@@ -4226,9 +4295,9 @@ In [7]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stderr">
 <pre>
 -c:10: RuntimeWarning: invalid value encountered in double_scalars
@@ -4236,7 +4305,7 @@ In [7]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_area"><div class="prompt output_prompt">
     Out[7]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -4244,7 +4313,7 @@ In [7]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZYAAAEPCAYAAABhkeIdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJztnXtcVNX6/z8DjICAF9AQgUQBBRWJBM3KpFJRS1IrM009
@@ -4610,11 +4679,17 @@ IAiCcCgkLARBEIRDIWEhCIIgHMr/Bx9wU8//WNImAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Obviously this depends on the number of <span class="math">\(N\)</span> as <span class="math">\(1/\sqrt{N}\)</span>.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Obviously this depends on the number of $N$ as $1/\sqrt{N}$. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [7]:
 </div>
@@ -4624,15 +4699,27 @@ In [7]:
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="errors-in-mc">4. Errors in MC</h2>
-<p>The Monte Carlo methods yield approximate answers whose accuracy depends on the number of draws. So far, we have used our knowledge of the exact value of various integrals to determine that the error in the Monte Carlo method approaches zero as approximately <span class="math">\(1/\sqrt{N}\)</span> for large <span class="math">\(N\)</span>, where <span class="math">\(N\)</span> is the number of trials. In the following, we will ﬁnd how to estimate the error when the exact answer is unknown. The <span class="math">\(N\)</span> dependence of the error is independent of the nature of the integrand and, most importantly, independent of the number of dimensions.</p>
-<p>Consider the Monte Carlo evaluation of the integral we saw above <span class="math">\(f(x)=x^2 + 4 \, x \,\sin(x)\)</span> in the interval <span class="math">\([2,3]\)</span> which takes the value 11.8113589251. We can estimate this as we did above example by comparing to the exact value. How can we estimate the error if the exact result is unknown? How can we know if <span class="math">\(N = 10^5\)</span> trials is sufficient to achieve the desired accuracy? Of course, we cannot answer these questions deﬁnitively because if the actual error in <span class="math">\(\hat{I}\)</span> were known, we could correct it by the required amount and obtain <span class="math">\(I\)</span>. The best we can do is to calculate the probability that the true value <span class="math">\(I\)</span> is within a certain range centered on <span class="math">\(\hat{I}\)</span>.</p>
-<p>We can do this either analytically or by repeating the experiment <span class="math">\(m\)</span> times and determine an empirical distribution. From that we can estimate the confidence intervals.</p>
-<p>So, lets repeat the same evaluation <span class="math">\(m\)</span> times and check the variance of the estimate.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4-errors-in-mc">4. Errors in MC</h2>
+<p>The Monte Carlo methods yield approximate
+answers whose accuracy depends on the number of draws.
+So far, we have used our knowledge of the exact value of various integrals to determine that the
+error in the Monte Carlo method approaches zero as approximately $1/\sqrt{N}$ for large $N$, where $N$ is the number of trials. In the following, we will ﬁnd how to estimate the error when the exact answer is unknown. The $N$ dependence of the error is independent of the nature of the integrand and, most importantly, independent of the number of dimensions.</p>
+<p> Consider the Monte Carlo evaluation of the integral we saw above 
+$ f(x)=x^2 + 4 \, x \,\sin(x)$  in the interval $[2,3]$ which takes the value 11.8113589251. We can estimate this as we did above example by comparing to the exact value. 
+How can we estimate the error if the exact result is unknown? How can we know if $N = 10^5$ trials is sufficient to achieve the desired accuracy? Of course, we cannot answer these questions deﬁnitively because if the actual error in $\hat{I}$ were known, we could correct it  by the required
+amount and obtain $I$. The best we can do is to calculate the probability that the true value $I$ is within a certain range centered on $\hat{I}$.</p>
+<p>We can do this either analytically or by repeating the experiment $m$ times and determine an empirical distribution. From that we can estimate the confidence intervals. </p>
+<p>So, lets repeat the same evaluation $m$ times and check the variance of the estimate. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [8]:
 </div>
@@ -4657,9 +4744,9 @@ In [8]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 11.8115832001 0.00410598987684
@@ -4667,7 +4754,7 @@ In [8]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYAAAAEPCAYAAABLIROyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAGkZJREFUeJzt3X9s1PUdx/HXldYlhqJF7RV7xCJtLQdt74ajjolpA4UY
@@ -4795,34 +4882,53 @@ SxEAAGApAgAALEUAAICl/g8HFhxINEKFMQAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>One way to obtain an estimate for the error is to make runs of <span class="math">\(N\)</span> trials each. Each run of <span class="math">\(N\)</span> trials yields a mean or measurement that we denote as <span class="math">\(M_a\)</span>. As we shown above (and is expected)these measurements are not equal because each measurement uses a different finite sequence of random numbers and inherently has an error itself. Qualitatively, the magnitude of the differences between the measurements is similar to the actual errors per measurement, and hence these differences are a measure of the error associated with a single measurement. To obtain a quantitative measure of this error, we determine the differences of these measurements using the standard deviation of the means <span class="math">\(\sigma_m\)</span> which is deﬁned as:</p>
-<p><span class="math">\[ \sigma_m^2= \langle M^2 \rangle- \langle M \rangle ^2 \]</span></p>
-<p>where</p>
-<p><span class="math">\[ \langle M \rangle = \frac{1}{m} \sum_{a=1}^{m} M_a \]</span></p>
-<p>and</p>
-<p><span class="math">\[ \langle M^2 \rangle = \frac{1}{m} \sum_{a=1}^{m} M_a^2 \]</span></p>
-<p>Although <span class="math">\(\sigma_a\)</span> gives an estimate of the probable error, this method of obtaining <span class="math">\(\sigma_a\)</span> by making additional measurements is impractical because we could have combined the additional measurements to make a better estimate.</p>
-<p>One can show that:</p>
-<p><span class="math">\[ \sigma_m^2 \approx \frac{\sigma^2}{N} \]</span></p>
-<p>where</p>
-<p><span class="math">\[ \sigma^2= \langle f^2 \rangle - \langle f \rangle ^2 \]</span></p>
-<p>which is the actual variance of the function (this will become very important later)</p>
-<p>Finally: <span class="math">\[ \sigma_m^2 \approx \frac{\langle f^2 \rangle - \langle f \rangle ^2 }{N} \]</span></p>
-<p>Therefore, in the Monte Carlo integration using <span class="math">\(N\)</span> samples, the error is</p>
-<p><span class="math">\[ \sigma_I =  \sqrt{\frac{\langle f^2\rangle- \langle f\rangle^2}{N}} .\]</span></p>
-<p>which is the same for any dimensional space.</p>
-<p>One way to verify the relation is to divide the initial measurement of <span class="math">\(N\)</span> trials into <span class="math">\(s\)</span> subsets. This procedure does not require additional measurements. We denote the mean value of <span class="math">\(f(x_i)\)</span> in the <span class="math">\(k\)</span>th subset by <span class="math">\(S_k\)</span>. As an example, we divide the 10,000 trials of the ﬁrst measurement into <span class="math">\(s = 10\)</span> subsets of <span class="math">\(N/s = 1000\)</span> trials each. A reasonable candidate for a measure of the error is the standard deviation of the means of each subset. We denote this quantity as <span class="math">\(\sigma_s\)</span> where</p>
-<p><span class="math">\[ \sigma_s^2 =     \langle S \rangle ^2 −  \langle S ^2 \rangle \]</span></p>
-<p>where the averages now are over the subsets. Obviously we would like to deﬁne an error estimate that is independent of how we subdivide the data. This quantity is not <span class="math">\(\sigma_s\)</span> but but the ratio <span class="math">\(\sigma_s/\sqrt{s}\)</span> and when <span class="math">\(s\)</span> goes to <span class="math">\(n\)</span> we have the required results.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One way to obtain an estimate for the error is to make  runs of $N$ trials each. Each run of $N$ trials yields a mean or measurement that we denote as $M_a$. As we shown above (and is expected)these measurements are not equal because each measurement uses a different finite sequence of random
+numbers and inherently has an error itself. Qualitatively, the magnitude of
+the differences between the measurements is similar to the actual errors per measurement, and hence these differences are a measure of the error associated with a single measurement. To obtain a quantitative measure
+of this error, we determine the differences of these measurements using the standard deviation of the means $\sigma_m$ which is deﬁned as:</p>
+<p>$$ \sigma_m^2= \langle M^2 \rangle- \langle M \rangle ^2 $$</p>
+<p>where </p>
+<p>$$ \langle M \rangle = \frac{1}{m} \sum_{a=1}^{m} M_a $$</p>
+<p>and</p>
+<p>$$ \langle M^2 \rangle = \frac{1}{m} \sum_{a=1}^{m} M_a^2 $$</p>
+<p>Although $\sigma_a$ gives an estimate of the probable error, this method of obtaining $\sigma_a$ by making additional measurements is impractical because we could have combined the additional measurements to make a better estimate.</p>
+<p>One can show that:</p>
+<p>$$ \sigma_m^2 \approx \frac{\sigma^2}{N} $$</p>
+<p>where </p>
+<p>$$ \sigma^2= \langle f^2 \rangle - \langle f \rangle ^2 $$</p>
+<p>which is the actual variance of the function (this will become very important later) </p>
+<p>Finally:
+$$ \sigma_m^2 \approx \frac{\langle f^2 \rangle - \langle f \rangle ^2 }{N} $$</p>
+<p>Therefore, in the Monte Carlo integration using $N$ samples, the error is</p>
+<p>$$ \sigma_I =  \sqrt{\frac{\langle f^2\rangle- \langle f\rangle^2}{N}} .$$</p>
+<p>which is the same for any dimensional space. </p>
+<p>One way to verify the relation  is to divide the initial measurement of $N$ trials into $s$ subsets. This procedure does not require additional measurements. We denote the mean value of
+$f(x_i)$ in the $k$th subset by $S_k$. As an example, we divide the 10,000 trials of the ﬁrst measurement into $s = 10$ subsets of $N/s = 1000$ trials each.  A reasonable candidate for a measure
+of the error is the standard deviation of the means of each subset. We denote this quantity as $\sigma_s$ where</p>
+<p>$$ \sigma_s^2 = 	\langle S \rangle ^2 −	\langle S ^2 \rangle $$</p>
+<p>where the averages now are over the subsets. Obviously we would like to
+deﬁne an error estimate that is independent of how we subdivide the data. This quantity is not $\sigma_s$ but but the ratio $\sigma_s/\sqrt{s}$ and when $s$ goes to $n$ we have the required results. </p>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="example-errors-on-a-d-dimensional-integral">Example: Errors on a d-dimensional integral</h3>
 <p>We integrate:</p>
-<p><span class="math">\[ g(x_1,x_2...x_d) = (\sum_{i=1}^{d} x_i)^2 \]</span></p>
+<p>$$ g(x_1,x_2...x_d) = (\sum_{i=1}^{d} x_i)^2 $$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [9]:
 </div>
@@ -4845,8 +4951,8 @@ In [9]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [10]:
 </div>
@@ -4861,9 +4967,9 @@ In [10]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXkAAAEACAYAAABWLgY0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXlUVHee8P1hcUPWooolUeOOuMUlRo0bLiDKpqCIG+lO
@@ -5359,22 +5465,36 @@ QgwYhTwhhBgwCnlCCDFgFPKEEGLAKOQJIcSAUcgTQogB+/8p6SPTP76S5AAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="importance-sampling">5. Importance Sampling</h2>
-<p>Often the integrand has a very small value on a dominant fraction of the whole integration volume. If the points are chosen evenly in the integration volume, the small minority of the points close to the `peak' give the dominant contribution to the integral.</p>
-<p>Importance sampling: choose the random points so that more points are chosen around the peak, less where the integrand is small.</p>
-<p>For example lets look at the integral</p>
-<p><span class="math">\[ I = \int_V f(x) dV. \]</span></p>
-<p>Choose a distribution <span class="math">\(p(x)\)</span>, which is close to the function <span class="math">\(f(x)\)</span>, but which is simple enough so that it is possible to generate random <span class="math">\(x\)</span>-values from this distribution. The integral can now be re-written as:</p>
-<p><span class="math">\[ I = \int p(x) \frac{f(x)}{p(x)} dV \]</span></p>
-<p>Therefore if we choose random numbers <span class="math">\(x_i\)</span> from distribution <span class="math">\(p(x)\)</span>, we obtain</p>
-<p><span class="math">\[ I = \lim_{N\rightarrow \infty} \frac{1}{N} \sum_{x_{i}\sim p(.)} \frac{f(x_i)}{p(x_i)} \]</span></p>
-<p>Another way of seeing this is since <span class="math">\(f/p\)</span> is flatter than <span class="math">\(f\)</span>, the variance of <span class="math">\(f/p\)</span> is smaller that the variance of <span class="math">\(f\)</span> and therefore the error will be smaller for all <span class="math">\(N\)</span>.</p>
-<h3 id="example-calculate-int_0pi-sinx-x-dx">Example: Calculate <span class="math">\(\int_{0}^{\pi} \sin(x) \, x \, dx\)</span></h3>
-<p>The function has a shape that is similar to Gaussian and therefore we choose here a Gaussian as importance sampling distribution.</p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5-importance-sampling">5. Importance Sampling</h2>
+<p>Often the integrand has a very small value on a dominant fraction of the whole integration volume.
+If the points are chosen evenly in the
+integration volume, the small minority
+of the points close to the `peak' give
+the dominant contribution to the integral.</p>
+<p>Importance sampling: choose the random
+points so that more points are chosen around
+the peak, less where the integrand is small.</p>
+<p>For example lets look at the integral</p>
+<p>$$ I = \int_V f(x) dV. $$</p>
+<p>Choose a distribution $p(x)$, which is close to the function $f(x)$, but which is simple
+enough so that it is possible to generate random $x$-values from this distribution.
+The integral can now be re-written as:</p>
+<p>$$ I = \int p(x) \frac{f(x)}{p(x)} dV $$</p>
+<p>Therefore if we choose random numbers $x_i$ from distribution $p(x)$, we obtain</p>
+<p>$$ I = \lim_{N\rightarrow \infty} \frac{1}{N} \sum_{x_{i}\sim p(.)} \frac{f(x_i)}{p(x_i)} $$</p>
+<p>Another way of seeing this is since $f/p$ is flatter than $f$, the variance of $f/p$ is smaller that the variance of $f$ and therefore the error will be smaller for all $N$.</p>
+<h3 id="example-calculate-13-">Example: Calculate $\int_{0}^{\pi} \sin(x) \, x \, dx $</h3>
+<p>The function has a shape that is similar to Gaussian and therefore we choose here a Gaussian as importance sampling distribution. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [11]:
 </div>
@@ -5393,8 +5513,8 @@ In [11]:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [12]:
 </div>
@@ -5461,9 +5581,9 @@ In [12]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[12]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -5471,7 +5591,7 @@ In [12]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABA0AAAHuCAYAAAD0lfVmAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlYVHX///HngEu4AMMiioJkuFFulVvqHeatN7nlSuKG
@@ -6098,31 +6218,40 @@ AGBO+dIAAAAAKPJPAwAAAKBIaQAAAAAUKQ0AAACAIqUBAAAAUKQ0AAAAAIqUBgAAAECR0gAAAAAo
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="rejection-method">6. Rejection Method</h2>
+<h2 id="6-rejection-method">6. Rejection Method</h2>
 <h3 id="basic-rejection-sampling">Basic Rejection Sampling</h3>
-<p>A simple method for generating random points with distribution <span class="math">\(w(x)\)</span> was deduced by von Neumann. The idea is extremely simple. In one dimension, if you have a function with known everywhere on a specific domaing (i.e. <span class="math">\([x_{min}\, x_{max}]\)</span> and with a known supremum <span class="math">\(M\)</span> over that domain, you can sample from it as follows:</p>
+<p>A simple method for generating random points with distribution
+$w(x)$ was deduced by  von Neumann. The idea is extremely 
+simple. In one dimension, if you have a function with known everywhere on a specific domaing (i.e. $[x_{min}\, x_{max}]$ and with a known supremum $M$ over that domain, you can sample from it as follows:</p>
 <div id="picture">
 <figure>
 <img align="middle" src="images/Rejection.png" width="400">
-<figcaption>  
-Basic rejection method
-</figcaption>
+<figcaption>  Basic rejection method</figcaption>
 </img></figure>
 </div>
-<p>One draws a pair of random numbers, <span class="math">\(x,y\)</span> and then compares if <span class="math">\(y\)</span> is above or below the target distribution <span class="math">\(w(x)\)</span>.</p>
+<p>One draws a pair of random numbers, $x,y$ and 
+then compares if $y$ is above or below the target distribution
+$w(x)$.</p>
 <ul>
-<li>Draw <span class="math">\(x\)</span> uniformly from <span class="math">\([x_{min}\, x_{max}]\)</span></li>
-<li>Draw <span class="math">\(y\)</span> uniformly from [0,<span class="math">\(M\)</span>]</li>
-<li>if <span class="math">\(y\)</span> &lt; w(<span class="math">\(x\)</span>), accept the sample</li>
+<li>Draw $x$ uniformly from $[x_{min}\, x_{max}]$</li>
+<li>Draw $y$ uniformly from [0,$M$]</li>
+<li>if $y$ &lt; w($x$), accept the sample</li>
 <li>otherwise reject it</li>
 <li>repeat</li>
 </ul>
 <p><strong>Example</strong></p>
-<p>The following code produces samples that follow the distribution <span class="math">\(P(x)=e^{-x}\)</span> for <span class="math">\(x=[0,10]\)</span> and generates a histogram of the sampled distribution.</p>
+<p>The following code produces samples that follow the distribution $P(x)=e^{-x}$ 
+  for $x=[0,10]$ and generates a histogram of the sampled distribution. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [13]:
 </div>
@@ -6176,9 +6305,9 @@ In [13]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 99552 10000
@@ -6186,7 +6315,7 @@ In [13]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_area"><div class="prompt output_prompt">
     Out[13]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -6194,7 +6323,7 @@ In [13]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAEACAYAAAC08h1NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X1cVHXe//HXKKipgHg36IyGCoqjqJhhdeWGIqSuspau
@@ -6388,28 +6517,35 @@ SUVORK5CYII=
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="rejection-sampling-with-steroids">Rejection Sampling with Steroids</h3>
-<p>The simple rejection sampling method above suffers from some fundamental problems. For our simple example, it's quite easy to determine the supremum. In practice, while you may know how to quickly (i.e. constant time) evaluate your function everywhere on the domain of interest, finding a bound very close to the supremum may not be a feasible calculation. In addition, even if you find a tight bound for the supremum, basic rejection sampling will still be very inefficient in that you will reject many samples (especially in low density regions or ldrs). While other techniques will be required to really address this problem, it is still possible to somewhat do a more efficient job while still taking advantage of the simplicity of rejection sampling. Our modified technique will introduce a <em>proposal density</em> <span class="math">\(g(x)\)</span>. The proposal density will have the following characteristics:</p>
+<p>The simple rejection sampling method above suffers from some fundamental problems.  For our simple example, it's quite easy to determine the supremum.  In practice, while you may know how to quickly (i.e. constant time) evaluate your function everywhere on the domain of interest, finding a bound very close to the  supremum may not be a feasible calculation.  In addition, even if you find a tight bound for the supremum, basic rejection sampling will still be very inefficient in that you will reject many samples (especially in low density regions or ldrs).  While other techniques will be required to really address this problem, it is still possible to somewhat do a more efficient job while still taking advantage of the simplicity of rejection sampling.  Our modified technique will introduce a <em>proposal density</em> $g(x)$.  The proposal density will have the following characteristics:</p>
 <ul>
-<li><span class="math">\(g(x)\)</span> is easy to sample from and (calculate the pdf)</li>
-<li>Some <span class="math">\(M\)</span> exists so that <span class="math">\(M \, g(x) &gt; f(x)\)</span> in your entire domain of interest</li>
-<li>ideally <span class="math">\(g(x)\)</span> will be somewhat close to <span class="math">\(f\)</span> so that you'll sample more in high density regions and much less in low density regions</li>
-<li>N.B. an optimal value for M is the supremum over your domain of interest of <span class="math">\(f/g\)</span></li>
+<li>$g(x)$ is easy to sample from and (calculate the pdf)</li>
+<li>Some $M$ exists so that $M \, g(x) &gt; f(x)$ in your entire domain of interest</li>
+<li>ideally $g(x)$ will be somewhat close to $f$ so that you'll sample more in high density regions  and much less in low density regions</li>
+<li>N.B. an optimal value for M is the supremum over your domain of interest of $f/g$</li>
 </ul>
 <p>Once you've picked a proposal distribution g, your modified rejection sampling technique is as follows:</p>
 <ul>
-<li>Draw <span class="math">\(x\)</span> from your proposal distribution <span class="math">\(g(x)\)</span></li>
-<li>Draw <span class="math">\(y\)</span> uniformly from [0,1]</li>
-<li>if <span class="math">\(y\)</span> &lt; w(<span class="math">\(x\)</span>)/<span class="math">\(M g(x)\)</span>, accept the sample</li>
+<li>Draw $x$ from your proposal distribution $g(x)$</li>
+<li>Draw $y$ uniformly from [0,1]</li>
+<li>if $y$ &lt; w($x$)/$M g(x)$, accept the sample</li>
 <li>otherwise reject it</li>
 <li>repeat</li>
 </ul>
 <p><strong>Example</strong></p>
-<p>The following code produces samples that follow the distribution <span class="math">\(P(x)=e^{-x}\)</span> for <span class="math">\(x=[0,10]\)</span> and generates a histogram of the sampled distribution.</p>
+<p>The following code produces samples that follow the distribution $P(x)=e^{-x}$ 
+  for $x=[0,10]$ and generates a histogram of the sampled distribution. </p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [14]:
 </div>
@@ -6467,9 +6603,9 @@ In [14]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 24129 10000
@@ -6477,7 +6613,7 @@ In [14]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_area"><div class="prompt output_prompt">
     Out[14]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -6485,7 +6621,7 @@ In [14]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAEACAYAAAC08h1NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtYVQWi9/HvArbmBRRNNsrWKEAQRWUyzMqJUhx1lDR7
@@ -6663,23 +6799,48 @@ NtPhcJivvvqqefToUXPUqFFmRESEmZCQYB47dqzedegCLhERL+MWu3pERKTtqPhFRLyMil9ExMuo
 </div>
 </div>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="inverse-transform">7. Inverse Transform</h2>
-<p>Consider a change of variables <span class="math">\(r\rightarrow x\)</span> such as if <span class="math">\(r\)</span> are uniformly distributed, <span class="math">\(u(r)=const\)</span>, then the probability distribution <span class="math">\(w(x)\)</span> is what we desire. For the probability to be conserved on the transformation</p>
-<p><span class="math">\[ u(r) \, dr = w(x) \, dx \Rightarrow w(x) = \left| \frac{dr}{dx} \right| \, u(r) \]</span></p>
-<p>To find the mapping from <span class="math">\(x\)</span> to <span class="math">\(r\)</span> we calculate the cumulative distribution function (CDF) of both probability distributions, from <span class="math">\(0\)</span> to <span class="math">\(r\)</span> and -<span class="math">\(\infty\)</span> to <span class="math">\(x\)</span> respectively, and since that is not decreasing</p>
-<p><span class="math">\[ \int_{0}^{r} u(r') dr' = r =  \int_{-\infty}^{x} w(x) \, dx =F(x) \]</span></p>
-<p>After the integral of the target function from -<span class="math">\(\infty\)</span> to <span class="math">\(x\)</span> (or the CDF until <span class="math">\(x\)</span>, <span class="math">\(F(x)\)</span>) is evaluated, we solve for <span class="math">\(x\)</span> yielding a new equation <span class="math">\(x=F^{-1}(r)\)</span>. To generate numbers that follow <span class="math">\(w(x)\)</span> therefore, we draw from the uniform distribution and we apply the transformation <span class="math">\(x=F^{-1}(r)\)</span>.</p>
-<p>For example, lets assume we would like to generate random numbers that follow the exponential distribution <span class="math">\(w(x) = \frac{1}{\lambda} e^{-x/\lambda}\)</span> for <span class="math">\(x\ge0\)</span> and <span class="math">\(w(x)=0\)</span> otherwise. Following the recipe from above</p>
-<p><span class="math">\[ r = \int_{0}^{x} \frac{1}{\lambda} e^{-x'/\lambda} dx'  = 1- e^{-x/\lambda} \]</span></p>
-<p>Solving for <span class="math">\(x\)</span> <span class="math">\[ x = - \lambda \ln (1-r) \]</span></p>
+<div class="input">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="example-draw-from-the-distribution-fx-sim-exp-x">Example: Draw from the distribution <span class="math">\(f(x) \sim \exp{(-x)}\)</span></h4>
-<p>The following code will produce numbers that follow the <span class="math">\(\exp{(-x)}\)</span> distribution. The figure generated by code below shows the resulting histogram of the generated numbers compared to the actual <span class="math">\(\exp{(-x)}\)</span>.</p>
+<h2 id="7-inverse-transform">7. Inverse Transform</h2>
+<p>Consider a change of variables $r\rightarrow x$ such as if $r$ are
+uniformly distributed, $u(r)=const$, then the probability distribution $w(x)$ is what we desire.
+For the probability to be conserved on the transformation</p>
+<p>$$ u(r) \, dr = w(x) \, dx \Rightarrow w(x) = \left| \frac{dr}{dx} \right| \, u(r) $$</p>
+<p>To find the mapping from $x$ to $r$ we calculate the cumulative 
+distribution function (CDF) of both probability distributions, from $0$ to $r$ and -$\infty$ to $x$ respectively, and since that is not decreasing </p>
+<p>$$ \int_{0}^{r} u(r') dr' = r =  \int_{-\infty}^{x} w(x) \, dx =F(x) $$</p>
+<p>After the integral of the target function from -$\infty$ to $x$ (or the CDF until $x$, $F(x)$) is 
+evaluated, we solve for $x$ yielding a new equation $x=F^{-1}(r)$. 
+To generate numbers that follow
+$w(x)$ therefore, we draw from the uniform distribution and 
+we apply the transformation $x=F^{-1}(r)$. </p>
+<p> For example, lets assume we would like
+to generate random numbers that follow the exponential distribution
+$w(x) = \frac{1}{\lambda} e^{-x/\lambda}$ for $x\ge0$ and $w(x)=0$ 
+otherwise. Following the recipe from above</p>
+<p>$$ r = \int_{0}^{x} \frac{1}{\lambda} e^{-x'/\lambda} dx'  = 1- e^{-x/\lambda} $$ </p>
+<p>Solving for $x$ 
+$$ x = - \lambda \ln (1-r) $$</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="example-draw-from-the-distribution-0-">Example: Draw from the distribution $f(x) \sim \exp{(-x)}$</h4>
+<p>The following code will produce numbers that follow the $\exp{(-x)}$ distribution. The figure
+generated by code below shows the resulting histogram of the generated numbers
+compared to the actual $\exp{(-x)}$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [15]:
 </div>
@@ -6727,9 +6888,9 @@ In [15]:
 </pre></div>
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt output_prompt">
     Out[15]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 <pre>
@@ -6737,7 +6898,7 @@ In [15]:
 </pre>
 </div>
 </div>
-<div class="hbox output_area"><div class="prompt"></div>
+<div class="output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXUAAAEACAYAAABMEua6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtcVXXa///XRvCAgoLCJtnaLkARD0F5yMoGRXDKJJ28
@@ -6947,41 +7108,82 @@ AAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="box-muller-algorithm">Box-Muller algorithm</h3>
-<p>In many cases the integral to calculate the CDF may not be easy to calculate analytically and we need to come with clever algorithms. For example there is no closed form formula for the integral of the normal distribution <span class="math">\(I=\frac{1}{2\pi} \int_{-\infty}^{x} e^{-x'^2/2}dx'\)</span>.</p>
-<p>The Box Muller method is a brilliant trick to overcome this by producing two independent standard normals from two independent uniforms. It is based on the familiar trick for calculating this integral:</p>
-<p><span class="math">\[ I^2 = \int_{-\infty}^{\infty} e^{-x'^2/2}dx' \int_{-\infty}^{\infty} e^{-y'^2/2}dy'  = \int_{-\infty}^{\infty}  \int_{-\infty}^{\infty}  e^{(x^2+y^2)/2} dx dy \]</span></p>
-<p>This integral can be calculated using polar coordinates <span class="math">\(x = r \cos(\theta), y = r \sin(\theta)\)</span> with area element <span class="math">\(dxdy = rdrd\theta\)</span>, so that</p>
-<p><span class="math">\[ I^2 = \int_{r=0}^{\infty} \int_{\theta=0}^{2\pi} e^{-r^2/2} r dr d\theta = 2\pi \int_{r=0}^{\infty} e^{-r^2/2} r dr \]</span></p>
-<p>Substituting <span class="math">\(s=r^2/2\)</span> gives <span class="math">\(ds=r dr\)</span> and</p>
-<p><span class="math">\[ I^2 = 2\pi\int_{s=0}^{\infty} e^{-s} ds = 2\pi \]</span></p>
-<p>Now, lets look at the integral of the distribution on <span class="math">\(r\)</span> where <span class="math">\(r\)</span> is defined above and then use the inverse trick.</p>
-<p><span class="math">\[ U =\int_{r'=0}^{r} \int_{\theta=0}^{2\pi}  \frac{1}{2\pi} e^{-r'2/2} \, r'  dr' d\theta  = I^2 (x,y) \]</span></p>
-<p>Using the same variable transformation <span class="math">\(s=r^2/2\)</span> we can show</p>
-<p><span class="math">\[ U = \int_{s=0}^{r^2/2} e^{-s}\, ds = 1 - e^{-r^2/2} \]</span></p>
-<p>where <span class="math">\(U\)</span> is the uniformly distributed variable. (We have changed the notation since <span class="math">\(r\)</span> is now used for radius). Notice that since <span class="math">\(r\)</span> goes from <span class="math">\([0,\infty]\)</span>, <span class="math">\(U\)</span> is uniformly distributed on <span class="math">\([0,1]\)</span>, and no rescaling is required.</p>
-<p>We can solve for <span class="math">\(r\)</span> but it is easier first to observe that <span class="math">\(U_1 = 1-U\)</span> is also uniformly distributed. Therefore we can solve the following equation:</p>
-<p><span class="math">\[  1 - e^{-r^2/2} = 1-U_1 \]</span> and find <span class="math">\(r\)</span> as a function of <span class="math">\(U_1\)</span>.</p>
-<p><span class="math">\[ r = \sqrt{-2 \ln{U_1}} \]</span></p>
-<p>Also note that <span class="math">\(\theta\)</span> is uniformly distributed from 0 to <span class="math">\(2\pi\)</span> and <span class="math">\[ \theta = 2\pi U_2 \]</span></p>
-<p>Altogether, the Box Muller method takes independent standard uniform random variables <span class="math">\(U1\)</span> and <span class="math">\(U2\)</span> and produces independent standard normals <span class="math">\(x\)</span> and <span class="math">\(y\)</span> using the formulas</p>
-<p><span class="math">\[ \theta = 2\pi U_2 \hspace{1cm} r=\sqrt{- 2\ln{U_1}} \hspace{1cm}  x= r \cos{\theta} \hspace{1cm}  y= r \sin{\theta} \]</span></p>
+<p>In many cases the integral to calculate the CDF may not be easy to calculate analytically
+and we need to come with clever algorithms. For example 
+there is no closed form formula for the integral of the normal distribution
+$ I=\frac{1}{2\pi} \int_{-\infty}^{x} e^{-x'^2/2}dx' $.</p>
+<p>The Box Muller method is a brilliant trick to overcome this by producing two independent standard normals
+from two independent uniforms. It is based on the familiar trick for calculating this integral:</p>
+<p>$$ I^2 = \int_{-\infty}^{\infty} e^{-x'^2/2}dx' \int_{-\infty}^{\infty} e^{-y'^2/2}dy'  = \int_{-\infty}^{\infty}  \int_{-\infty}^{\infty}  e^{(x^2+y^2)/2} dx dy $$</p>
+<p>This  integral can be calculated using polar coordinates $x = r \cos(\theta), y = r \sin(\theta)$ with area element $dxdy = rdrd\theta$, so that</p>
+<p>$$ I^2 = \int_{r=0}^{\infty} \int_{\theta=0}^{2\pi} e^{-r^2/2} r dr d\theta = 2\pi \int_{r=0}^{\infty} e^{-r^2/2} r dr $$</p>
+<p>Substituting $s=r^2/2$ gives $ds=r dr$ and </p>
+<p>$$ I^2 = 2\pi\int_{s=0}^{\infty} e^{-s} ds = 2\pi $$</p>
+<p>Now, lets look at the integral of the distribution on $r$ where $r$ is defined above
+and then use the inverse trick. </p>
+<p>$$ U =\int_{r'=0}^{r} \int_{\theta=0}^{2\pi}  \frac{1}{2\pi} e^{-r'2/2} \, r'  dr' d\theta  = I^2 (x,y) $$</p>
+<p>Using the same variable transformation $s=r^2/2$ we can show </p>
+<p>$$ U = \int_{s=0}^{r^2/2} e^{-s}\, ds = 1 - e^{-r^2/2} $$</p>
+<p>where $U$ is the uniformly distributed variable. (We have changed the notation
+since $r$ is now used for radius). Notice that since $r$ goes from $[0,\infty]$, $U$ is uniformly distributed on $[0,1]$, and no rescaling is required.</p>
+<p>We can solve for $r$
+but it is easier first to observe that $U_1 = 1-U$ is also 
+uniformly  distributed. Therefore we can solve the following equation:</p>
+<p>$$  1 - e^{-r^2/2} = 1-U_1 $$
+and find $r$ as a function of $U_1$. </p>
+<p>$$ r = \sqrt{-2 \ln{U_1}} $$</p>
+<p>Also note that $\theta$ is uniformly distributed from 0 to $2\pi$ and 
+$$ \theta = 2\pi U_2 $$</p>
+<p>Altogether, the Box Muller method takes 
+independent standard uniform random variables $U1$ and $U2$ and produces independent standard normals $x$ and $y$ using the formulas </p>
+<p>$$ \theta = 2\pi U_2 \hspace{1cm} r=\sqrt{- 2\ln{U_1}} \hspace{1cm}  x= r \cos{\theta} \hspace{1cm}  y= r \sin{\theta} $$</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="appendix">APPENDIX</h1>
-<p>We have introduced the concept of randomly throwing stones or randomly selecting pairs. Here we will explore how computers generate random numbers.</p>
-<p>Randomness means lack of correlation. For a sequence of numbers <span class="math">\(r={r_1, r_2, \ldots, r_n}\)</span> we can define randomness as an asymptotic property of the series as <span class="math">\(N \rightarrow \infty\)</span>. Since this is a hopeless task we can test randomness with a various tests described below.</p>
-<p>Long sequences of random numbers are needed in numerous applications, in particular methods which utilize random numbers such as Monte Carlo simulation techniques, stochastic optimization, cryptography calculations that simulate naturally random processes (e.g. thermal motion or radioactive decay). All these methods require fast and reliable random number sources.</p>
-<p>Many physical processes are random by nature and such processes can be used to produce random numbers. Examples are noise in semiconductor devices or throwing a dice. On the other hand computers are deterministic machines and because of that, they can not generate truly random numbers.</p>
-<p>In practice, random numbers are generated by pseudorandom number generators. These are deterministic algorithms, and consequently the generated numbers are only "pseudo-random" and have their limitations. But for many applications, pseudorandom numbers can be successfully used to approximate real random numbers.</p>
-<p>Lets say that the probability of a random number to occur is <span class="math">\(P(r)\)</span> and that means the probability of finding <span class="math">\(r_i\)</span> in the interval <span class="math">\([r_j, r_j+dr]\)</span> is <span class="math">\(P(r)dr\)</span>. A uniform distribution means that P(r) is constant and that means all numbers are equally likely to occur. Not all random sequences are uniform. In other distributions (Normal, Poisson etc) not all numbers are equally likely to occur.</p>
+<p>We have introduced the concept of randomly throwing stones or 
+randomly selecting pairs. Here we will explore how computers generate random numbers. </p>
+<p>Randomness means lack of correlation. For a sequence of numbers $r={r_1, r_2, \ldots, r_n}$ 
+we can define randomness as an asymptotic property of the series as $N \rightarrow \infty$. 
+Since this is a hopeless task we can test randomness with a various tests described below. </p>
+<p>Long sequences of random numbers are needed in numerous applications,
+in particular methods which utilize random numbers such as Monte Carlo simulation techniques, stochastic optimization, cryptography
+calculations that simulate naturally random processes (e.g. thermal motion or radioactive decay). 
+All these methods require fast and reliable random number sources.</p>
+<p>Many physical processes are random by nature and such processes can be used to
+produce random numbers. Examples are noise in semiconductor devices or throwing a dice.
+On the other hand computers are deterministic machines and because of that, they can not generate truly random numbers. </p>
+<p>In practice, random numbers are generated by pseudorandom number generators.
+These are deterministic algorithms, and consequently the generated numbers are only "pseudo-random" and have their limitations. 
+But for many applications, pseudorandom numbers can be successfully used to approximate real random
+numbers.</p>
+<p>Lets say that the probability of a random number to occur is $P(r)$ and that means 
+the probability of finding $r_i$ in the interval $[r_j, r_j+dr]$ is $P(r)dr$. 
+A uniform distribution means that P(r) is constant and that means all numbers are equally likely to occur.
+Not all random sequences are uniform. In other distributions (Normal, Poisson etc) not all numbers are equally likely to occur.</p>
 </div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="random-number-generators">Random Number Generators</h2>
-<p>Once we understand and want to sample or simulate randomness, then in general we'd like to start with a uniform distribution. Not only is this the most practical and common distribution to sample from, but (as much of the lecture explains) once we can sample from the uniform distribution, techniques abound to sample from other distributions.</p>
+<p>Once we understand and want to sample or simulate randomness, then in general we'd like to start with a uniform distribution.  Not only is this the most practical and common distribution to sample from, but (as much of the lecture explains) once we can sample from the uniform distribution, techniques abound to sample from other distributions. </p>
 <h3 id="infinite-coin-flips">Infinite Coin Flips</h3>
-<p>Now the most basic distribution to simulate or sample is the Bernouli. Why? Well, we're very good at flipping coins (or in general discretizing continuous events to get binary results). Once we can flip coin we can simulate a uniform distribution as follows. In order to get a sample <em>a</em> from a uniform distribution</p>
+<p>Now the most basic distribution to simulate or sample is the Bernouli.  Why?  Well, we're very good at flipping coins (or in general discretizing continuous events to get binary results).  Once we can flip coin we can simulate a uniform distribution as follows.  In order to get a sample <em>a</em> from a uniform distribution</p>
 <ul>
 <li>Keep a count <em>n</em> initialized to 0</li>
 <li>Flip a coin <em>c</em></li>
@@ -6991,55 +7193,74 @@ AAAAAElFTkSuQmCC
 </ul>
 <p>We know from real analysis that (with some careful attention to details like potentially discarding all infinitely repeating fractions) we will end up with a uniform sample from [0, 1)</p>
 <h3 id="linear-congruential-generator">Linear Congruential Generator</h3>
-<p>Unfortunately, we're not imortal and don't have infinite time. Moreover, even if we did, we probably would rather spend that time doing things other than simulating <strong>ONE</strong> uniform random variable. Fortunately other, more efficient methods exist to sample from a uniform distribution. One such method is the linear congruential generator.</p>
-<p>The Linear congruential geneator is based on a integer recursive relation</p>
-<p><span class="math">\[ r_{i+1} = (a \, r_i +c) \, {\rm mod} \, M  \]</span></p>
-<p>where <span class="math">\(a, c\)</span> and <span class="math">\(M\)</span> are constants. This generates a sequence <span class="math">\(r_1, r_2, \ldots\)</span> of random integers which are distributed between <span class="math">\([0,M-1]\)</span> (if <span class="math">\(c&gt;0\)</span>) or between <span class="math">\([1,M]\)</span> (if <span class="math">\(c = 0\)</span>). Each <span class="math">\(r_i\)</span> is scaled to the interval <span class="math">\((0,1)\)</span> by dividing by <span class="math">\(M\)</span>. The parameter <span class="math">\(M\)</span> is usually equal or nearly equal to the largest integer of the computer. This determines the period <span class="math">\(P\)</span> of the generator and <span class="math">\(P&lt; M\)</span>. The first number in the sequence <span class="math">\(r_1\)</span> is an input and it is called the <strong>seed</strong>.</p>
-<p>If <span class="math">\(c\neq 0\)</span>, the period of the generator is equal to <span class="math">\(M\)</span> if and only if</p>
+<p>Unfortunately, we're not imortal and don't have infinite time.  Moreover, even if we did, we probably would rather spend that time doing things other than simulating <strong>ONE</strong> uniform random variable.  Fortunately other, more efficient methods exist to sample from a uniform distribution.  One such method is the linear congruential generator.</p>
+<p>The Linear congruential geneator is based on a integer recursive relation </p>
+<p>$$ r_{i+1} = (a \, r_i +c) \, {\rm mod} \, M  $$</p>
+<p>where  $a, c$ and $M$ are constants. This generates a sequence $r_1, r_2, \ldots$ of random
+integers which are distributed between $[0,M-1]$ (if $c&gt;0$) or between $[1,M]$ (if $c = 0$). Each $r_i$
+is scaled to the interval $(0,1)$ by dividing by $M$. The parameter $M$ is usually
+equal or nearly equal to the largest integer of the computer. This determines the period $P$
+of the generator and $P&lt; M$. 
+The first number in the sequence $r_1$ is an input and it is called the <strong>seed</strong>.</p>
+<p>If $c\neq 0$, the period of the generator is equal to $M$ if and only if</p>
 <ul>
-<li><span class="math">\(c\)</span> is relatively prime to <span class="math">\(M\)</span> (find the greatest common divisor)</li>
-<li><span class="math">\(a-1\)</span> is a multiple of every prime number that divides <span class="math">\(M\)</span> and</li>
-<li><span class="math">\(a -1\)</span> is a multiple of 4 if <span class="math">\(M\)</span> is a multiple of 4</li>
+<li>$c$ is relatively prime to $M$ (find the greatest common divisor)</li>
+<li>$a-1$ is a multiple of every prime number that divides $M$ and</li>
+<li>$a -1$ is a multiple of 4 if $M$ is a multiple of 4</li>
 </ul>
-<p>If <span class="math">\(M &gt; 2\)</span> is a prime number, + the maximum possible period is <span class="math">\(M-1\)</span> and + the maximum period is achieved if <span class="math">\(a \,\,{\rm mod} \,\,M \neq 0\)</span> and <span class="math">\(a^{M-1}/q \,\,{\rm mod} \,\, M \neq 1\)</span> for every prime divisor <span class="math">\(q\)</span> of <span class="math">\(M-1\)</span>.</p>
+<p>If $M &gt; 2$ is a prime number,</p>
+<ul>
+<li>the maximum possible period is $M-1$ and</li>
+<li>the maximum period is achieved if $a \,\,{\rm mod} \,\,M \neq 0$ and
+$a^{M-1}/q \,\,{\rm mod} \,\, M \neq 1$  for every prime divisor $q$ of $M-1$.</li>
+</ul>
 <h3 id="properties-of-random-numbers">Properties of Random Numbers</h3>
-<p>In practice, random number generator algorithms are implemented in the computer and the numbers are generated while a computer program is running.</p>
-<p>Computer random number generators produce uniformly distributed numbers in the range <span class="math">\([0,1]\)</span>. We will see below how to generate other distributions starting from the uniform.</p>
+<p>In practice, random number generator algorithms are implemented in the computer and
+the numbers are generated while a computer program is running. </p>
+<p>Computer random number generators produce uniformly distributed 
+numbers in the range $[0,1]$. We will see below how to generate other distributions
+starting from the uniform. </p>
 <p>A 'good' random number generator has the following properties:</p>
 <ul>
-<li>The numbers must have the correct distribution. Since most of the random number generators meant to produce a uniform distributions that means the distribution should be uniform.</li>
-<li>The period of the sequence should be longer than the numbers necessary for the application. All random number generators will repeat the same sequence of numbers eventually, but it is important that the sequence is sufficiently long.</li>
+<li>The numbers must have the correct distribution. Since most of the random number generators
+meant to produce a uniform distributions  that means the distribution should be uniform. </li>
+<li>The period of the sequence should be longer than the numbers necessary for the application. All random number generators will repeat the same sequence of numbers eventually, but it is important
+that the sequence is sufficiently long.</li>
 <li>The sequence is uncorrelated.</li>
 </ul>
-<p>There are many tests that test the quality of the random number generator.</p>
+<p>There are many tests that test the quality of the random number generator. </p>
 <ul>
-<li>Visual inspection. A good test is to plot the consecutive sub series <span class="math">\(r_{i \in {\rm even}},  r_{i \in {\rm odd}}\)</span> as a scatter plot. Figure 1 shows a good random number sequence where Figure 2 shows a sequence with repetition.</li>
+<li>Visual inspection. A good test is to plot the consecutive sub series
+$r_{i \in {\rm even}},  r_{i \in {\rm odd}} $ as a scatter plot. Figure 1 shows a good random number sequence where Figure 2 shows
+a sequence with repetition.</li>
 </ul>
 <div id="picture">
 <figure>
 <img align="middle" src="images/GoodRandom.png" width="400">
-<figcaption> 
-A good random number generator
-</figcaption>
+<figcaption> A good random number generator </figcaption>
 </img></figure>
 </div>
 <div id="picture">
 <figure>
 <img align="middle" src="images/BadRandom.png" width="400">
-<figcaption> 
-A bad random number generator
-</figcaption>
+<figcaption> A bad random number generator </figcaption>
 </img></figure>
 </div>
 <ul>
-<li>Moment tests. The moments of a uniform distribution <span class="math">\[ \frac{1}{N} \sum_{i=1}^{N} r_i^k = \int x^k \, P(x) dx +O(1/\sqrt{N}) \approx \frac{1}{k+1} \]</span> The random sequence should converge to <span class="math">\(1/(k+1)\)</span> as <span class="math">\(N\rightarrow \infty\)</span>. +Correlation test. Check the autocorrelation of the series. This should have no correlation above the noise for all lags.</li>
+<li>Moment tests. The moments of a uniform distribution 
+$$ \frac{1}{N} \sum_{i=1}^{N} r_i^k = \int x^k \, P(x) dx +O(1/\sqrt{N}) \approx \frac{1}{k+1} $$
+The random sequence should converge to $1/(k+1)$ as $N\rightarrow \infty$. 
++Correlation test. Check the autocorrelation of the series. This should 
+have no correlation above the noise for all lags. </li>
 <li>The spectral test. The power spectrum of the series should be flat.</li>
-<li>Diehard Battery of Tests of Randomness. http://stat.fsu.edu/pub/diehard/</li>
-<li>My favorite one. http://www.iro.umontreal.ca/~simardr/testu01/tu01.html</li>
+<li>Diehard Battery of Tests of Randomness. <a href="http://stat.fsu.edu/pub/diehard/">http://stat.fsu.edu/pub/diehard/</a></li>
+<li>My favorite one. <a href="http://www.iro.umontreal.ca/~simardr/testu01/tu01.html">http://www.iro.umontreal.ca/~simardr/testu01/tu01.html</a></li>
 </ul>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
 <div class="prompt input_prompt">
 In [15]:
 </div>

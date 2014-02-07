@@ -49,12 +49,12 @@ import os
 from .mdx_liquid_tags import LiquidTags
 
 import IPython
-if IPython.__version__.split('.')[0] != '1':
-    raise ValueError("IPython version 1.0+ required for notebook tag")
+#if IPython.__version__.split('.')[0] != '1':
+#    raise ValueError("IPython version 1.0+ required for notebook tag")
 
 from IPython import nbconvert
 
-from IPython.nbconvert.filters.highlight import _pygment_highlight
+from IPython.nbconvert.filters.highlight import _pygments_highlight
 from pygments.formatters import HtmlFormatter
 
 from IPython.nbconvert.exporters import HTMLExporter
@@ -63,7 +63,7 @@ from IPython.config import Config
 from IPython.nbformat import current as nbformat
 
 try:
-    from IPython.nbconvert.transformers import Transformer
+    from IPython.nbconvert.preprocessors import Preprocessor
 except ImportError:
     raise ValueError("IPython version 2.0 is not yet supported")
 
@@ -155,14 +155,14 @@ class SliceIndex(Integer):
             return super(SliceIndex, self).validate(obj, value)
 
 
-class SubCell(Transformer):
+class SubCell(Preprocessor):
     """A transformer to select a slice of the cells of a notebook"""
     start = SliceIndex(0, config=True,
                        help="first cell of notebook to be converted")
     end = SliceIndex(None, config=True,
                      help="last cell of notebook to be converted")
 
-    def call(self, nb, resources):
+    def preprocess(self, nb, resources):
         nbc = deepcopy(nb)
         for worksheet in nbc.worksheets :
             cells = worksheet.cells[:]
@@ -262,7 +262,7 @@ def notebook(preprocessor, tag, markup):
     #                         extra_loaders=[pelican_loader])
     exporter = HTMLExporter(config=c,
                             template_file='basic',
-                            transformers=[SubCell],
+                            preprocessors=[SubCell],
                             extra_loaders=[pelican_loader])
 
     # read and parse the notebook

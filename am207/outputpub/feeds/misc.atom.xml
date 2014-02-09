@@ -13126,7 +13126,7 @@ Your design is shown in the figure below (unfortunately your aesthetic sensitivi
 A sphere of radius $r_1$ consists of  gold and platinum, with densities $\rho_g$ and $\rho_p$. Gold is located only within a cylinder of radius $r_2$, as illustrated in the figure, and platinum  of density  $\rho_p$  fills up the rest of the sphere. Write a program that calculates the two moments of inertia of this sphere corresponding to rotation about the z and x axis. The inner cylinder is centered around the z-axis, as also shown in the figure.&lt;/p&gt;
 &lt;p&gt;Do the calculation for a platinum  (21090 kg/m$^3$) sphere of radius 5 cm with an inner gold (19320 kg/m$^3$) cylinder of radius 1 cm. &lt;/p&gt;
 &lt;p&gt;a) Carry out the calculation using Monte Carlo sampling of the moment of inertia integral&lt;/p&gt;
-&lt;p&gt;$$ I_{axis} = \int dx \int dz \int dz \rho (x,y,z) \, r_{axis}^2 (x,y,z) $$&lt;/p&gt;
+&lt;p&gt;$$ I_{axis} = \int dx \int dy \int dz \rho (x,y,z) \, r_{axis}^2 (x,y,z) $$&lt;/p&gt;
 &lt;p&gt;where $r_{axis}(x, y, z)$ is the perpendicular distance of the point (x, y, z) from the axis of rotation. 
 Calculate the values of $I_x$ and $I_z$.&lt;/p&gt;
 &lt;p&gt;b) Do the simulation for $I_x$, $N_{s}=1000$ times and for each simulation  choose $N_{mc}$ such 

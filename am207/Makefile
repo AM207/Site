@@ -86,9 +86,13 @@ publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTPUB) -s $(PUBLISHCONF) $(PELICANOPTS)
 	cp -a content/files/* $(OUTPUTPUB)/blog/files/
 
-ssh_upload: publish
+ssh_upload_rahul: publish
 	scp -P $(SSH_PORT) -r content/files/* $(SSH_HOST):$(SSH_TARGET_DIR)/blog/files/
 	scp -P $(SSH_PORT) -r $(OUTPUTPUB)/* $(SSH_HOST):$(SSH_TARGET_DIR)
+
+ssh_upload_pavlos: publish
+	scp -P $(SSH_PORT) -r content/files/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/blog/files/
+	scp -P $(SSH_PORT) -r $(OUTPUTPUB)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
 
 rsync_upload: publish
 	rsync -e "ssh -p $(SSH_PORT)" -P -rvz --delete $(OUTPUTPUB)/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR) --cvs-exclude

@@ -146,7 +146,7 @@ init_mathjax();
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="icon-calendar"></i>Sat 08 February 2014
+        <i class="icon-calendar"></i>Mon 10 February 2014
     </span>
 
     <!--span class="label label-default">Category</span>
@@ -158,7 +158,173 @@ init_mathjax();
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>You can download this homework <a href="{filename}/../../notebooks/HW1.ipynb">here</a>.</p>
-<p>{% notebook HW1.ipynb %}</p>
+<p>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="AM-207:-Homework-1"><strong>AM 207</strong>: Homework 1<a class="anchor-link" href="#AM-207:-Homework-1">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p>Pavlos Protopapas <br>
+Handed out: Thursday, February 6th, 2014<br>
+Due: 11.59 P.M. Wednesday February 12th, 2014</br></br></p>
+<p><strong>Instructions</strong>:</p>
+<ul>
+<li><p>Upload your answers in an ipython notebook to the dropbox.</p>
+</li>
+<li><p>Your individual submissions use the following filenames: AM207_YOURNAME_HM1.ipynb</p>
+</li>
+<li><p>Your code should be in code cells as part of your ipython notebook. Do not use a different language (or format) unless you get permission from the TFs. If you use any special libraries you must include them with your code (program should run as is). </p>
+</li>
+<li><p>If you have multiple files (e.g. you've added code files and images) create a tarball for all files in a single file and name it: AM207_YOURNAME_HM1.tar or AM207_YOURNAME_HM1.zip</p>
+</li>
+</ul>
+<hr>
+</hr></hr></div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Question-1:--We'll-always-have-Pareto">Question 1:  We'll always have Pareto<a class="anchor-link" href="#Question-1:--We'll-always-have-Pareto">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If X is a random variable with a Pareto distribution, then the probability that X is greater than some number x, i.e. the survival function (also called tail function), is given by:</p>
+<p>$$
+P(X &gt; x) = \left(\frac{\alpha}{x}\right)^{\beta} \hspace{1cm}   x \ge \alpha\\
+$$
+$$
+P(X &gt; x)  = 1 \hspace{1cm}   x \lt \alpha
+$$</p>
+<p>where $\alpha$ is the (necessarily positive) minimum possible value of X, and $\beta$ is a positive parameter, which is known as the tail index.</p>
+<p>Pareto originally used this distribution to describe how wealth is allocated amongst individuals, and the distribution of income. $\beta$ is used to describe this allocation ratio: the 80/20 rule where 20 percent of the people have 80 percent of the wealth corresponds to $\beta ~ 1.161$.</p>
+<p>(a) Find analytically the Pareto CDF and show that the Pareto PDF is given by:</p>
+<p>$$ (P(x) =\frac{\beta \, \alpha^{\beta}}{x^{\beta+1}} \hspace{1cm} x\ge \alpha, \hspace{0.3cm} \alpha&gt;0, \hspace{0.3cm} \beta&gt;0  $$</p>
+<p>Plot the PDF for $\beta=1.161,5$, and $\alpha=0.5,3$.</p>
+<p>(b) Use the inverse method to to draw 10,000 samples from $X\sim {\rm Pareto}(\alpha=3, \beta=5)$. Plot a histogram of your samples.</p>
+<p>(c) Suppose $X\sim {\rm Pareto}(\alpha=3, \beta=5)$. Use importance sampling to estimate $E[X]$ and 
+$E[X^2]$ to within 3% error. Use as the importance function any pdf that you can find in <code>scipy.stats</code> (plot the pdf against the pareto to see which one is a good match). Generate 10,000 samples from the  pdf to obtain your estimates. </p>
+<p>Report your estimates for $E[X]$ and $E[X^2]$ along with the estimators errors, which are to be obtained by repeatedly calculating the monte-carlo integrals 100 times. Remember that these errors must be within 3%: this will require you to experiment with different pdfs.</p>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Question-2:--When-do-you-get-emails?">Question 2:  When do you get emails?<a class="anchor-link" href="#Question-2:--When-do-you-get-emails?">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The probability distribution of the emails I received as a function of time of the day
+follows a skewed distribution which can be modeled as:</p>
+<p>$$
+ P(t) = \lambda \frac{t}{t^2+1} \hspace{1cm}   0 \le t \le 12 \\ \nonumber
+$$
+$$
+ P(t)  = 0 \hspace{2cm} 12 \lt t \le 24 \\ \nonumber 
+$$</p>
+<p>where $t=0$ is 6:00am, $\lambda$ is a normalization constant and
+$t$ is measured in hours. </p>
+<p> Simulate $1\times10^8$ emails arriving at times determined by the 
+distribution above</p>
+<p>(a) Using inverse transform. Plot the histogram of the simulated event times and compare it to a plot of the true distribution. </p>
+<p>(b) Using the rejection method. Plot the histogram of the simulated event times and compare it to a plot of the the true distribution. </p>
+<p>(c) Time both simulations and report the times. Which one was faster and why ? </p>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Question-3:--Valentine's-Day-Monte-Carlo">Question 3:  Valentine's Day Monte Carlo<a class="anchor-link" href="#Question-3:--Valentine's-Day-Monte-Carlo">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Valentine's day is coming soon and you decided  to design a nice gift for your loved one.
+Your design is shown in the figure below (unfortunately your aesthetic sensitivities are not great).
+A sphere of radius $r_1$ consists of  gold and platinum, with densities $\rho_g$ and $\rho_p$. Gold is located only within a cylinder of radius $r_2$, as illustrated in the figure, and platinum  of density  $\rho_p$  fills up the rest of the sphere. Write a program that calculates the two moments of inertia of this sphere corresponding to rotation about the z and x axis. The inner cylinder is centered around the z-axis, as also shown in the figure.</p>
+<p>Do the calculation for a platinum  (21090 kg/m$^3$) sphere of radius 5 cm with an inner gold (19320 kg/m$^3$) cylinder of radius 1 cm. </p>
+<p>a) Carry out the calculation using Monte Carlo sampling of the moment of inertia integral</p>
+<p>$$ I_{axis} = \int dx \int dy \int dz \rho (x,y,z) \, r_{axis}^2 (x,y,z) $$</p>
+<p>where $r_{axis}(x, y, z)$ is the perpendicular distance of the point (x, y, z) from the axis of rotation. 
+Calculate the values of $I_x$ and $I_z$.</p>
+<p>b) Do the simulation for $I_x$, $N_{s}=1000$ times and for each simulation  choose $N_{mc}$ such 
+the accuracy is $0.1\%$. Show how you estimated the accuracy and what is the value 
+of $N_{mc}$. </p>
+<div class="figure">
+<img alt="schematic" src="./files/images/HM2_fig1.png"/>
+</div>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Question-4:-Rejection-on-Steroids">Question 4: Rejection on Steroids<a class="anchor-link" href="#Question-4:-Rejection-on-Steroids">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="input">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Generate a random sample from the below two dimensional 
+distribution using the rejection method. </p>
+<p>$$ P(x,y) = \exp{ \left( -(x^2+\cos(x)\, y^2) \right) }  $$</p>
+<p>for $  -2&lt;x&lt;2$ and $ -2&lt;y&lt;2$.</p>
+<p>(a) Plot the distribution.</p>
+<p>(b) Generate the sample and estimate the ratio of the number of objects
+you accept ($N_+$) to the number of objects you reject ($N_-$). </p>
+<p>(c) Implement a rejection on steroids method for this distribution. By how much has 
+this method improved the ratio ? </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell">
+<div class="input">
+<div class="prompt input_prompt">
+In []:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre>
+</pre></div>
+</div>
+</div>
+</div></p>
             </div>
             <!-- /.entry-content -->
         </article>

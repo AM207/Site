@@ -6,7 +6,8 @@
 *.swp
 *.out
 *.py[cod]
-output
+am207/output/
+am207/outputpub/
 .idea/*
 .env
 nohup.out

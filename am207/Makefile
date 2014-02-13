@@ -55,6 +55,7 @@ help:
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
+	mkdir -p $(OUTPUTDIR)/blog/files/
 	cp -a content/files/* $(OUTPUTDIR)/blog/files/
 
 clean:
@@ -84,6 +85,7 @@ stopserver:
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTPUB) -s $(PUBLISHCONF) $(PELICANOPTS)
+	mkdir -p $(OUTPUTPUB)/blog/files/
 	cp -a content/files/* $(OUTPUTPUB)/blog/files/
 
 ssh_upload_rahul: publish

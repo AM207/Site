@@ -86,7 +86,7 @@ stopserver:
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTPUB) -s $(PUBLISHCONF) $(PELICANOPTS)
 	mkdir -p $(OUTPUTPUB)/blog/files/
-	cp -a content/files/* $(OUTPUTPUB)/blog/files/
+	cp -a content/files/* $(OUTPUTPUB)/blog/
 
 ssh_upload_rahul: publish
 	scp -P $(SSH_PORT) -r content/files/* $(SSH_HOST):$(SSH_TARGET_DIR)/blog/files/

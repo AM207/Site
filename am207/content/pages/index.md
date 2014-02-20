@@ -10,18 +10,18 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p class="text-success">Lecture 7 about MCMC is now downloadable..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lecture7.md" role="button">More &raquo;</a></p>
+      <p class="text-success">Lecture 8 about MCMC tests is now downloadable..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture8.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p>Notebook from second lab, on montecarlo and frequentist statistics, has been posted..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lab2.md" role="button">More &raquo;</a></p>
+      <p>Notebook from third lab, on bayesian techniques has been posted..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lab3.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>
-      <p class="text-info">HW2 is posted..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/homework2.md" role="button">More &raquo;</a></p>
+      <p class="text-info">HW3 is posted..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/homework3.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
 </div>
 

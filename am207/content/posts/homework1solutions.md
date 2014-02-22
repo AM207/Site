@@ -1,4 +1,4 @@
-Title: Homework 1Solutions
+Title: Homework 1 Solutions
 Tags: homeworks
 Author: Pavlos Protopapas
 Summary: Solutions to homework 1.

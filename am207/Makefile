@@ -91,6 +91,8 @@ publish:
 ssh_upload_rahul: publish
 	scp -P $(SSH_PORT) -r content/files/* $(SSH_HOST):$(SSH_TARGET_DIR)/blog/files/
 	scp -P $(SSH_PORT) -r $(OUTPUTPUB)/* $(SSH_HOST):$(SSH_TARGET_DIR)
+	#ssh $(SSH_HOST) "chmod -R g+w $(SSH_TARGET_DIR)/*"
+	#ssh $(SSH_HOST) "chgrp -R web $(SSH_TARGET_DIR)/*"
 
 ssh_upload_pavlos: publish
 	scp -P $(SSH_PORT) -r content/files/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)/blog/files/

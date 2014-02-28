@@ -16,7 +16,7 @@ Template: index
     <div class="col-lg-4">
       <h3>labs</h3>
       <p>Notebook from fifth lab, on gibbs sampling has been posted..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lab3.md" role="button">More &raquo;</a></p>
+      <p><a class="btn btn-default" href="{filename}/posts/lab5.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>

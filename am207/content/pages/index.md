@@ -10,8 +10,8 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p class="text-success">Lecture 10 about Data Augmentation is now downloadable..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lecture10.md" role="button">More &raquo;</a></p>
+      <p class="text-success">Lecture 11 about Slice    Sampling is now downloadable..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture11.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>

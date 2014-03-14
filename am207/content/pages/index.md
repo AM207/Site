@@ -15,8 +15,8 @@ Template: index
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p>Notebook from fifth lab, on gibbs sampling has been posted..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lab5.md" role="button">More &raquo;</a></p>
+      <p>Notebook from seventh lab, on simulated annealing has been posted..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lab7.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>

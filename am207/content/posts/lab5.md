@@ -1,7 +1,7 @@
 Title: Lab 5
 Tags: labs
 Author: Rahul Dave
-Summary: The 35th lab is on gibbs sampling.
+Summary: The 5th lab is on gibbs sampling.
 
 
 A video of this lab is  available.

@@ -11,7 +11,7 @@ Template: index
     <div class="col-lg-4">
       <h3>lectures</h3>
       <p class="text-success">Lecture 16 is about Advanced MCMC, and parallel tempering now downloadable..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lecture15.md" role="button">More &raquo;</a></p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture16.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>

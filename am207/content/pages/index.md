@@ -20,8 +20,8 @@ Template: index
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>
-      <p class="text-info">HW6  is posted</p>
-      <p><a class="btn btn-default" href="{filename}/posts/homework6.md" role="button">More &raquo;</a></p>
+      <p class="text-info">HW7  is posted</p>
+      <p><a class="btn btn-default" href="{filename}/posts/homework7.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
 </div>
 

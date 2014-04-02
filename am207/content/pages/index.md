@@ -10,13 +10,13 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p class="text-success">Lecture 16 is about Advanced MCMC, and parallel tempering now downloadable..</p>
+      <p class="text-success">Lecture 17 is about Time series, and is now downloadable..</p>
       <p><a class="btn btn-default" href="{filename}/posts/lecture16.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
-      <p>Notebook from seventh lab, on simulated annealing has been posted..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lab7.md" role="button">More &raquo;</a></p>
+      <p>Notebook from eight lab, on GA, etc has been posted..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/labga.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>

@@ -11,7 +11,7 @@ Template: index
     <div class="col-lg-4">
       <h3>lectures</h3>
       <p class="text-success">Lecture 17 is about Time series, and is now downloadable..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lecture16.md" role="button">More &raquo;</a></p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture17.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
@@ -20,8 +20,8 @@ Template: index
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>homeworks</h3>
-      <p class="text-info">HW7  is posted</p>
-      <p><a class="btn btn-default" href="{filename}/posts/homework7.md" role="button">More &raquo;</a></p>
+      <p class="text-info">HW8  is posted</p>
+      <p><a class="btn btn-default" href="{filename}/posts/homework8.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
 </div>
 

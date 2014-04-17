@@ -10,8 +10,8 @@ Template: index
 <div class="row">
     <div class="col-lg-4">
       <h3>lectures</h3>
-      <p class="text-success">Lecture 18 about Hidden Markov Models is now updated..</p>
-      <p><a class="btn btn-default" href="{filename}/posts/lecture18.md" role="button">More &raquo;</a></p>
+      <p class="text-success">Lecture 19 about Expectation Maximization is now updated..</p>
+      <p><a class="btn btn-default" href="{filename}/posts/lecture19.md" role="button">More &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <h3>labs</h3>
